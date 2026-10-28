@@ -45,7 +45,7 @@ Just kidding...
 - [Paperlane](https://pragyaangaur.dev/Paperlane/): a daily feed of new arXiv mathematics papers, with its own llms.txt for agents.
 - [Inkwell](https://github.com/pragyaangaur/Inkwell): Linux, Doom and an offline chatbot on a 10-year-old Kindle.
 - [rdgeneric](https://pragyaangaur.dev/Can-It-Run-Minecraft/): the first version of Minecraft as one C file, running in a terminal, a browser, a PDF and on a bare 486.
-- [Token Thermodynamics](https://pragyaangaur.dev/token-thermodynamics/): a longer page on the melting temperature paper.
+- [Token Thermodynamics](https://github.com/pragyaangaur/Token-Thermodynamics): the code, data and paper for the melting temperature work.
 
 ## Open source
 

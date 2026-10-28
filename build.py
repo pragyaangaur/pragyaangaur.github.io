@@ -217,7 +217,7 @@ SPREADS = [
                  tilt=-1.1, drop=40, width=90),
         ]),
         (5, [
-            card("token", "The melting temperature of a next-token distribution", "token-thermodynamics/", "token-thermo", "hero",
+            card("token", "The melting temperature of a next-token distribution", "https://github.com/pragyaangaur/Token-Thermodynamics", "token-thermo", "hero",
                  "Softmax sampling is the Boltzmann distribution, so a language model can melt. I found its melting temperature in closed form and tested it on 12 models.",
                  bullets=["Predicted from the logit gap and log *V* alone, across a ==976x== range of vocabulary sizes",
                           "[[8 of my hypotheses died]], and all 8 are published"],
@@ -617,7 +617,7 @@ def build():
     with open("robots.txt", "w") as f:
         f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     today = __import__("datetime").date.today().isoformat()
-    urls = "".join(f"  <url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in ("", "token-thermodynamics/"))
+    urls = "".join(f"  <url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in ("",))
     with open("sitemap.xml", "w") as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
     print(f"index.html written, {n} cards in {len(SPREADS)} spreads")
