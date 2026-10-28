@@ -205,3 +205,91 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
   80% { transform: rotate(-8deg) scale(1); opacity: 0.9; }
   100% { transform: rotate(-8deg) scale(1); opacity: 0; }
 }
+
+/* Inviting people in: the intro fills the first screen, cards are pinned up as they come into view,
+   and every section ends by pointing at the next one. */
+.intro { min-height: calc(100vh - 120px); margin-top: 0; display: flex; flex-direction: column; justify-content: center; }
+.start { align-self: center; margin-top: 64px; font: 700 22px/1 var(--hand); color: var(--red); }
+.start span { display: inline-block; animation: nudge 1.8s ease-in-out infinite; }
+.start:hover { text-decoration: none; }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+.board { padding-top: 40px; }
+.js .card.later { opacity: 0; transform: translateY(26px) rotate(calc(var(--tilt) * 2.5)); }
+.js .card { transition: transform 0.6s cubic-bezier(.2,.7,.3,1), opacity 0.6s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .js .card.later { opacity: 1; transform: rotate(var(--tilt)); }
+  .start span { animation: none; }
+}
+@media (max-width: 720px) {
+  .intro { min-height: calc(100svh - 140px); margin-top: 0; }
+}
+
+/* the lamp: dark mode switch */
+.lamp { margin-left: 24px; width: 22px; height: 22px; padding: 0; border: 1.8px solid currentColor; border-radius: 50%; background: linear-gradient(90deg, currentColor 50%, transparent 50%); color: var(--ink); cursor: pointer; vertical-align: -4px; transition: transform 0.4s ease; }
+.lamp:hover { transform: rotate(180deg); }
+@media (max-width: 720px) { .lamp { margin-left: 0; } }
+
+[data-theme="dark"] {
+  --paper: #131412;
+  --ink: #ecebe5;
+  --soft: #a8a9a2;
+  --hair: #34352f;
+  --print: #1d1e1b;
+  --red: #ef7a6c;
+  --blue: #8aa4f0;
+  --green: #74c38c;
+  --graphite: #a3a59d;
+  --hl: rgba(255, 214, 51, 0.28);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 26px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+[data-theme="dark"] .ink-copper { --ink: #e69a6c; }
+[data-theme="dark"] .ink-amber { --ink: #e3b450; }
+[data-theme="dark"] .ink-indigo { --ink: #9eabf0; }
+[data-theme="dark"] .ink-teal { --ink: #5cc6c4; }
+[data-theme="dark"] .ink-plum { --ink: #d897d4; }
+[data-theme="dark"] .ink-forest { --ink: #7fca8f; }
+[data-theme="dark"] .ink-oxblood { --ink: #ec8b98; }
+[data-theme="dark"] .ink-graphite { --ink: #a3a59d; }
+[data-theme="dark"] .tape { background: rgba(200, 190, 150, 0.35); }
+[data-theme="dark"] .k-text { background-image: repeating-linear-gradient(transparent 0 25px, rgba(138, 164, 240, 0.12) 25px 26px); }
+[data-theme="dark"] .logos img { background: #f2f2ee; padding: 4px 6px; border-radius: 4px; box-sizing: content-box; }
+[data-theme="dark"] .more a:hover { color: var(--paper); }
+[data-theme="dark"] .tag { color: var(--paper); }
+[data-theme="dark"] .k-gh { border-color: #3d444d; }
+[data-theme="dark"] .k-gh .repo { background: #252723; border-color: #3d444d; color: var(--ink); }
+[data-theme="dark"] .k-gh .repo .stars { color: var(--soft); }
+[data-theme="dark"] .prs li { border-color: #2f322d; }
+[data-theme="dark"] .crown span { mix-blend-mode: normal; color: #ec8b98; border-color: #ec8b98; outline-color: #ec8b98; background: rgba(19, 20, 18, 0.7); }
+[data-theme="dark"] img:not(.logos img), [data-theme="dark"] video { filter: brightness(0.92); }
+
+/* Each card is cut out along a dashed line, and a click lifts it off the board to centre stage. */
+.board .card { cursor: zoom-in; }
+.board .card::before { content: ""; position: absolute; inset: -18px; border: 1.5px dashed var(--graphite); border-radius: 6px; opacity: 0.45; pointer-events: none; transition: opacity 0.3s ease; }
+.board .card:hover::before { opacity: 0.9; }
+.board .card.lifted { opacity: 0.15; }
+body.staged { overflow: hidden; }
+.stage { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 4vh 4vw; background: color-mix(in srgb, var(--paper) 55%, transparent); backdrop-filter: blur(9px) saturate(0.8); -webkit-backdrop-filter: blur(9px) saturate(0.8); animation: fade 0.25s ease; }
+.stage[hidden] { display: none; }
+.stage-card { position: relative; width: min(880px, 100%); max-height: 92vh; overflow: auto; background: var(--paper); padding: 52px 56px 44px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25); border: 1.5px dashed var(--graphite); border-radius: 8px; animation: lift 0.35s cubic-bezier(.2,.8,.3,1.1); }
+.stage-card > .card { transform: none !important; margin: 0 !important; width: auto !important; }
+.stage-card > .card:hover { transform: none; }
+.stage-card .k-mid h3, .stage-card .k-small h3, .stage-card .k-award h3, .stage-card .k-text h3 { font-size: 30px; }
+.stage-card .cap { font-size: 19px !important; }
+.stage-card ul { font-size: 17.5px !important; }
+.stage-card .note { position: static; display: inline-block; margin: 0 0 14px; white-space: normal; }
+.stage-card .note.secret { opacity: 1; }
+.stage-close { position: fixed; top: 18px; right: 24px; z-index: 41; width: 44px; height: 44px; border: 0; background: none; color: var(--ink); font: 400 38px/1 var(--tex); cursor: pointer; }
+@keyframes fade { from { opacity: 0; } }
+@keyframes lift { from { transform: scale(0.92) rotate(-1deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .stage, .stage-card { animation: none; } }
+@media (max-width: 720px) {
+  .board .card::before { inset: -10px; }
+  .stage { padding: 0; }
+  .stage-card { max-height: 100svh; height: 100%; padding: 64px 22px 32px; border: 0; border-radius: 0; }
+}
+/* On stage the corner photos tuck inside the main picture, since the stage clips anything past its edge */
+.stage-card .inset-tr { right: 12px; top: 12px; }
+.stage-card .inset-bl { left: 12px; bottom: 12px; }
+.stage-card .inset-br { right: 12px; bottom: 12px; }
+.stage-card .pic { margin-bottom: 0 !important; }

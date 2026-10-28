@@ -483,7 +483,7 @@ LINKS_TOP = [
 
 def build():
     spreads = []
-    for sid, heading, ink, cols in SPREADS:
+    for i, (sid, heading, ink, cols) in enumerate(SPREADS):
         template = " ".join(f"{w}fr" for w, _ in cols)
         colhtml = "".join(f'<div class="col">\n' + "\n".join(render(c, ink) for c in cards) + "\n</div>\n" for _, cards in cols)
         spreads.append(f'<section class="block ink-{ink}" id="{sid}">\n<h2 class="heading">{escape(heading)}</h2>\n'
@@ -504,18 +504,21 @@ def build():
 <meta name="description" content="Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.">
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{{if(localStorage.theme==="dark")document.documentElement.dataset.theme="dark"}}catch(e){{}}document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="assets/site.css?v={v("assets/site.css")}">
 <link rel="stylesheet" href="assets/board.css?v={v("assets/board.css")}">
 <link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
-<nav class="bar"><a class="name" href="./">Pragyaan Gaur</a><span>{top}</span></nav>
+<nav class="bar" id="top"><a class="name" href="./">Pragyaan Gaur</a><span>{top}<button class="lamp" type="button" aria-label="Switch dark mode" title="Lights off"></button></span></nav>
 <header class="intro">
   <p>{escape(INTRO)}</p>
   <p class="small">{escape(INTRO_SMALL)}</p>
   <nav class="toc" aria-label="Sections">{toc}</nav>
+  <a class="start" href="#{SPREADS[0][0]}">Start here <span aria-hidden="true">\u2193</span></a>
 </header>
+<div class="stage" hidden><div class="stage-card" role="dialog" aria-modal="true"></div><button class="stage-close" type="button" aria-label="Close">\u00d7</button></div>
 <main class="board" data-links="{links}">
 {chr(10).join(spreads)}
 <svg class="threads" aria-hidden="true"></svg>

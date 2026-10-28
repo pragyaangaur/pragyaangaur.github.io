@@ -112,6 +112,75 @@
     });
   }
 
+  // Cards are pinned to the board as they scroll into view.
+  var cards = board.querySelectorAll(".card");
+  if ("IntersectionObserver" in window) {
+    var pin = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.remove("later"); pin.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    cards.forEach(function (c) {
+      if (c.getBoundingClientRect().top > window.innerHeight) { c.classList.add("later"); pin.observe(c); }
+    });
+  }
+
+  // A click on a card lifts it off the board to centre stage and blurs the rest. Each card has its own
+  // address, so pragyaangaur.dev/#uno opens straight onto Uno.
+  var stage = document.querySelector(".stage"), slot = stage.querySelector(".stage-card"), open = null;
+  function show(card, push) {
+    if (open) open.classList.remove("lifted");
+    open = card;
+    var copy = card.cloneNode(true);
+    copy.removeAttribute("id");
+    copy.classList.remove("later");
+    slot.replaceChildren(copy);
+    copy.querySelectorAll("video").forEach(function (v) { v.preload = "auto"; v.play().catch(function () {}); });
+    card.classList.add("lifted");
+    stage.hidden = false;
+    document.body.classList.add("staged");
+    slot.scrollTop = 0;
+    if (push) history.pushState({ card: card.id }, "", "#" + card.id);
+    stage.querySelector(".stage-close").focus({ preventScroll: true });
+  }
+  function hide(push) {
+    if (!open) return;
+    open.classList.remove("lifted");
+    stage.hidden = true;
+    slot.replaceChildren();
+    document.body.classList.remove("staged");
+    if (push) history.pushState(null, "", location.pathname + location.search);
+    open.scrollIntoView({ block: "center", behavior: "instant" });
+    open = null;
+  }
+  board.addEventListener("click", function (e) {
+    var card = e.target.closest(".card");
+    if (!card || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    // Plain text links on a card still go where they say; everything else opens the card.
+    if (e.target.closest("h3 a, .more a, li a, .cap a")) return;
+    e.preventDefault();
+    show(card, true);
+  });
+  stage.addEventListener("click", function (e) { if (!slot.contains(e.target)) hide(true); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(true); });
+  function fromHash() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.classList.contains("card")) show(el, false); else hide(false);
+  }
+  window.addEventListener("popstate", fromHash);
+  fromHash();
+
+  // The lamp switches the lights off and on, and remembers the choice.
+  var lamp = document.querySelector(".lamp"), root = document.documentElement;
+  lamp.addEventListener("click", function () {
+    var dark = root.dataset.theme !== "dark";
+    if (dark) root.dataset.theme = "dark"; else delete root.dataset.theme;
+    lamp.title = dark ? "Lights on" : "Lights off";
+    try { localStorage.theme = dark ? "dark" : "light"; } catch (e) {}
+    draw();
+  });
+  if (root.dataset.theme === "dark") lamp.title = "Lights on";
+
   // For whoever opens the console.
   console.log("%cHello, fellow inspector.", "font: 700 16px Georgia, serif; color: #7d1f2c");
   console.log("The llms.txt is for the robots. This one is for you.\nIf you read this far, write to pragyaangaur12@gmail.com and tell me what you would build next.");
