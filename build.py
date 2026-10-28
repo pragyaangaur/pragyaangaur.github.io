@@ -58,6 +58,17 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
                 width=width, align=align, tag=tag, links=links, repo=repo, prs=prs, secret=secret)
 
 
+SITE = "https://pragyaangaur.dev"
+DESC = ("Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute "
+        "for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.")
+PERSON = __import__("json").dumps({
+    "@context": "https://schema.org", "@type": "Person", "name": "Pragyaan Gaur", "url": SITE + "/",
+    "image": SITE + "/apple-touch-icon.png", "email": "mailto:pragyaangaur12@gmail.com",
+    "affiliation": {"@type": "CollegeOrUniversity", "name": "National Institute of Technology Agartala"},
+    "sameAs": ["https://github.com/pragyaangaur", "https://www.linkedin.com/in/pragyaangaur/",
+               "https://orcid.org/0009-0009-4037-2478", "https://scholar.google.com/citations?user=GomKcxcAAAAJ"],
+}).replace("</", "<\\/")
+
 # Each spread: (id, heading, ink, [(column width, [cards])]). A column with no cards is breathing room.
 SPREADS = [
     ("reactor", "The reactor", "copper", [
@@ -552,7 +563,22 @@ def build():
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Pragyaan Gaur</title>
-<meta name="description" content="Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.">
+<meta name="description" content="{escape(DESC)}">
+<link rel="canonical" href="{SITE}/">
+<meta name="author" content="Pragyaan Gaur">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pragyaan Gaur">
+<meta property="og:url" content="{SITE}/">
+<meta property="og:title" content="Pragyaan Gaur">
+<meta property="og:description" content="{escape(DESC)}">
+<meta property="og:image" content="{SITE}/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pragyaan Gaur">
+<meta name="twitter:description" content="{escape(DESC)}">
+<meta name="twitter:image" content="{SITE}/assets/og.png">
+<script type="application/ld+json">{PERSON}</script>
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{{if(localStorage.theme==="dark")document.documentElement.dataset.theme="dark"}}catch(e){{}}document.documentElement.classList.add("js")</script>
@@ -588,6 +614,12 @@ def build():
 '''
     with open("index.html", "w") as f:
         f.write(html)
+    with open("robots.txt", "w") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    today = __import__("datetime").date.today().isoformat()
+    urls = "".join(f"  <url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in ("", "token-thermodynamics/"))
+    with open("sitemap.xml", "w") as f:
+        f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
     print(f"index.html written, {n} cards in {len(SPREADS)} spreads")
 
 
