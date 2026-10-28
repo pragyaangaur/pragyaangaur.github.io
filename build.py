@@ -581,7 +581,7 @@ def build():
 <script type="application/ld+json">{PERSON}</script>
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
-<script>try{{if(localStorage.theme==="dark")document.documentElement.dataset.theme="dark"}}catch(e){{}}document.documentElement.classList.add("js")</script>
+<script>var t;try{{t=localStorage.theme}}catch(e){{}}if(t!=="light")document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="assets/site.css?v={v("assets/site.css")}">
 <link rel="stylesheet" href="assets/board.css?v={v("assets/board.css")}">
 <link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
