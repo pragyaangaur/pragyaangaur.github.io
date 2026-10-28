@@ -17,6 +17,7 @@ from html import escape
 
 GH = "https://github.com/pragyaangaur/"
 SITE = "https://pragyaangaur.dev/"
+BEV = "https://bevisioneers.world/profile/pragyaan-gaur"
 B = "assets/b/"
 LOGO = "assets/logos/"
 
@@ -28,7 +29,8 @@ with open(B + "sizes.txt") as f:
 
 
 def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=(), logos=(), stamp=None,
-         inset=None, notes=(), rings=(), tilt=0.0, drop=0, tape=None, quote=None, pair=None, order=0, width=100, align="left"):
+         inset=None, notes=(), rings=(), tilt=0.0, drop=0, tape=None, quote=None, pair=None, order=0, width=100, align="left",
+         tag=None, links=(), repo=None, prs=()):
     """One card.
 
     media   key in assets/b, a still (.webp) or a loop (.mp4 with a .jpg poster)
@@ -37,18 +39,22 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
     notes   (text, ink, css position, tilt): handwriting in the margin
     rings   (left, top, width, height) in percent of the media: a pen ring drawn on the picture
     width   share of the column the card takes, with align saying which side it keeps to
+    tag     a small label pinned to the picture, such as "Click to play"
+    links   extra (label, url) links shown under the bullets
+    repo    (owner/name, stars) for an open source card, and prs its (state, number, text) rows,
+            where state is merged, open or issue
     """
     return dict(id=id, title=title, url=url, media=media, kind=kind, caption=caption, meta=meta,
                 bullets=bullets, logos=logos, stamp=stamp, inset=inset, notes=notes, rings=rings,
                 tilt=tilt, drop=drop, tape=tape, quote=quote, pair=pair, order=order,
-                width=width, align=align)
+                width=width, align=align, tag=tag, links=links, repo=repo, prs=prs)
 
 
 # Each spread: (id, heading, ink, [(column width, [cards])]). A column with no cards is breathing room.
 SPREADS = [
     ("reactor", "The reactor", "copper", [
         (3, [
-            card("sc-inside", "Inside the chimney", GH + "SkyCatcher", "sc-diagram", "small",
+            card("sc-inside", "Inside the chimney", BEV, "sc-diagram", "small",
                  "Flue gas rises through a copper catalyst bed and leaves as clean air. The sulphur comes out the side as acid.",
                  tilt=-1.5, drop=90, tape="t", width=92),
             card("kmc", "Keeping a copper catalyst alive", "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1", "kmc-card", "small",
@@ -57,20 +63,20 @@ SPREADS = [
                  tilt=1.2, drop=120, tape="tl", width=92),
         ]),
         (6, [
-            card("skycatcher", "SkyCatcher", GH + "SkyCatcher", "sc-render", "hero",
+            card("skycatcher", "SkyCatcher", BEV, "sc-render", "hero",
                  "Factory chimneys in India pour out sulphur dioxide. SkyCatcher sits inside the chimney and turns it into sulphuric acid that can be sold, on a copper catalyst that keeps renewing itself.",
                  meta="Founder, since July 2024",
                  bullets=["[[Patent pending]] in India, complete specification filed September 2026",
                           "==TRL 4== validated, and backed by ==$30,000+ in grants==",
                           "Pitched twice at the beVisioneers Global Summit in Stuttgart"],
-                 logos=[("mercedes.webp", "beVisioneers: The Mercedes-Benz Fellowship", 40)],
-                 stamp=["beVisioneers Fellow", "Emergent Ventures"],
+                 logos=[("mercedes.webp", "beVisioneers: The Mercedes-Benz Fellowship", 40), ("mercatus.webp", "Emergent Ventures, Mercatus Center", 38)],
+                 stamp=["beVisioneers Fellow", "Emergent Ventures Fellow"],
                  inset=("sc-copper", "bl", 36, -4),
                  notes=[("The real copper", "blue", "left:39%; bottom:-10%", -6)],
                  tilt=-0.4, order=-1),
         ]),
         (3, [
-            card("sc-cad", "CAD and CFD", GH + "SkyCatcher", "sc-cad", "small",
+            card("sc-cad", "CAD and CFD", BEV, "sc-cad", "small",
                  "The full reactor in CAD, and then in SU2 CFD.",
                  bullets=["The reactor's heater runs on SU2's heat source feature, so I fixed it and sent the fix upstream as __pull request #2940__"],
                  tilt=1.6, drop=60, tape="t", width=90, align="right"),
@@ -79,7 +85,7 @@ SPREADS = [
                           "Finals at IIT Bombay, then at TUM in Munich"],
                  logos=[("stanford.svg", "Stanford", 30), ("iitb.svg", "IIT Bombay", 50), ("tum.svg", "Technical University of Munich", 26)],
                  tilt=-1.0, drop=110),
-            card("young-voices", "Young Voices Award", GH + "SkyCatcher", None, "award",
+            card("young-voices", "Young Voices Award", BEV, None, "award",
                  bullets=["Global Top 10 for SkyCatcher, 2024"],
                  tilt=1.4, drop=70, width=84, align="right"),
         ]),
@@ -95,7 +101,7 @@ SPREADS = [
                  tilt=0.8, drop=70, width=94),
         ]),
         (5, [
-            card("mps", "Max Planck Institute for Solar System Research", "https://www.mps.mpg.de/", "mps-wall", "hero",
+            card("mps", "Max Planck Institute for Solar System Research", GH + "MPS-Internship", "mps-wall", "hero",
                  "I worked on rebuilding how bright the Sun was across two solar cycles in the late 1800s, from observations at the Rome Observatory recounted by citizen scientists.",
                  meta="Research intern, April to July 2026, Göttingen",
                  bullets=["Supervised by Dr. Natalie Krivova",
@@ -125,27 +131,32 @@ SPREADS = [
                  bullets=["arXiv 2609.30305, under review at the ==American Journal of Physics=="],
                  rings=[(35, 50, 11, 19)],
                  notes=[("They only meet without air", "red", "left:2%; top:-32px", -3)],
-                 tilt=-1.4, drop=110, tape="t", width=94),
+                 tilt=-1.4, drop=90, tape="t", width=94),
             card("triking", "TriKing", "https://triking.itch.io/triking", "triking-qb64", "small",
                  "After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.",
                  bullets=["500+ players, including a two-time ==Tetris World Vice Champion=="],
-                 tilt=1.8, drop=120, width=92),
-            card("paperlane", "Paperlane", SITE + "Paperlane/", "paperlane", "small",
-                 "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
-                 tilt=-1.2, drop=110, width=90),
+                 tag="Click to play",
+                 tilt=1.8, drop=40, width=92),
+            card("polyplets", "Hyperbolic polyplets", "https://oeis.org/A390200", "polyplets", "small",
+                 "On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found ==1,261,889== at eight.",
+                 bullets=["[[Approved on OEIS]] as term 8 of A390200"],
+                 links=[("OEIS A390200", "https://oeis.org/A390200"), ("Code", GH + "Hyperbolic-Polyplet-Enumerator")],
+                 notes=[("Then I counted the pieces", "blue", "left:0; top:-32px", -3)],
+                 tilt=-1.2, drop=40, tape="tl", width=88),
         ]),
         (6, [
             card("polyhex", "The maximum area of the convex hull of a polyhex", "https://arxiv.org/abs/2609.30310", "polyhex", "hero",
-                 "In 2008 Sascha Kurz asked how large the convex hull of *n* hexagons glued edge to edge can be. It is at most {{⌈*n*² + 14*n*/3⌉ / 6}}.",
+                 "In 2008 Sascha Kurz asked how large the convex hull of *n* hexagons glued edge to edge can be. It is at most {{\u2308*n*\u00b2 + 14*n*/3\u2309 / 6}}.",
                  bullets=["[[Kurz's conjecture settled]], with the bound machine-checked in Lean 4",
-                          "A new OEIS sequence, A399934, and under review at ==Beiträge zur Algebra und Geometrie=="],
+                          "Under review at ==Beitr\u00e4ge zur Algebra und Geometrie=="],
+                 links=[("arXiv 2609.30310", "https://arxiv.org/abs/2609.30310"), ("OEIS A399934", "https://oeis.org/A399934"), ("Lean proof", GH + "Polyhex-Hull")],
                  logos=[("arxiv.svg", "arXiv", 30), ("oeis.png", "OEIS", 26)],
                  notes=[("From MathDB 380445", "blue", "right:6px; top:-32px", 3)],
                  tilt=0.4, drop=20, order=-1),
-            card("polyplets", "Hyperbolic polyplets", GH + "Hyperbolic-Polyplet-Enumerator", "polyplets", "mid",
-                 "On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found ==1,261,889== at eight.",
-                 bullets=["[[Approved on OEIS]] as term 8 of A390200"],
-                 tilt=-0.8, drop=140, tape="tl", width=72, align="right"),
+            card("paperlane", "Paperlane", SITE + "Paperlane/", "paperlane", "mid",
+                 "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
+                 tag="Open it",
+                 tilt=-0.8, drop=40, tape="tr", width=80, align="right"),
         ]),
         (3, [
             card("uno", "How long is a game of Uno?", "https://arxiv.org/abs/2610.14076", "uno-law", "small",
@@ -153,28 +164,14 @@ SPREADS = [
                  bullets=["58 million games simulated in C, and big hands quietly hoard *M*/23 Wild Draw Fours each"],
                  inset=("uno-meme", "tr", 34, 5),
                  notes=[("A chess grandmaster wrote in", "blue", "left:-12px; top:-34px", -4)],
-                 tilt=1.3, drop=90, width=94, align="right"),
+                 tilt=1.3, drop=70, width=94, align="right"),
             card("a189077", "A189077", "https://oeis.org/A189077", "a189077", "small",
                  "Compositions avoiding the pattern 13-2, a sequence Neil Sloane created. It had 16 terms. Now it has 70.",
-                 tilt=-1.5, drop=130, width=80, align="right"),
+                 tilt=-1.5, drop=40, width=80, align="right"),
             card("cauchy", "Cauchy-Schwarz for real powers", SITE + "Real-Power-Cauchy-Schwarz/", "cauchy-cone", "small",
                  "A 2025 conjecture, proved for every real power from two up, with every case of equality, and checked line by line in Lean 4.",
-                 tilt=1.0, drop=120, width=92, align="right"),
+                 tilt=1.0, drop=40, width=92, align="right"),
         ]),
-    ]),
-    ("lecture", "After a Nobel lecture", "teal", [
-        (3, []),
-        (6, [
-            card("iitd", "Cryo-EM and the porosome, in miniature", GH, None, "hero",
-                 "Joachim Frank won the 2017 Nobel Prize in Chemistry for cryo-EM. After his lecture at IIT Delhi with Bhanu P. Jena, I built a small working version of each of their ideas.",
-                 pair=("cryoem", "porosome"),
-                 bullets=["A ribosome rebuilt from ==2,400 projections==, each of which looks like static on its own",
-                          "A vesicle docking at a porosome and releasing its cargo"],
-                 logos=[("iitd.svg", "IIT Delhi", 64)],
-                 notes=[("A thank-you, in code", "red", "right:2%; top:-34px", 3)],
-                 tilt=-0.3, drop=20),
-        ]),
-        (3, []),
     ]),
     ("ai", "AI, LLMs, ML and cognitive neuroscience", "plum", [
         (4, [
@@ -235,62 +232,69 @@ SPREADS = [
                  inset=("inkwell-apps", "br", 54, 3),
                  notes=[("This is a Kindle", "blue", "left:-12px; top:-32px", -5)],
                  tilt=0.5, drop=20, tape="t", order=-1, width=88, align="center"),
+        ]),
+        (4, [
             card("rdgeneric", "rdgeneric", SITE + "Can-It-Run-Minecraft/", "rdgeneric", "mid",
                  "Everyone runs Doom on everything, so I did it with Minecraft. Its very first version, rewritten as one C file with no libraries at all.",
                  bullets=["Plays in a terminal, over telnet, from a 20 KB web page, ==inside a PDF==, and on a bare 486"],
                  inset=("rdgeneric-pdf", "br", 48, -3),
                  notes=[("Inside a PDF!", "red", "right:-6px; bottom:46%", -6)],
-                 tilt=-0.6, drop=150),
-        ]),
-        (4, [
+                 tilt=-0.6, drop=40, width=96, align="right"),
             card("bedrock", "Minecraft Bedrock on macOS", SITE + "Minecraft-Bedrock-macOS/", "bedrock", "mid",
                  "Bedrock has never had a Mac version. Claude reverse engineered the Windows game in about a day, and now it runs offline on Apple Silicon.",
                  bullets=["A WineGDK bug found on the way, sent upstream with a fix"],
-                 tilt=1.2, drop=200, tape="tr", width=94, align="right"),
+                 tilt=1.2, drop=40, tape="tr", width=92, align="right"),
         ]),
     ]),
     ("automation", "Automation", "oxblood", [
-        (4, [
+        (1, []),
+        (5, [
             card("matiks", "Matiks bot", GH + "Matiks-Bot", "matiks", "mid",
                  "Matiks asked for my resume and then went quiet, so I built a bot that reads each question off the screen and answers it.",
                  bullets=["World rank ==140,000 to 51== in one evening, and then a call with a founder"],
                  tilt=-1.2, drop=40, tape="t", width=92),
         ]),
-        (4, [
+        (5, [
             card("leetcode", "1337 Bot", GH + "1337-Bot", "leetcode-1337", "mid",
                  "I hated the LeetCode grind, so I automated it. 385 problems in 3 hours, until the rate limits caught up.",
                  bullets=["Then I got hooked, solved 200 by hand in 50 days, and made ==LeetCode Knight== in under 100"],
                  inset=("knight", "tr", 28, 6),
-                 tilt=0.8, drop=110, width=94),
+                 tilt=0.8, drop=120, width=92, align="right"),
         ]),
-        (4, [
-            card("daily", "1337 Daily", GH + "1337-Daily", None, "text",
-                 caption="A bot that submits a LeetCode solution every day on its own, so the streak never breaks and you can stop worrying about it.",
-                 tilt=1.4, drop=170, width=88, align="right"),
-        ]),
+        (1, []),
     ]),
     ("open-source", "Open source", "indigo", [
         (4, [
-            card("sunpy", "SunPy", "https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur", None, "text",
-                 bullets=["[[3 merged]]: a header bug in SUIT maps, HTML output for single-column time series, and documentation of synodic rotation",
-                          "5 more open, from SOAR searches to on-disk masks"],
-                 logos=[("sunpy.webp", "SunPy", 56)],
-                 tilt=-1.2, drop=40, width=94),
+            card("sunpy", "SunPy", "https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur", None, "gh",
+                 repo=("sunpy/sunpy", "1,048"),
+                 prs=[("merged", 8741, "SUIT map dates drifting out of sync with the header"),
+                      ("merged", 8720, "How much orbital eccentricity moves synodic rotation"),
+                      ("merged", 8706, "HTML output for single-column time series"),
+                      ("open", None, "5 more pull requests open, from SOAR searches to on-disk masks"),
+                      ("issue", 8750, "Carrying uncertainty through a TimeSeries, starting with sunspot numbers")],
+                 logos=[("sunpy.webp", "SunPy", 60)],
+                 tilt=-1.0, drop=40, width=96),
         ]),
         (4, [
-            card("su2", "SU2", "https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur", None, "text",
-                 bullets=["[[#2867 merged]], fixing broken data paths in SU2.io",
-                          "#2940 open, the heat source fix SkyCatcher needed, and #2897 open, a mesh deformation fix under MPI"],
-                 logos=[("su2.webp", "SU2", 52)],
-                 tilt=0.9, drop=110, width=94),
+            card("su2", "SU2", "https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur", None, "gh",
+                 repo=("su2code/SU2", "1,843"),
+                 prs=[("merged", 2867, "Broken append and var_names paths in SU2.io"),
+                      ("open", 2940, "The heat source fix SkyCatcher's reactor needed"),
+                      ("open", 2897, "Hicks-Henne camber deformation under MPI")],
+                 logos=[("su2.webp", "SU2", 56)],
+                 tilt=0.8, drop=120, width=96),
         ]),
         (4, [
-            card("einsteinpy", "EinsteinPy", "https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur", None, "text",
-                 bullets=["[[#697 merged]]: Earth's radius was 6731 km, and it is 6371 km",
-                          "Fixes in review for gravitational waves, physical constants and the test suite"],
-                 logos=[("einsteinpy.webp", "EinsteinPy", 56)],
-                 notes=[("Earth shrank by 360 km", "green", "right:4px; top:-30px", 3)],
-                 tilt=-0.8, drop=60, width=94, align="right"),
+            card("einsteinpy", "EinsteinPy", "https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur", None, "gh",
+                 repo=("einsteinpy/einsteinpy", "704"),
+                 prs=[("merged", 697, "Earth's radius was 6731 km. It is 6371 km."),
+                      ("open", 706, "Bessel function arguments in gravitational waves"),
+                      ("open", 704, "The Sun's constants and \u039b taken from astropy"),
+                      ("open", 693, "A test suite that runs under pytest 9, with three tests that could never fail"),
+                      ("issue", 692, "Tests that pass no matter what")],
+                 logos=[("einsteinpy.webp", "EinsteinPy", 60)],
+                 notes=[("Earth shrank by 360 km", "green", "right:4px; top:-32px", 3)],
+                 tilt=-0.7, drop=60, width=96, align="right"),
         ]),
     ]),
     ("writing", "Writing", "oxblood", [
@@ -322,6 +326,14 @@ SPREADS = [
                  tilt=1.4, drop=130, width=86),
         ]),
         (4, [
+            card("iitd", "Cryo-EM and the porosome, in miniature", GH, None, "mid",
+                 "Joachim Frank won the 2017 Nobel Prize in Chemistry for cryo-EM. After his lecture at IIT Delhi with Bhanu P. Jena, I built a small working version of each of their ideas.",
+                 pair=("cryoem", "porosome"),
+                 bullets=["A ribosome rebuilt from ==2,400 projections==, each of which looks like static on its own",
+                          "A vesicle docking at a porosome and releasing its cargo"],
+                 logos=[("iitd.svg", "IIT Delhi", 56)],
+                 notes=[("A thank-you, in code", "red", "right:2%; top:-34px", 3)],
+                 tilt=-0.5, drop=30, width=96),
             card("kerf", "Kerf", SITE + "Kerf/", "kerf", "mid",
                  "Version control that understands CAD geometry. Change a bracket and Kerf shows what moved, merges two branches, and refuses a merge that breaks the part.",
                  tilt=0.7, drop=120, width=94),
@@ -338,6 +350,7 @@ SPREADS = [
                  "The inverse of a URL shortener. Paste a link and get a longer one, with Shakespeare in the path.",
                  tilt=-1.3, drop=120, width=84, align="right"),
             card("fellowships", "Fellowships", "https://www.mercatus.org/emergent-ventures", None, "text",
+                 logos=[("mercatus.webp", "Mercatus Center", 34), ("mercedes.webp", "beVisioneers: The Mercedes-Benz Fellowship", 30)],
                  bullets=["Emergent Ventures, Mercatus Center at George Mason University",
                           "beVisioneers: The Mercedes-Benz Fellowship",
                           "The Dexterity Global Group, graduate and fellow"],
@@ -347,12 +360,24 @@ SPREADS = [
 ]
 
 # Arrows between related cards: (from, to, label, ink).
-LINKS = [
-    ("triking", "polyplets", "Then I counted the pieces", "blue"),
-]
+LINKS = []
 
-INTRO = ("This page has no introduction. I have never been good at describing what I am, "
-         "so every interesting matter under the Sun has been given its own corner below. Have a look around, and you will get an idea of what I like doing.")
+INTRO = "This page has no introduction. Have a look around, and you will get an idea of what I like doing."
+INTRO_SMALL = "Almost every picture and title links to the real project, paper or demo, so click around and try things."
+
+
+# GitHub's Octicons (MIT licence), 16 by 16.
+OCTICON = {
+    "merged": "M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005V3.25Z",
+    "open": "M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z",
+    "issue": "M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z",
+    "star": "M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z",
+    "repo": "M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z",
+}
+
+
+def octicon(name):
+    return f'<svg class="oct oct-{name}" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="{OCTICON[name]}"/></svg>'
 
 
 def ink_marks(text):
@@ -401,7 +426,11 @@ def render(c, ink):
                 # The inset hangs 14% of the picture's height below it, so leave that much room.
                 w, h = SIZES[c["media"]]
                 below = f' style="margin-bottom:{14 * h / w + 3:.1f}%"'
-        parts.append(f'<div class="pic"{below}><a href="{escape(c["url"])}"{tgt}>{fig}</a>{notes}</div>')
+        tag = f'<span class="tag">{escape(c["tag"])} \u25b8</span>' if c["tag"] else ""
+        parts.append(f'<div class="pic"{below}><a href="{escape(c["url"])}"{tgt}>{fig}{tag}</a>{notes}</div>')
+    if c["repo"]:
+        name, stars = c["repo"]
+        parts.append(f'<p class="repo">{octicon("repo")}<span>{escape(name)}</span><span class="stars">{octicon("star")} {stars}</span></p>')
     parts.append(f'<h3><a href="{escape(c["url"])}"{tgt}>{escape(c["title"])}</a></h3>')
     if c["meta"]:
         parts.append(f'<p class="meta">{escape(c["meta"])}</p>')
@@ -412,6 +441,14 @@ def render(c, ink):
         parts.append(f'<blockquote>“{escape(said)}”<span>{escape(who)}</span></blockquote>')
     if c["bullets"]:
         parts.append("<ul>" + "".join(f"<li>{ink_marks(b)}</li>" for b in c["bullets"]) + "</ul>")
+    if c["prs"]:
+        rows = []
+        for state, num, text in c["prs"]:
+            n = f'<b>#{num}</b> ' if num else ""
+            rows.append(f'<li class="pr-{state}">{octicon(state)}<span>{n}{escape(text)}</span></li>')
+        parts.append('<ul class="prs">' + "".join(rows) + "</ul>")
+    if c["links"]:
+        parts.append('<p class="more">' + "".join(f'<a href="{escape(u)}" target="_blank" rel="noopener">{escape(t)} \u2197</a>' for t, u in c["links"]) + "</p>")
     if c["logos"] or c["stamp"]:
         logos = "".join(f'<img src="{LOGO}{f}" alt="{escape(a)}" title="{escape(a)}" style="height:{h}px" loading="lazy">' for f, a, h in c["logos"])
         stamps = [c["stamp"]] if isinstance(c["stamp"], str) else (c["stamp"] or [])
@@ -452,13 +489,14 @@ def build():
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/board.css">
+<link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
 <nav class="bar"><a class="name" href="./">Pragyaan Gaur</a><span>{top}</span></nav>
 <header class="intro">
-  <span class="seal">By order of the Crown</span>
   <p>{escape(INTRO)}</p>
+  <p class="small">{escape(INTRO_SMALL)}</p>
   <nav class="toc" aria-label="Sections">{toc}</nav>
 </header>
 <main class="board" data-links="{links}">

@@ -24,18 +24,20 @@
 .bar span a { margin-left: 24px; }
 
 /* the intro, where an introduction would normally be */
-.intro { max-width: 760px; margin: 150px auto 40px; padding: 0 32px; text-align: center; }
-.intro .seal { display: inline-block; font: 700 13px/1 var(--tex); letter-spacing: 0.16em; text-transform: uppercase; color: #7d1f2c; border: 2px solid #7d1f2c; outline: 1px solid #7d1f2c; outline-offset: 3px; padding: 8px 14px 7px; transform: rotate(-3deg); margin-bottom: 34px; }
-.intro p { font-size: 27px; line-height: 1.5; margin: 0 0 56px; }
+.intro { max-width: 760px; margin: 170px auto 30px; padding: 0 32px; text-align: center; }
+.intro p { font-size: 30px; line-height: 1.45; margin: 0 0 18px; }
+.intro p.small { font: 400 20px/1.4 var(--hand); color: var(--graphite); margin: 0 0 60px; }
 .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 30px; font: 400 21px/1.3 var(--hand); }
 .toc a { color: var(--ink); border-bottom: 1.5px solid transparent; }
 .toc a:hover { text-decoration: none; border-bottom-color: var(--ink); }
 
 .board { position: relative; max-width: 1480px; margin: 0 auto; padding: 120px 56px 40px; }
-.block { margin-bottom: 260px; scroll-margin-top: 40px; }
-.heading { font: 700 40px/1.1 var(--hand); color: var(--ink); margin: 0 0 40px; transform: rotate(-1.5deg); transform-origin: left; display: inline-block; }
+.block { margin-bottom: 150px; scroll-margin-top: 40px; }
+.heading { font: 700 40px/1.1 var(--hand); color: var(--ink); margin: 0 0 56px; transform: rotate(-1.5deg); transform-origin: left; display: inline-block; }
 .heading::after { content: ""; display: block; height: 8px; margin-top: 4px; border-bottom: 2px solid var(--ink); border-radius: 0 0 50% 50% / 0 0 100% 100%; opacity: 0.5; }
-.spread { position: relative; display: grid; grid-template-columns: var(--cols); column-gap: 80px; align-items: start; }
+.spread { position: relative; display: grid; grid-template-columns: var(--cols); column-gap: 96px; align-items: start; }
+/* Room between the cards themselves, on top of each card's own drop */
+.col > .card + .card { margin-top: calc(var(--drop) + 96px); }
 .col { display: flex; flex-direction: column; min-width: 0; }
 
 /* cards */
@@ -115,10 +117,10 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
 @media (max-width: 1100px) {
   .bar { padding: 26px 32px 0; }
   .board { padding: 80px 32px 32px; }
-  .block { margin-bottom: 180px; }
+  .block { margin-bottom: 120px; }
   .spread { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 48px; }
   .col { display: contents; }
-  .card { order: var(--order); margin-top: calc(var(--drop) * 0.4 + 56px); width: auto !important; }
+  .card, .col > .card + .card { order: var(--order); margin-top: calc(var(--drop) * 0.4 + 72px); width: auto !important; }
   .card.k-hero { grid-column: 1 / -1; }
   .threads { display: none; }
 }
@@ -128,12 +130,14 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
   .bar span a { margin-left: 0; }
   .board { padding: 64px 20px 24px; }
   .intro { margin-top: 90px; padding: 0 22px; }
-  .intro p { font-size: 22px; }
+  .intro p { font-size: 24px; }
+  .intro p.small { font-size: 18px; }
   .toc { font-size: 19px; gap: 10px 20px; }
-  .block { margin-bottom: 140px; }
+  .block { margin-bottom: 100px; }
   .heading { font-size: 32px; }
   .spread { grid-template-columns: minmax(0, 1fr); }
-  .card { margin-top: 64px; transform: rotate(calc(var(--tilt) * 0.5)); }
+  .card, .col > .card + .card { margin-top: 72px; transform: rotate(calc(var(--tilt) * 0.5)); }
+  .tag { right: 0; }
   .k-hero h3 { font-size: 27px; }
   .inset { width: 44% !important; }
   .inset-bl { left: -2%; }
@@ -142,3 +146,30 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
   .ring { white-space: normal; display: inline; padding: 0 3px; margin: 0; }
   .frame.pair { grid-template-columns: 1fr; }
 }
+
+/* "Click to play" and similar tags pinned to a picture */
+.tag { position: absolute; z-index: 3; right: -10px; bottom: 18px; font: 700 15px/1 var(--hand); color: #fff; background: var(--ink); padding: 7px 12px 6px; transform: rotate(-4deg); box-shadow: 0 2px 6px rgba(17, 18, 16, 0.25); }
+.pic a:hover .tag { background: var(--red); }
+
+/* extra links under a card */
+.more { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 14px 0 0; }
+.more a { font-size: 14.5px; color: var(--ink); border: 1px solid currentColor; border-radius: 999px; padding: 3px 11px 2px; }
+.more a:hover { text-decoration: none; background: var(--ink); color: #fff; }
+
+/* open source cards, in the manner of a GitHub pull request list */
+.k-gh { background: var(--print); box-shadow: var(--shadow); border: 1px solid #d0d7de; border-radius: 8px; padding: 0 0 18px; overflow: visible; }
+.k-gh .repo { display: flex; align-items: center; gap: 8px; margin: 0; padding: 12px 18px; background: #f6f8fa; border-bottom: 1px solid #d0d7de; border-radius: 8px 8px 0 0; font-size: 15px; color: #1f2328; }
+.k-gh .repo .stars { margin-left: auto; display: flex; align-items: center; gap: 5px; color: #59636e; }
+.k-gh h3 { margin: 16px 18px 4px; font-size: 24px; }
+.k-gh .logos { margin: 16px 18px 0; }
+.oct { flex: none; fill: currentColor; }
+.oct-star { fill: #d4a72c; }
+.prs { list-style: none; padding: 0; margin: 10px 0 0; font-size: 15.5px; }
+.prs li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 18px; border-top: 1px solid #eaeef2; margin: 0; line-height: 1.4; }
+.prs li:first-child { border-top: 0; }
+.prs .oct { margin-top: 3px; }
+.prs b { font-weight: 700; }
+.pr-merged .oct { fill: #8250df; }
+.pr-open .oct { fill: #1a7f37; }
+.pr-issue .oct { fill: #1a7f37; }
+.k-gh .note { z-index: 6; }
