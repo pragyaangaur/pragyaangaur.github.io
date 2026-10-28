@@ -1,4 +1,4 @@
-sc-render 432 433
+sc-render 864 866
 sc-copper 466 433
 sc-diagram 900 1125
 sc-cad 700 1000
@@ -15,6 +15,10 @@ uno-meme 700 689
 magnus 1000 569
 polyhex 900 509
 oeis-pair 900 470
+a189077 534 627
+kerf 750 480
+poem 560 720
+letter 760 510
 polyplets 800 800
 triking-qb64 900 439
 triking-oeis 900 325
@@ -34,10 +38,8 @@ knight 400 591
 bardly 600 530
 coffee 700 394
 paperlane 800 512
-kerf 700 438
 skywatch 700 438
 sunion 700 438
-cauchy 700 438
 viscous 800 324
 rdgeneric-pdf 800 267
 cryoem 404 404
@@ -46,3 +48,4 @@ led-doom 640 304
 rdgeneric 600 338
 knee-deep 640 360
 fly-brain 720 408
+cauchy-cone 720 300

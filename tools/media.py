@@ -9,7 +9,7 @@ import os
 import subprocess
 import sys
 
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageFilter
 
 P = "/Users/pragyaangaur/Claude Code Projects/"
 HOME = os.path.expanduser("~/")
@@ -19,7 +19,7 @@ OUT = "assets/b/"
 
 # name, source, max width, and optionally a crop as fractions (left, top, right, bottom)
 STILLS = [
-    ("sc-render", UP + "1.png", 1000),
+    ("sc-render", UP + "1.png", 1100),
     ("sc-copper", UP + "2.png", 900),
     ("sc-diagram", P + "SkyCatcher Patent/LinkedIn/SkyCatcher_LinkedIn.png", 900),
     ("sc-cad", P + "SkyCatcher Simulations/integration/figures/cad_way1_cutaway.png", 700),
@@ -36,6 +36,10 @@ STILLS = [
     ("magnus", PDF + "img-031.jpg", 1000),
     ("polyhex", PDF + "img-041.jpg", 900),
     ("oeis-pair", PDF + "img-036.jpg", 900),
+    ("a189077", PDF + "img-036.jpg", 700, (0.555, 0, 1, 1)),  # the A189077 half of the OEIS card
+    ("kerf", "tools/sources/kerf-diff.png", 750),
+    ("poem", "tools/sources/pulitzer-poem.png", 560),
+    ("letter", "tools/sources/pulitzer-letter-crop.png", 760),
     ("polyplets", P + "Mathematics/../Personal Website/assets/plates/polyplets.png", 800),
     ("triking-qb64", PDF + "img-007.jpg", 900),
     ("triking-oeis", PDF + "img-068.jpg", 900),
@@ -55,13 +59,14 @@ STILLS = [
     ("bardly", PDF + "img-058.jpg", 600),
     ("coffee", PDF + "img-067.png", 700),
     ("paperlane", P + "Paperlane/docs/home.png", 800),
-    ("kerf", "assets/plates/site-Kerf.png", 700),
     ("skywatch", "assets/plates/site-Skywatch.png", 700),
     ("sunion", "assets/plates/site-Sunion.png", 700),
-    ("cauchy", "assets/plates/site-Real-Power-Cauchy-Schwarz.png", 700),
     ("viscous", P + "Viscosity ML/paper/fig_dichotomy.png", 800),
     ("rdgeneric-pdf", P + "Miniaturised Minecraft/docs/pdf-chromium.png", 800),
 ]
+
+# Small sources that sit large on the page get a Lanczos upscale and a light sharpen.
+UPSCALE = {"sc-render": 2}
 
 # name, source GIF, max width
 LOOPS = [
@@ -87,6 +92,9 @@ def still(name, src, width, crop=None):
         box = ImageChops.difference(rgb, grey).convert("L").point(lambda v: 255 if v > 18 else 0).getbbox()
         if box:
             im = im.crop(box)
+    if name in UPSCALE:
+        k = UPSCALE[name]
+        im = im.resize((im.width * k, im.height * k), Image.LANCZOS).filter(ImageFilter.UnsharpMask(radius=2, percent=60, threshold=2))
     if im.width > width:
         im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
     im.save(OUT + name + ".webp", "WEBP", quality=84, method=6)
@@ -108,6 +116,18 @@ def loop(name, src, width, seconds=None):
     return w, h
 
 
+def cone():
+    # Fourteen seconds of the Manim explainer for the Cauchy-Schwarz paper, where the point moves into the
+    # cone of positive semidefinite matrices, with the caption strip cropped off.
+    src = P + "Mathematics/Principia Math/Fall Competition/exposition/video/real_power_cauchy_schwarz.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "262", "-t", "14", "-i", src, "-vf",
+                    "crop=iw:ih*0.74:0:0,scale=720:-2:flags=lanczos,format=yuv420p", "-c:v", "libx264", "-preset", "slow",
+                    "-crf", "28", "-an", "-movflags", "+faststart", OUT + "cauchy-cone.mp4"], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "10", "-i", OUT + "cauchy-cone.mp4", "-frames:v", "1",
+                    "-q:v", "4", OUT + "cauchy-cone.jpg"], check=True)
+    return Image.open(OUT + "cauchy-cone.jpg").size
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     sizes = {}
@@ -115,6 +135,7 @@ def main():
         sizes[name] = still(name, src, width, *crop)
     for name, src, width, *rest in LOOPS:
         sizes[name] = loop(name, src, width, *rest)
+    sizes["cauchy-cone"] = cone()
     with open(OUT + "sizes.txt", "w") as f:
         for k, (w, h) in sizes.items():
             f.write(f"{k} {w} {h}\n")
