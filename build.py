@@ -12,8 +12,15 @@ Inside captions and bullets:
   {{text}}  kept on one line, for formulas
 """
 
+import hashlib
 import re
 from html import escape
+
+
+def v(path):
+    """A short content hash, so browsers fetch a file again whenever it changes."""
+    with open(path, "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
 
 GH = "https://github.com/pragyaangaur/"
 SITE = "https://pragyaangaur.dev/"
@@ -30,7 +37,7 @@ with open(B + "sizes.txt") as f:
 
 def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=(), logos=(), stamp=None,
          inset=None, notes=(), rings=(), tilt=0.0, drop=0, tape=None, quote=None, pair=None, order=0, width=100, align="left",
-         tag=None, links=(), repo=None, prs=()):
+         tag=None, links=(), repo=None, prs=(), secret=None):
     """One card.
 
     media   key in assets/b, a still (.webp) or a loop (.mp4 with a .jpg poster)
@@ -40,6 +47,7 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
     rings   (left, top, width, height) in percent of the media: a pen ring drawn on the picture
     width   share of the column the card takes, with align saying which side it keeps to
     tag     a small label pinned to the picture, such as "Click to play"
+    secret  a note like notes, shown only while the card is hovered
     links   extra (label, url) links shown under the bullets
     repo    (owner/name, stars) for an open source card, and prs its (state, number, text) rows,
             where state is merged, open or issue
@@ -47,7 +55,7 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
     return dict(id=id, title=title, url=url, media=media, kind=kind, caption=caption, meta=meta,
                 bullets=bullets, logos=logos, stamp=stamp, inset=inset, notes=notes, rings=rings,
                 tilt=tilt, drop=drop, tape=tape, quote=quote, pair=pair, order=order,
-                width=width, align=align, tag=tag, links=links, repo=repo, prs=prs)
+                width=width, align=align, tag=tag, links=links, repo=repo, prs=prs, secret=secret)
 
 
 # Each spread: (id, heading, ink, [(column width, [cards])]). A column with no cards is breathing room.
@@ -98,7 +106,11 @@ SPREADS = [
                           "__114 live forecasts, 0 false alarms__, from a 19,000-parameter network written from scratch in NumPy"],
                  logos=[("iet.svg", "The Institution of Engineering and Technology", 40)],
                  notes=[("Quebec, 1989: dark in 92 seconds", "blue", "right:-14px; top:-34px", 4)],
-                 tilt=0.8, drop=70, width=94),
+                 tilt=0.8, drop=50, width=94),
+            card("limb-audit", "Magnetic limb-darkening audit", GH + "Magnetic-Limb-Darkening-Audit", "solar-batman", "small",
+                 "A 2024 *Nature Astronomy* paper said magnetic fields explain why stars look darker at their edges. I audited it.",
+                 bullets=["Half the evidence, h2, is the size of a systematic its own data source warns about, so the result rests on __h1 alone__"],
+                 tilt=-0.9, drop=0, tape="tl", width=96),
         ]),
         (5, [
             card("mps", "Max Planck Institute for Solar System Research", GH + "MPS-Internship", "mps-wall", "hero",
@@ -110,67 +122,68 @@ SPREADS = [
                  inset=("mps-counts", "br", 44, 2.5),
                  notes=[("Maculae in Sole, 1611", "graphite", "left:8px; top:-32px", -4)],
                  tilt=-0.5, tape="tr", order=-1),
-            card("limb-audit", "Magnetic limb-darkening audit", GH + "Magnetic-Limb-Darkening-Audit", "solar-batman", "mid",
-                 "A 2024 *Nature Astronomy* paper said magnetic fields explain why stars look darker at their edges. I audited it.",
-                 bullets=["Half the evidence, h2, is the size of a systematic its own data source warns about, so the result rests on __h1 alone__"],
-                 tilt=0.7, drop=130, width=90, align="right"),
         ]),
         (3, [
             card("sun-equations", "The Sun, drawn with equations", "https://github.com/pragyaangaur", "sun-equations", "small",
                  "Every pixel of a 2000 by 2000 Sun comes from one page of formulas. After Hamid Naderi Yeganeh.",
-                 tilt=2.0, drop=150, tape="t", width=88, align="right"),
+                 tilt=2.0, drop=90, tape="t", width=88, align="right"),
             card("sunion", "Sunion", SITE + "Sunion/", "sunion", "small",
                  "The Sun's seven layers, as an explainer you can poke.",
-                 tilt=-1.2, drop=110, width=84, align="right"),
+                 tag="Try it",
+                 tilt=-1.2, drop=0, width=84, align="right"),
         ]),
     ]),
     ("maths", "Maths", "indigo", [
-        (3, [
-            card("magnus", "Magnus turning invariants", "https://arxiv.org/abs/2609.30305", "magnus", "small",
-                 "Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle.",
-                 bullets=["arXiv 2609.30305, under review at the ==American Journal of Physics=="],
-                 rings=[(35, 50, 11, 19)],
-                 notes=[("They only meet without air", "red", "left:2%; top:-32px", -3)],
-                 tilt=-1.4, drop=90, tape="t", width=94),
+        (4, [
+            card("polyhex", "The maximum area of the convex hull of a polyhex", "https://arxiv.org/abs/2609.30310", "polyhex", "mid",
+                 "In 2008 Sascha Kurz asked how large the convex hull of *n* hexagons glued edge to edge can be. It is at most {{⌈*n*² + 14*n*/3⌉ / 6}}.",
+                 bullets=["[[Kurz's conjecture settled]], with the bound machine-checked in Lean 4",
+                          "Under review at ==Beiträge zur Algebra und Geometrie=="],
+                 links=[("arXiv", "https://arxiv.org/abs/2609.30310"), ("OEIS A399934", "https://oeis.org/A399934"),
+                        ("Lean proof", GH + "Polyhex-Hull"), ("Palomar registry", "https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000022&version=1")],
+                 notes=[("From MathDB 380445", "blue", "right:6px; top:-32px", 3)],
+                 tilt=-0.8, drop=30, tape="t", width=92),
             card("triking", "TriKing", "https://triking.itch.io/triking", "triking-qb64", "small",
                  "After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.",
                  bullets=["500+ players, including a two-time ==Tetris World Vice Champion=="],
                  tag="Click to play",
-                 tilt=1.8, drop=40, width=92),
+                 tilt=1.6, drop=0, width=86),
             card("polyplets", "Hyperbolic polyplets", "https://oeis.org/A390200", "polyplets", "small",
                  "On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found ==1,261,889== at eight.",
                  bullets=["[[Approved on OEIS]] as term 8 of A390200"],
                  links=[("OEIS A390200", "https://oeis.org/A390200"), ("Code", GH + "Hyperbolic-Polyplet-Enumerator")],
                  notes=[("Then I counted the pieces", "blue", "left:0; top:-32px", -3)],
-                 tilt=-1.2, drop=40, tape="tl", width=88),
+                 tilt=-1.2, drop=0, tape="tl", width=76),
         ]),
-        (6, [
-            card("polyhex", "The maximum area of the convex hull of a polyhex", "https://arxiv.org/abs/2609.30310", "polyhex", "hero",
-                 "In 2008 Sascha Kurz asked how large the convex hull of *n* hexagons glued edge to edge can be. It is at most {{\u2308*n*\u00b2 + 14*n*/3\u2309 / 6}}.",
-                 bullets=["[[Kurz's conjecture settled]], with the bound machine-checked in Lean 4",
-                          "Under review at ==Beitr\u00e4ge zur Algebra und Geometrie=="],
-                 links=[("arXiv 2609.30310", "https://arxiv.org/abs/2609.30310"), ("OEIS A399934", "https://oeis.org/A399934"), ("Lean proof", GH + "Polyhex-Hull")],
-                 logos=[("arxiv.svg", "arXiv", 30), ("oeis.png", "OEIS", 26)],
-                 notes=[("From MathDB 380445", "blue", "right:6px; top:-32px", 3)],
-                 tilt=0.4, drop=20, order=-1),
+        (5, [
+            card("magnus", "Magnus turning invariants", "https://arxiv.org/abs/2609.30305", "magnus", "hero",
+                 "Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle.",
+                 bullets=["An exact solution for a spinning ball under quadratic drag and a vertical-axis Magnus force",
+                          "arXiv 2609.30305, under review at the ==American Journal of Physics=="],
+                 rings=[(35, 50, 11, 19)],
+                 notes=[("They only meet without air", "red", "left:24%; top:-34px", -3)],
+                 tilt=0.4, drop=0, order=-1),
             card("paperlane", "Paperlane", SITE + "Paperlane/", "paperlane", "mid",
                  "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
                  tag="Open it",
-                 tilt=-0.8, drop=40, tape="tr", width=80, align="right"),
+                 tilt=-0.8, drop=0, tape="tr", width=84, align="right"),
         ]),
         (3, [
             card("uno", "How long is a game of Uno?", "https://arxiv.org/abs/2610.14076", "uno-law", "small",
                  "I couldn't find out, so I proved it. With *N* players holding *M* cards each, a round lasts __(27/19)*NM*__ turns.",
-                 bullets=["58 million games simulated in C, and big hands quietly hoard *M*/23 Wild Draw Fours each"],
+                 bullets=["58 million games simulated in C, and big hands quietly hoard *M*/23 Wild Draw Fours each",
+                          "Chess grandmaster ==Karsten Müller== read it and wrote to me about its Nash equilibrium"],
                  inset=("uno-meme", "tr", 34, 5),
-                 notes=[("A chess grandmaster wrote in", "blue", "left:-12px; top:-34px", -4)],
-                 tilt=1.3, drop=70, width=94, align="right"),
+                 secret=("14,000,605 games. We win in one.", "green", "left:-8px; top:-36px", -4),
+                 tilt=1.3, drop=90, width=94, align="right"),
             card("a189077", "A189077", "https://oeis.org/A189077", "a189077", "small",
                  "Compositions avoiding the pattern 13-2, a sequence Neil Sloane created. It had 16 terms. Now it has 70.",
-                 tilt=-1.5, drop=40, width=80, align="right"),
+                 tilt=-1.5, drop=0, width=80, align="right"),
             card("cauchy", "Cauchy-Schwarz for real powers", SITE + "Real-Power-Cauchy-Schwarz/", "cauchy-cone", "small",
                  "A 2025 conjecture, proved for every real power from two up, with every case of equality, and checked line by line in Lean 4.",
-                 tilt=1.0, drop=40, width=92, align="right"),
+                 links=[("Explainer", SITE + "Real-Power-Cauchy-Schwarz/"), ("Paper", "https://doi.org/10.5281/zenodo.23237507"),
+                        ("Lean proof", GH + "Real-Power-Cauchy-Schwarz"), ("Palomar registry", "https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000021&version=1")],
+                 tilt=1.0, drop=0, width=92, align="right"),
         ]),
     ]),
     ("ai", "AI, LLMs, ML and cognitive neuroscience", "plum", [
@@ -331,7 +344,6 @@ SPREADS = [
                  pair=("cryoem", "porosome"),
                  bullets=["A ribosome rebuilt from ==2,400 projections==, each of which looks like static on its own",
                           "A vesicle docking at a porosome and releasing its cargo"],
-                 logos=[("iitd.svg", "IIT Delhi", 56)],
                  notes=[("A thank-you, in code", "red", "right:2%; top:-34px", 3)],
                  tilt=-0.5, drop=30, width=96),
             card("kerf", "Kerf", SITE + "Kerf/", "kerf", "mid",
@@ -350,7 +362,7 @@ SPREADS = [
                  "The inverse of a URL shortener. Paste a link and get a longer one, with Shakespeare in the path.",
                  tilt=-1.3, drop=120, width=84, align="right"),
             card("fellowships", "Fellowships", "https://www.mercatus.org/emergent-ventures", None, "text",
-                 logos=[("mercatus.webp", "Mercatus Center", 34), ("mercedes.webp", "beVisioneers: The Mercedes-Benz Fellowship", 30)],
+                 logos=[("mercatus.webp", "Mercatus Center", 34), ("mercedes.webp", "beVisioneers: The Mercedes-Benz Fellowship", 30), ("dexterity.webp", "The Dexterity Global Group", 40)],
                  bullets=["Emergent Ventures, Mercatus Center at George Mason University",
                           "beVisioneers: The Mercedes-Benz Fellowship",
                           "The Dexterity Global Group, graduate and fellow"],
@@ -409,6 +421,9 @@ def render(c, ink):
         parts.append(f'<span class="tape tape-{c["tape"]}" aria-hidden="true"></span>')
     notes = "".join(f'<span class="note ink-{color}" style="{pos}; --r:{rot}deg" aria-hidden="true">{escape(text)}</span>'
                     for text, color, pos, rot in c["notes"])
+    if c["secret"]:
+        text, color, pos, rot = c["secret"]
+        notes += f'<span class="note secret ink-{color}" style="{pos}; --r:{rot}deg" aria-hidden="true">{escape(text)}</span>'
     if not (c["media"] or c["pair"]):
         parts.append(notes)
     if c["media"] or c["pair"]:
@@ -487,8 +502,8 @@ def build():
 <meta name="description" content="Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.">
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="assets/board.css">
+<link rel="stylesheet" href="assets/site.css?v={v("assets/site.css")}">
+<link rel="stylesheet" href="assets/board.css?v={v("assets/board.css")}">
 <link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
 </head>
 <body>
@@ -503,8 +518,16 @@ def build():
 {chr(10).join(spreads)}
 <svg class="threads" aria-hidden="true"></svg>
 </main>
-<footer class="end"><img src="{LOGO}nita.webp" alt="NIT Agartala" height="34"> NIT Agartala, Engineering Physics</footer>
-<script src="assets/board.js" defer></script>
+<footer class="end">
+  <blockquote class="poem">
+    <p>I see the player you mean.</p>
+    <p>It has reached a higher level now. It can read our thoughts.</p>
+    <p>I like this player. It played well. It did not give up.</p>
+    <cite>Julian Gough, the End Poem in Minecraft</cite>
+  </blockquote>
+  <p class="nita"><img src="{LOGO}nita.webp" alt="NIT Agartala" height="34"> NIT Agartala, Engineering Physics</p>
+</footer>
+<script src="assets/board.js?v={v("assets/board.js")}" defer></script>
 </body>
 </html>
 '''

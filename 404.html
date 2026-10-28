@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The void · Pragyaan Gaur</title>
+<style>
+  @font-face { font-family: "Latin Modern"; font-style: normal; font-weight: 400; src: url("/assets/fonts/LM-regular.woff2") format("woff2"); }
+  @font-face { font-family: "Kalam"; font-style: normal; font-weight: 700; src: url("/assets/fonts/kalam-700.woff2") format("woff2"); }
+  html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden; }
+  body { font-family: "Latin Modern", Georgia, serif; }
+  #stars { position: fixed; inset: 0; }
+  .star { position: absolute; border-radius: 50%; background: #fff; animation: drift linear infinite; }
+  @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-110vw); } }
+
+  .void { position: fixed; inset: 0; display: grid; place-content: center; text-align: center; padding: 24px; transition: opacity 0.6s ease; }
+  .void h1 { font-weight: 400; font-size: clamp(30px, 5vw, 56px); margin: 0 0 14px; }
+  .void p { font-size: clamp(18px, 2.4vw, 26px); color: #cfd3da; margin: 0 0 44px; }
+  .void button { justify-self: center; font: 700 20px "Kalam", cursive; color: #000; background: #f5e14a; border: 0; border-radius: 999px; padding: 12px 26px 10px; cursor: pointer; box-shadow: 0 0 0 4px #000, 0 0 0 6px #f5e14a; transition: transform 0.2s ease; }
+  .void button:hover, .void button:focus-visible { transform: scale(1.05); outline: none; }
+  .void .code { position: fixed; left: 24px; bottom: 20px; font-size: 14px; color: #6b7079; }
+
+  .eject { position: fixed; inset: 0; pointer-events: none; }
+  .crew { position: absolute; top: 44%; left: -160px; width: 110px; opacity: 0; }
+  .ejecting .crew { opacity: 1; animation: fly 4.2s linear forwards; }
+  @keyframes fly {
+    from { transform: translate(0, -50%) rotate(0deg); }
+    to { transform: translate(calc(100vw + 320px), -42%) rotate(720deg); }
+  }
+  .verdict { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); text-align: center; font: 400 clamp(22px, 3.2vw, 38px) Arial, Helvetica, sans-serif; letter-spacing: 0.01em; min-height: 1.2em; }
+  .verdict::after { content: ""; }
+  .ejecting .void { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+
+<main class="void">
+  <h1>You have reached the void.</h1>
+  <p>You will now be ejected.</p>
+  <button type="button" id="back">Back to pragyaangaur.dev</button>
+  <span class="code">404, nothing lives at this address</span>
+</main>
+
+<div class="eject" aria-live="polite">
+  <svg class="crew" viewBox="0 0 120 140" aria-hidden="true">
+    <rect x="6" y="50" width="26" height="52" rx="11" fill="#c9a227" stroke="#111" stroke-width="6"/>
+    <path d="M30 42 Q30 10 63 10 Q96 10 96 44 L96 112 Q96 127 83 127 L75 127 Q66 127 66 117 L66 106 L52 106 L52 117 Q52 127 42 127 L37 127 Q28 127 28 113 Z" fill="#f5e14a" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="52" y="30" width="56" height="30" rx="15" fill="#9fd4e6" stroke="#111" stroke-width="6"/>
+    <rect x="70" y="36" width="26" height="8" rx="4" fill="#e9f7fb"/>
+  </svg>
+  <div class="verdict" id="verdict"></div>
+</div>
+
+<script>
+  // A field of stars that drifts past, as in the ejection screen.
+  var field = document.getElementById("stars");
+  for (var i = 0; i < 140; i++) {
+    var s = document.createElement("span"), size = Math.random() < 0.15 ? 3 : Math.random() < 0.5 ? 2 : 1;
+    s.className = "star";
+    s.style.cssText = "left:" + (Math.random() * 110) + "vw;top:" + (Math.random() * 100) + "vh;width:" + size + "px;height:" + size +
+      "px;opacity:" + (0.35 + Math.random() * 0.65) + ";animation-duration:" + (40 + Math.random() * 80) + "s;animation-delay:-" + (Math.random() * 80) + "s";
+    field.appendChild(s);
+  }
+
+  var line = "You were not The Impostor.";
+  document.getElementById("back").addEventListener("click", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { location.href = "/"; return; }
+    document.body.classList.add("ejecting");
+    var out = document.getElementById("verdict"), n = 0;
+    setTimeout(function type() {
+      out.textContent = line.slice(0, ++n);
+      if (n < line.length) setTimeout(type, 70);
+    }, 900);
+    setTimeout(function () { location.href = "/"; }, 5200);
+  });
+</script>
+</body>
+</html>

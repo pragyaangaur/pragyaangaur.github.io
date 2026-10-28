@@ -20,7 +20,9 @@
 .ink-oxblood { --ink: #7d1f2c; }
 
 .bar { display: flex; justify-content: space-between; align-items: baseline; max-width: 1440px; margin: 0 auto; padding: 30px 48px 0; font-size: 18px; }
-.bar .name { font-size: 22px; }
+.bar .name { font-size: 32px; letter-spacing: -0.01em; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .bar span a { margin-left: 24px; }
 
 /* the intro, where an introduction would normally be */
@@ -112,7 +114,11 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
 .threads path { fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; filter: url(#rough); }
 .threads text { font: 700 19px var(--hand); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; stroke-linejoin: round; }
 
-.end { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px 0 64px; font-size: 15px; color: var(--soft); }
+.end { text-align: center; padding: 40px 32px 72px; color: var(--soft); }
+.end .poem { margin: 0 auto 70px; max-width: 640px; border: 0; padding: 0; font-style: italic; font-size: 22px; line-height: 1.55; color: var(--ink, #111210); }
+.end .poem p { margin: 0 0 12px; }
+.end .poem cite { display: block; margin-top: 18px; font: 400 17px var(--hand); color: var(--graphite); }
+.end .nita { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0; font-size: 15px; }
 
 @media (max-width: 1100px) {
   .bar { padding: 26px 32px 0; }
@@ -126,6 +132,8 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
 }
 @media (max-width: 720px) {
   .bar { padding: 22px 20px 0; flex-direction: column; gap: 10px; }
+  .bar .name { font-size: 28px; }
+  .end .poem { font-size: 19px; }
   .bar span { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 16px; }
   .bar span a { margin-left: 0; }
   .board { padding: 64px 20px 24px; }
@@ -173,3 +181,18 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
 .pr-open .oct { fill: #1a7f37; }
 .pr-issue .oct { fill: #1a7f37; }
 .k-gh .note { z-index: 6; }
+
+/* a note that only shows while its card is hovered */
+.note.secret { opacity: 0; transition: opacity 0.35s ease, transform 0.35s ease; }
+.card:hover .note.secret { opacity: 1; transform: rotate(var(--r)) translateY(-3px); }
+
+/* By order of the Crown: five clicks on the name stamp it across the page */
+.crown { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; pointer-events: none; }
+.crown span { white-space: nowrap; font: 700 clamp(20px, 4.4vw, 66px)/1 var(--tex); letter-spacing: 0.12em; text-transform: uppercase; color: #9b1c2c; border: 6px solid #9b1c2c; outline: 2px solid #9b1c2c; outline-offset: 8px; padding: 22px 34px 18px; background: rgba(253, 253, 252, 0.6); mix-blend-mode: multiply; animation: stamp 2.6s ease forwards; }
+@keyframes stamp {
+  0% { transform: rotate(-8deg) scale(2.4); opacity: 0; }
+  14% { transform: rotate(-8deg) scale(0.96); opacity: 0.92; }
+  20% { transform: rotate(-8deg) scale(1); opacity: 0.9; }
+  80% { transform: rotate(-8deg) scale(1); opacity: 0.9; }
+  100% { transform: rotate(-8deg) scale(1); opacity: 0; }
+}

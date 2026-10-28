@@ -7,8 +7,8 @@
 <meta name="description" content="Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.">
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css">
-<link rel="stylesheet" href="assets/board.css">
+<link rel="stylesheet" href="assets/site.css?v=deb94c36">
+<link rel="stylesheet" href="assets/board.css?v=caa33fe0">
 <link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
 </head>
 <body>
@@ -74,12 +74,19 @@
 <h2 class="heading">The Sun</h2>
 <div class="spread" style="--cols:4fr 5fr 3fr">
 <div class="col">
-<article class="card k-mid ink-amber" id="setu" style="--tilt:0.8deg; --drop:70px; --order:0; width:94%; margin-right:auto">
+<article class="card k-mid ink-amber" id="setu" style="--tilt:0.8deg; --drop:50px; --order:0; width:94%; margin-right:auto">
   <div class="pic"><a href="https://pragyaangaur.dev/SETU/" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/setu-poster.webp" width="1200" height="1500" alt="SETU" loading="lazy" decoding="async"></div></a><span class="note ink-blue" style="right:-14px; top:-34px; --r:4deg" aria-hidden="true">Quebec, 1989: dark in 92 seconds</span></div>
   <h3><a href="https://pragyaangaur.dev/SETU/" target="_blank" rel="noopener">SETU</a></h3>
   <p class="cap">SETU reads the solar wind at a spacecraft 1.5 million km away and forecasts the next hour of magnetic shaking for the North East Indian grid.</p>
   <ul><li><span class="ring">Runner-up</span>, IET India Scholarship Award, East and North East final</li><li><span class="ul">114 live forecasts, 0 false alarms</span>, from a 19,000-parameter network written from scratch in NumPy</li></ul>
   <div class="logos"><img src="assets/logos/iet.svg" alt="The Institution of Engineering and Technology" title="The Institution of Engineering and Technology" style="height:40px" loading="lazy"></div>
+</article>
+<article class="card k-small ink-amber" id="limb-audit" style="--tilt:-0.9deg; --drop:0px; --order:0; width:96%; margin-right:auto">
+  <span class="tape tape-tl" aria-hidden="true"></span>
+  <div class="pic"><a href="https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/solar-batman.webp" width="1000" height="256" alt="Magnetic limb-darkening audit" loading="lazy" decoding="async"></div></a></div>
+  <h3><a href="https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit" target="_blank" rel="noopener">Magnetic limb-darkening audit</a></h3>
+  <p class="cap">A 2024 <i>Nature Astronomy</i> paper said magnetic fields explain why stars look darker at their edges. I audited it.</p>
+  <ul><li>Half the evidence, h2, is the size of a systematic its own data source warns about, so the result rests on <span class="ul">h1 alone</span></li></ul>
 </article>
 </div>
 <div class="col">
@@ -92,22 +99,16 @@
   <ul><li>Supervised by Dr. Natalie Krivova</li><li><mark>900,000 classifications from 12,000 volunteers</mark>, calibrated and cleaned</li></ul>
   <div class="logos"><img src="assets/logos/mpg.svg" alt="Max Planck Society" title="Max Planck Society" style="height:48px" loading="lazy"></div>
 </article>
-<article class="card k-mid ink-amber" id="limb-audit" style="--tilt:0.7deg; --drop:130px; --order:0; width:90%; margin-left:auto">
-  <div class="pic"><a href="https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/solar-batman.webp" width="1000" height="256" alt="Magnetic limb-darkening audit" loading="lazy" decoding="async"></div></a></div>
-  <h3><a href="https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit" target="_blank" rel="noopener">Magnetic limb-darkening audit</a></h3>
-  <p class="cap">A 2024 <i>Nature Astronomy</i> paper said magnetic fields explain why stars look darker at their edges. I audited it.</p>
-  <ul><li>Half the evidence, h2, is the size of a systematic its own data source warns about, so the result rests on <span class="ul">h1 alone</span></li></ul>
-</article>
 </div>
 <div class="col">
-<article class="card k-small ink-amber" id="sun-equations" style="--tilt:2.0deg; --drop:150px; --order:0; width:88%; margin-left:auto">
+<article class="card k-small ink-amber" id="sun-equations" style="--tilt:2.0deg; --drop:90px; --order:0; width:88%; margin-left:auto">
   <span class="tape tape-t" aria-hidden="true"></span>
   <div class="pic"><a href="https://github.com/pragyaangaur" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/sun-equations.webp" width="700" height="700" alt="The Sun, drawn with equations" loading="lazy" decoding="async"></div></a></div>
   <h3><a href="https://github.com/pragyaangaur" target="_blank" rel="noopener">The Sun, drawn with equations</a></h3>
   <p class="cap">Every pixel of a 2000 by 2000 Sun comes from one page of formulas. After Hamid Naderi Yeganeh.</p>
 </article>
-<article class="card k-small ink-amber" id="sunion" style="--tilt:-1.2deg; --drop:110px; --order:0; width:84%; margin-left:auto">
-  <div class="pic"><a href="https://pragyaangaur.dev/Sunion/" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/sunion.webp" width="700" height="438" alt="Sunion" loading="lazy" decoding="async"></div></a></div>
+<article class="card k-small ink-amber" id="sunion" style="--tilt:-1.2deg; --drop:0px; --order:0; width:84%; margin-left:auto">
+  <div class="pic"><a href="https://pragyaangaur.dev/Sunion/" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/sunion.webp" width="700" height="438" alt="Sunion" loading="lazy" decoding="async"></div><span class="tag">Try it ▸</span></a></div>
   <h3><a href="https://pragyaangaur.dev/Sunion/" target="_blank" rel="noopener">Sunion</a></h3>
   <p class="cap">The Sun&#x27;s seven layers, as an explainer you can poke.</p>
 </article>
@@ -116,22 +117,23 @@
 </section>
 <section class="block ink-indigo" id="maths">
 <h2 class="heading">Maths</h2>
-<div class="spread" style="--cols:3fr 6fr 3fr">
+<div class="spread" style="--cols:4fr 5fr 3fr">
 <div class="col">
-<article class="card k-small ink-indigo" id="magnus" style="--tilt:-1.4deg; --drop:90px; --order:0; width:94%; margin-right:auto">
+<article class="card k-mid ink-indigo" id="polyhex" style="--tilt:-0.8deg; --drop:30px; --order:0; width:92%; margin-right:auto">
   <span class="tape tape-t" aria-hidden="true"></span>
-  <div class="pic"><a href="https://arxiv.org/abs/2609.30305" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/magnus.webp" width="1000" height="569" alt="Magnus turning invariants" loading="lazy" decoding="async"><span class="pic-ring" style="left:35%;top:50%;width:11%;height:19%"></span></div></a><span class="note ink-red" style="left:2%; top:-32px; --r:-3deg" aria-hidden="true">They only meet without air</span></div>
-  <h3><a href="https://arxiv.org/abs/2609.30305" target="_blank" rel="noopener">Magnus turning invariants</a></h3>
-  <p class="cap">Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle.</p>
-  <ul><li>arXiv 2609.30305, under review at the <mark>American Journal of Physics</mark></li></ul>
+  <div class="pic"><a href="https://arxiv.org/abs/2609.30310" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/polyhex.webp" width="900" height="509" alt="The maximum area of the convex hull of a polyhex" loading="lazy" decoding="async"></div></a><span class="note ink-blue" style="right:6px; top:-32px; --r:3deg" aria-hidden="true">From MathDB 380445</span></div>
+  <h3><a href="https://arxiv.org/abs/2609.30310" target="_blank" rel="noopener">The maximum area of the convex hull of a polyhex</a></h3>
+  <p class="cap">In 2008 Sascha Kurz asked how large the convex hull of <i>n</i> hexagons glued edge to edge can be. It is at most <span class="nw">⌈<i>n</i>² + 14<i>n</i>/3⌉ / 6</span>.</p>
+  <ul><li><span class="ring">Kurz&#x27;s conjecture settled</span>, with the bound machine-checked in Lean 4</li><li>Under review at <mark>Beiträge zur Algebra und Geometrie</mark></li></ul>
+  <p class="more"><a href="https://arxiv.org/abs/2609.30310" target="_blank" rel="noopener">arXiv ↗</a><a href="https://oeis.org/A399934" target="_blank" rel="noopener">OEIS A399934 ↗</a><a href="https://github.com/pragyaangaur/Polyhex-Hull" target="_blank" rel="noopener">Lean proof ↗</a><a href="https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000022&amp;version=1" target="_blank" rel="noopener">Palomar registry ↗</a></p>
 </article>
-<article class="card k-small ink-indigo" id="triking" style="--tilt:1.8deg; --drop:40px; --order:0; width:92%; margin-right:auto">
+<article class="card k-small ink-indigo" id="triking" style="--tilt:1.6deg; --drop:0px; --order:0; width:86%; margin-right:auto">
   <div class="pic"><a href="https://triking.itch.io/triking" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/triking-qb64.webp" width="900" height="439" alt="TriKing" loading="lazy" decoding="async"></div><span class="tag">Click to play ▸</span></a></div>
   <h3><a href="https://triking.itch.io/triking" target="_blank" rel="noopener">TriKing</a></h3>
   <p class="cap">After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.</p>
   <ul><li>500+ players, including a two-time <mark>Tetris World Vice Champion</mark></li></ul>
 </article>
-<article class="card k-small ink-indigo" id="polyplets" style="--tilt:-1.2deg; --drop:40px; --order:0; width:88%; margin-right:auto">
+<article class="card k-small ink-indigo" id="polyplets" style="--tilt:-1.2deg; --drop:0px; --order:0; width:76%; margin-right:auto">
   <span class="tape tape-tl" aria-hidden="true"></span>
   <div class="pic"><a href="https://oeis.org/A390200" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/polyplets.webp" width="800" height="800" alt="Hyperbolic polyplets" loading="lazy" decoding="async"></div></a><span class="note ink-blue" style="left:0; top:-32px; --r:-3deg" aria-hidden="true">Then I counted the pieces</span></div>
   <h3><a href="https://oeis.org/A390200" target="_blank" rel="noopener">Hyperbolic polyplets</a></h3>
@@ -141,15 +143,13 @@
 </article>
 </div>
 <div class="col">
-<article class="card k-hero ink-indigo" id="polyhex" style="--tilt:0.4deg; --drop:20px; --order:-1">
-  <div class="pic"><a href="https://arxiv.org/abs/2609.30310" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/polyhex.webp" width="900" height="509" alt="The maximum area of the convex hull of a polyhex" loading="lazy" decoding="async"></div></a><span class="note ink-blue" style="right:6px; top:-32px; --r:3deg" aria-hidden="true">From MathDB 380445</span></div>
-  <h3><a href="https://arxiv.org/abs/2609.30310" target="_blank" rel="noopener">The maximum area of the convex hull of a polyhex</a></h3>
-  <p class="cap">In 2008 Sascha Kurz asked how large the convex hull of <i>n</i> hexagons glued edge to edge can be. It is at most <span class="nw">⌈<i>n</i>² + 14<i>n</i>/3⌉ / 6</span>.</p>
-  <ul><li><span class="ring">Kurz&#x27;s conjecture settled</span>, with the bound machine-checked in Lean 4</li><li>Under review at <mark>Beiträge zur Algebra und Geometrie</mark></li></ul>
-  <p class="more"><a href="https://arxiv.org/abs/2609.30310" target="_blank" rel="noopener">arXiv 2609.30310 ↗</a><a href="https://oeis.org/A399934" target="_blank" rel="noopener">OEIS A399934 ↗</a><a href="https://github.com/pragyaangaur/Polyhex-Hull" target="_blank" rel="noopener">Lean proof ↗</a></p>
-  <div class="logos"><img src="assets/logos/arxiv.svg" alt="arXiv" title="arXiv" style="height:30px" loading="lazy"><img src="assets/logos/oeis.png" alt="OEIS" title="OEIS" style="height:26px" loading="lazy"></div>
+<article class="card k-hero ink-indigo" id="magnus" style="--tilt:0.4deg; --drop:0px; --order:-1">
+  <div class="pic"><a href="https://arxiv.org/abs/2609.30305" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/magnus.webp" width="1000" height="569" alt="Magnus turning invariants" loading="lazy" decoding="async"><span class="pic-ring" style="left:35%;top:50%;width:11%;height:19%"></span></div></a><span class="note ink-red" style="left:24%; top:-34px; --r:-3deg" aria-hidden="true">They only meet without air</span></div>
+  <h3><a href="https://arxiv.org/abs/2609.30305" target="_blank" rel="noopener">Magnus turning invariants</a></h3>
+  <p class="cap">Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle.</p>
+  <ul><li>An exact solution for a spinning ball under quadratic drag and a vertical-axis Magnus force</li><li>arXiv 2609.30305, under review at the <mark>American Journal of Physics</mark></li></ul>
 </article>
-<article class="card k-mid ink-indigo" id="paperlane" style="--tilt:-0.8deg; --drop:40px; --order:0; width:80%; margin-left:auto">
+<article class="card k-mid ink-indigo" id="paperlane" style="--tilt:-0.8deg; --drop:0px; --order:0; width:84%; margin-left:auto">
   <span class="tape tape-tr" aria-hidden="true"></span>
   <div class="pic"><a href="https://pragyaangaur.dev/Paperlane/" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/paperlane.webp" width="800" height="512" alt="Paperlane" loading="lazy" decoding="async"></div><span class="tag">Open it ▸</span></a></div>
   <h3><a href="https://pragyaangaur.dev/Paperlane/" target="_blank" rel="noopener">Paperlane</a></h3>
@@ -157,21 +157,22 @@
 </article>
 </div>
 <div class="col">
-<article class="card k-small ink-indigo" id="uno" style="--tilt:1.3deg; --drop:70px; --order:0; width:94%; margin-left:auto">
-  <div class="pic"><a href="https://arxiv.org/abs/2610.14076" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/uno-law.webp" width="900" height="579" alt="How long is a game of Uno?" loading="lazy" decoding="async"></div><div class="inset inset-tr" style="width:34%; --r:5deg"><img class="" src="assets/b/uno-meme.webp" width="700" height="689" alt="How long is a game of Uno?" loading="lazy" decoding="async"></div></a><span class="note ink-blue" style="left:-12px; top:-34px; --r:-4deg" aria-hidden="true">A chess grandmaster wrote in</span></div>
+<article class="card k-small ink-indigo" id="uno" style="--tilt:1.3deg; --drop:90px; --order:0; width:94%; margin-left:auto">
+  <div class="pic"><a href="https://arxiv.org/abs/2610.14076" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/uno-law.webp" width="900" height="579" alt="How long is a game of Uno?" loading="lazy" decoding="async"></div><div class="inset inset-tr" style="width:34%; --r:5deg"><img class="" src="assets/b/uno-meme.webp" width="700" height="689" alt="How long is a game of Uno?" loading="lazy" decoding="async"></div></a><span class="note secret ink-green" style="left:-8px; top:-36px; --r:-4deg" aria-hidden="true">14,000,605 games. We win in one.</span></div>
   <h3><a href="https://arxiv.org/abs/2610.14076" target="_blank" rel="noopener">How long is a game of Uno?</a></h3>
   <p class="cap">I couldn&#x27;t find out, so I proved it. With <i>N</i> players holding <i>M</i> cards each, a round lasts <span class="ul">(27/19)<i>NM</i></span> turns.</p>
-  <ul><li>58 million games simulated in C, and big hands quietly hoard <i>M</i>/23 Wild Draw Fours each</li></ul>
+  <ul><li>58 million games simulated in C, and big hands quietly hoard <i>M</i>/23 Wild Draw Fours each</li><li>Chess grandmaster <mark>Karsten Müller</mark> read it and wrote to me about its Nash equilibrium</li></ul>
 </article>
-<article class="card k-small ink-indigo" id="a189077" style="--tilt:-1.5deg; --drop:40px; --order:0; width:80%; margin-left:auto">
+<article class="card k-small ink-indigo" id="a189077" style="--tilt:-1.5deg; --drop:0px; --order:0; width:80%; margin-left:auto">
   <div class="pic"><a href="https://oeis.org/A189077" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/a189077.webp" width="534" height="627" alt="A189077" loading="lazy" decoding="async"></div></a></div>
   <h3><a href="https://oeis.org/A189077" target="_blank" rel="noopener">A189077</a></h3>
   <p class="cap">Compositions avoiding the pattern 13-2, a sequence Neil Sloane created. It had 16 terms. Now it has 70.</p>
 </article>
-<article class="card k-small ink-indigo" id="cauchy" style="--tilt:1.0deg; --drop:40px; --order:0; width:92%; margin-left:auto">
+<article class="card k-small ink-indigo" id="cauchy" style="--tilt:1.0deg; --drop:0px; --order:0; width:92%; margin-left:auto">
   <div class="pic"><a href="https://pragyaangaur.dev/Real-Power-Cauchy-Schwarz/" target="_blank" rel="noopener"><div class="frame"><video class="" src="assets/b/cauchy-cone.mp4" poster="assets/b/cauchy-cone.jpg" width="720" height="300" autoplay muted loop playsinline preload="none" aria-label="Cauchy-Schwarz for real powers"></video></div></a></div>
   <h3><a href="https://pragyaangaur.dev/Real-Power-Cauchy-Schwarz/" target="_blank" rel="noopener">Cauchy-Schwarz for real powers</a></h3>
   <p class="cap">A 2025 conjecture, proved for every real power from two up, with every case of equality, and checked line by line in Lean 4.</p>
+  <p class="more"><a href="https://pragyaangaur.dev/Real-Power-Cauchy-Schwarz/" target="_blank" rel="noopener">Explainer ↗</a><a href="https://doi.org/10.5281/zenodo.23237507" target="_blank" rel="noopener">Paper ↗</a><a href="https://github.com/pragyaangaur/Real-Power-Cauchy-Schwarz" target="_blank" rel="noopener">Lean proof ↗</a><a href="https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000021&amp;version=1" target="_blank" rel="noopener">Palomar registry ↗</a></p>
 </article>
 </div>
 </div>
@@ -388,7 +389,6 @@
   <h3><a href="https://github.com/pragyaangaur/" target="_blank" rel="noopener">Cryo-EM and the porosome, in miniature</a></h3>
   <p class="cap">Joachim Frank won the 2017 Nobel Prize in Chemistry for cryo-EM. After his lecture at IIT Delhi with Bhanu P. Jena, I built a small working version of each of their ideas.</p>
   <ul><li>A ribosome rebuilt from <mark>2,400 projections</mark>, each of which looks like static on its own</li><li>A vesicle docking at a porosome and releasing its cargo</li></ul>
-  <div class="logos"><img src="assets/logos/iitd.svg" alt="IIT Delhi" title="IIT Delhi" style="height:56px" loading="lazy"></div>
 </article>
 <article class="card k-mid ink-forest" id="kerf" style="--tilt:0.7deg; --drop:120px; --order:0; width:94%; margin-right:auto">
   <div class="pic"><a href="https://pragyaangaur.dev/Kerf/" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/kerf.webp" width="750" height="480" alt="Kerf" loading="lazy" decoding="async"></div></a></div>
@@ -417,14 +417,22 @@
   
   <h3><a href="https://www.mercatus.org/emergent-ventures" target="_blank" rel="noopener">Fellowships</a></h3>
   <ul><li>Emergent Ventures, Mercatus Center at George Mason University</li><li>beVisioneers: The Mercedes-Benz Fellowship</li><li>The Dexterity Global Group, graduate and fellow</li></ul>
-  <div class="logos"><img src="assets/logos/mercatus.webp" alt="Mercatus Center" title="Mercatus Center" style="height:34px" loading="lazy"><img src="assets/logos/mercedes.webp" alt="beVisioneers: The Mercedes-Benz Fellowship" title="beVisioneers: The Mercedes-Benz Fellowship" style="height:30px" loading="lazy"></div>
+  <div class="logos"><img src="assets/logos/mercatus.webp" alt="Mercatus Center" title="Mercatus Center" style="height:34px" loading="lazy"><img src="assets/logos/mercedes.webp" alt="beVisioneers: The Mercedes-Benz Fellowship" title="beVisioneers: The Mercedes-Benz Fellowship" style="height:30px" loading="lazy"><img src="assets/logos/dexterity.webp" alt="The Dexterity Global Group" title="The Dexterity Global Group" style="height:40px" loading="lazy"></div>
 </article>
 </div>
 </div>
 </section>
 <svg class="threads" aria-hidden="true"></svg>
 </main>
-<footer class="end"><img src="assets/logos/nita.webp" alt="NIT Agartala" height="34"> NIT Agartala, Engineering Physics</footer>
-<script src="assets/board.js" defer></script>
+<footer class="end">
+  <blockquote class="poem">
+    <p>I see the player you mean.</p>
+    <p>It has reached a higher level now. It can read our thoughts.</p>
+    <p>I like this player. It played well. It did not give up.</p>
+    <cite>Julian Gough, the End Poem in Minecraft</cite>
+  </blockquote>
+  <p class="nita"><img src="assets/logos/nita.webp" alt="NIT Agartala" height="34"> NIT Agartala, Engineering Physics</p>
+</footer>
+<script src="assets/board.js?v=9acb1620" defer></script>
 </body>
 </html>

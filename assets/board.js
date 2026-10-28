@@ -47,13 +47,37 @@
     });
   }
 
+  // Columns in a spread finish at different heights. Spread each short column's slack over the
+  // gaps above its cards, so the white space sits between cards and not at the end of a section.
+  function balance() {
+    board.querySelectorAll(".card").forEach(function (c) { c.style.marginTop = ""; });
+    if (window.innerWidth <= 1100) return;
+    board.querySelectorAll(".spread").forEach(function (sp) {
+      var cols = Array.prototype.filter.call(sp.querySelectorAll(".col"), function (c) { return c.querySelector(".card"); });
+      var bottom = function (c) { var cs = c.querySelectorAll(".card"); return cs[cs.length - 1].getBoundingClientRect().bottom; };
+      var tallest = Math.max.apply(null, cols.map(bottom));
+      cols.forEach(function (col) {
+        var cards = col.querySelectorAll(".card"), slack = tallest - bottom(col);
+        if (slack < 40) return;
+        // A lone card sits in the middle of the spare height. Otherwise the first card takes half a share,
+        // so the tops of the columns still roughly line up, and each gap below it takes a full share.
+        var share = cards.length === 1 ? slack / 2 : Math.min(slack / (cards.length - 0.5), 320);
+        cards.forEach(function (card, i) {
+          var base = parseFloat(getComputedStyle(card).marginTop) || 0;
+          card.style.marginTop = (base + (i === 0 && cards.length > 1 ? share * 0.5 : share)) + "px";
+        });
+      });
+    });
+  }
+
+  function layout() { balance(); draw(); }
   var pending;
-  function later() { clearTimeout(pending); pending = setTimeout(draw, 120); }
+  function later() { clearTimeout(pending); pending = setTimeout(layout, 120); }
   window.addEventListener("resize", later);
-  window.addEventListener("load", draw);
-  if (document.fonts) document.fonts.ready.then(draw);
+  window.addEventListener("load", layout);
+  if (document.fonts) document.fonts.ready.then(layout);
   board.querySelectorAll("img").forEach(function (img) { img.addEventListener("load", later); });
-  draw();
+  layout();
 
   var seen = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
@@ -62,4 +86,54 @@
     });
   }, { rootMargin: "200px" });
   board.querySelectorAll("video").forEach(function (v) { seen.observe(v); });
+
+  // By order of the Crown: five quick clicks on the name.
+  var name = document.querySelector(".bar .name"), clicks = 0, timer;
+  name.addEventListener("click", function (e) {
+    e.preventDefault();
+    clicks += 1;
+    clearTimeout(timer);
+    timer = setTimeout(function () { clicks = 0; }, 1200);
+    if (clicks < 5 || document.querySelector(".crown")) return;
+    clicks = 0;
+    var stamp = document.createElement("div");
+    stamp.className = "crown";
+    stamp.innerHTML = "<span>By order of the Crown</span>";
+    document.body.appendChild(stamp);
+    setTimeout(function () { stamp.remove(); }, 2700);
+  });
+
+  // Korobeiniki on hover over TriKing, on desktop only, and only once the page has had a click or key
+  // press, because browsers keep audio locked until then.
+  var tri = document.getElementById("triking"), ctx = null, playing = false;
+  function unlock() { if (!ctx && window.AudioContext) ctx = new AudioContext(); if (ctx && ctx.state === "suspended") ctx.resume(); }
+  document.addEventListener("pointerdown", unlock, { once: true });
+  document.addEventListener("keydown", unlock, { once: true });
+  if (tri && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    tri.addEventListener("mouseenter", function () {
+      if (!ctx || ctx.state !== "running" || playing) return;
+      playing = true;
+      var E5 = 659.25, D5 = 587.33, C5 = 523.25, B4 = 493.88, A4 = 440, q = 0.24;
+      var tune = [[E5, 2], [B4, 1], [C5, 1], [D5, 2], [C5, 1], [B4, 1], [A4, 2], [A4, 1], [C5, 1], [E5, 2], [D5, 1], [C5, 1],
+                  [B4, 3], [C5, 1], [D5, 2], [E5, 2], [C5, 2], [A4, 2], [A4, 4]];
+      var t = ctx.currentTime + 0.05;
+      tune.forEach(function (n) {
+        var o = ctx.createOscillator(), g = ctx.createGain(), len = n[1] * q;
+        o.type = "square";
+        o.frequency.value = n[0];
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.035, t + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + len * 0.9);
+        o.connect(g).connect(ctx.destination);
+        o.start(t);
+        o.stop(t + len);
+        t += len;
+      });
+      setTimeout(function () { playing = false; }, (t - ctx.currentTime) * 1000 + 3000);
+    });
+  }
+
+  // For whoever opens the console.
+  console.log("%cHello, fellow inspector.", "font: 700 16px Georgia, serif; color: #7d1f2c");
+  console.log("The llms.txt is for the robots. This one is for you.\nIf you read this far, write to pragyaangaur12@gmail.com and tell me what you would build next.");
 })();
