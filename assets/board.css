@@ -34,12 +34,12 @@ html { scroll-behavior: smooth; }
 .toc a:hover { text-decoration: none; border-bottom-color: var(--ink); }
 
 .board { position: relative; max-width: 1480px; margin: 0 auto; padding: 120px 56px 40px; }
-.block { margin-bottom: 150px; scroll-margin-top: 40px; }
+.block { margin-bottom: 120px; scroll-margin-top: 40px; }
 .heading { font: 700 40px/1.1 var(--hand); color: var(--ink); margin: 0 0 56px; transform: rotate(-1.5deg); transform-origin: left; display: inline-block; }
 .heading::after { content: ""; display: block; height: 8px; margin-top: 4px; border-bottom: 2px solid var(--ink); border-radius: 0 0 50% 50% / 0 0 100% 100%; opacity: 0.5; }
-.spread { position: relative; display: grid; grid-template-columns: var(--cols); column-gap: 96px; align-items: start; }
+.spread { position: relative; display: grid; grid-template-columns: var(--cols); column-gap: 96px; align-items: center; }
 /* Room between the cards themselves, on top of each card's own drop */
-.col > .card + .card { margin-top: calc(var(--drop) + 96px); }
+.col > .card + .card { margin-top: calc(var(--drop) + 72px); }
 .col { display: flex; flex-direction: column; min-width: 0; }
 
 /* cards */

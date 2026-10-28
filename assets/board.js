@@ -49,28 +49,7 @@
 
   // Columns in a spread finish at different heights. Spread each short column's slack over the
   // gaps above its cards, so the white space sits between cards and not at the end of a section.
-  function balance() {
-    board.querySelectorAll(".card").forEach(function (c) { c.style.marginTop = ""; });
-    if (window.innerWidth <= 1100) return;
-    board.querySelectorAll(".spread").forEach(function (sp) {
-      var cols = Array.prototype.filter.call(sp.querySelectorAll(".col"), function (c) { return c.querySelector(".card"); });
-      var bottom = function (c) { var cs = c.querySelectorAll(".card"); return cs[cs.length - 1].getBoundingClientRect().bottom; };
-      var tallest = Math.max.apply(null, cols.map(bottom));
-      cols.forEach(function (col) {
-        var cards = col.querySelectorAll(".card"), slack = tallest - bottom(col);
-        if (slack < 40) return;
-        // A lone card sits in the middle of the spare height. Otherwise the first card takes half a share,
-        // so the tops of the columns still roughly line up, and each gap below it takes a full share.
-        var share = cards.length === 1 ? slack / 2 : Math.min(slack / (cards.length - 0.5), 320);
-        cards.forEach(function (card, i) {
-          var base = parseFloat(getComputedStyle(card).marginTop) || 0;
-          card.style.marginTop = (base + (i === 0 && cards.length > 1 ? share * 0.5 : share)) + "px";
-        });
-      });
-    });
-  }
-
-  function layout() { balance(); draw(); }
+  function layout() { draw(); }
   var pending;
   function later() { clearTimeout(pending); pending = setTimeout(layout, 120); }
   window.addEventListener("resize", later);
