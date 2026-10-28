@@ -293,3 +293,24 @@ body.staged { overflow: hidden; }
 .stage-card .inset-bl { left: 12px; bottom: 12px; }
 .stage-card .inset-br { right: 12px; bottom: 12px; }
 .stage-card .pic { margin-bottom: 0 !important; }
+
+/* What only shows on stage: the story, a few more pictures, the live demo and related cards */
+.card .extra { display: none; }
+.stage-card .extra { display: block; margin-top: 30px; padding-top: 26px; border-top: 1.5px dashed var(--hair); }
+.story { margin: 0 0 24px; font-size: 19px; line-height: 1.6; }
+.story .when { display: block; font: 400 18px/1 var(--hand); color: var(--graphite); margin-bottom: 8px; }
+.gallery { display: flex; gap: 14px; overflow-x: auto; padding: 4px 4px 14px; margin: 0 0 24px; scroll-snap-type: x mandatory; }
+.gallery img { flex: none; height: 300px; width: auto; background: var(--print); padding: 6px; box-shadow: var(--shadow); scroll-snap-align: start; }
+.demo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin: 0 0 24px; }
+.demo button { font: 700 20px/1 var(--hand); color: var(--paper); background: var(--ink); border: 0; padding: 11px 18px 9px; cursor: pointer; transform: rotate(-1.5deg); }
+.demo button:hover { background: var(--red); }
+.demo a { font-size: 15px; color: var(--soft); }
+.demo iframe { flex: 1 0 100%; height: 70vh; border: 1.5px solid var(--hair); border-radius: 6px; background: #fff; }
+.related { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 10px; margin: 0; }
+.related span { font: 400 18px/1 var(--hand); color: var(--graphite); margin-right: 4px; }
+.related a { font-size: 15px; border: 1px dashed var(--graphite); border-radius: 999px; padding: 4px 12px 3px; }
+.related a:hover { text-decoration: none; border-style: solid; }
+@media (max-width: 720px) {
+  .gallery img { height: 220px; }
+  .demo iframe { height: 75svh; }
+}

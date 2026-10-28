@@ -25,6 +25,7 @@ STILLS = [
     ("sc-cad", P + "SkyCatcher Simulations/integration/figures/cad_way1_cutaway.png", 700),
     ("kmc-card", PDF + "img-027.jpg", 800),
     ("setu-poster", P + "IET Project/presentation/linkedin/setu_linkedin.png", 1200),
+    ("filament", HOME + "Kaggle Competitions/Solar Filament Segmentation Challenge/report/example.jpg", 1100),
     ("setu-map", P + "IET Project/docs/figures/02_direction_and_map.png", 900),
     ("mps-wall", PDF + "img-064.jpg", 1000),
     ("mps-counts", "assets/plates/mps.png", 1000),
@@ -38,6 +39,10 @@ STILLS = [
     ("oeis-pair", PDF + "img-036.jpg", 900),
     ("a189077", PDF + "img-036.jpg", 700, (0.555, 0, 1, 1)),  # the A189077 half of the OEIS card
     ("kerf", "tools/sources/kerf-diff.png", 750),
+    ("ink-home", P + "Kindle Jailbreak/out/home13.png", 480),
+    ("ink-quill", P + "Kindle Jailbreak/out/quill2.png", 480),
+    ("ink-doom", P + "Kindle Jailbreak/out/doomcrop.png", 640),
+    ("ink-chess", P + "Kindle Jailbreak/out/chess0.png", 480),
     ("poem", "tools/sources/pulitzer-poem.png", 560),
     ("letter", "tools/sources/pulitzer-letter-crop.png", 760),
     ("polyplets", P + "Mathematics/../Personal Website/assets/plates/polyplets.png", 800),

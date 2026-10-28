@@ -161,7 +161,21 @@
     e.preventDefault();
     show(card, true);
   });
-  stage.addEventListener("click", function (e) { if (!slot.contains(e.target)) hide(true); });
+  stage.addEventListener("click", function (e) {
+    if (!slot.contains(e.target)) return hide(true);
+    // Related cards open in place of this one.
+    var rel = e.target.closest("a[data-card]");
+    if (rel) { e.preventDefault(); var next = document.getElementById(rel.dataset.card); if (next) show(next, true); return; }
+    // A demo loads only when asked for, and replaces its button.
+    var run = e.target.closest(".demo button");
+    if (run) {
+      var frame = document.createElement("iframe");
+      frame.src = run.dataset.src;
+      frame.title = run.textContent;
+      frame.setAttribute("allow", "autoplay; fullscreen");
+      run.replaceWith(frame);
+    }
+  });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(true); });
   function fromHash() {
     var el = location.hash && document.getElementById(location.hash.slice(1));

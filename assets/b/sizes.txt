@@ -49,3 +49,8 @@ rdgeneric 600 338
 knee-deep 640 360
 fly-brain 720 408
 cauchy-cone 720 300
+ink-home 480 648
+ink-quill 480 648
+ink-doom 640 406
+ink-chess 480 648
+filament 1100 363

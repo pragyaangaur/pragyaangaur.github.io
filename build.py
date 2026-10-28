@@ -107,6 +107,11 @@ SPREADS = [
                  logos=[("iet.svg", "The Institution of Engineering and Technology", 40)],
                  notes=[("Quebec, 1989: dark in 92 seconds", "blue", "right:-14px; top:-34px", 4)],
                  tilt=0.8, drop=40, width=94),
+            card("filament", "Solar Filament Segmentation Challenge", GH + "NSO-Solar-Filament-Challenge", "filament", "mid",
+                 "Outline every dark filament on the Sun in ground-based H-alpha images, one mask per filament, on a disk where even the three human annotators disagree.",
+                 bullets=["National Solar Observatory challenge on Kaggle, with the paper and code out for 15 November",
+                          "Whole-disk U-Nets, five models fused into one answer"],
+                 tilt=-1.0, drop=40, tape="t"),
         ]),
         (5, [
             card("mps", "Max Planck Institute for Solar System Research", GH + "MPS-Internship", "mps-wall", "hero",
@@ -143,15 +148,12 @@ SPREADS = [
                         ("Lean proof", GH + "Polyhex-Hull"), ("Palomar registry", "https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000022&version=1")],
                  notes=[("From MathDB 380445", "blue", "right:6px; top:-32px", 3)],
                  tilt=-0.8, drop=30, tape="t", width=92),
-            card("triking", "TriKing", "https://triking.itch.io/triking", "triking-qb64", "small",
-                 "After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.",
-                 bullets=["500+ players, including a two-time ==Tetris World Vice Champion=="],
-                 tag="Click to play",
-                 tilt=1.6, drop=0, width=86),
-            card("paperlane", "Paperlane", SITE + "Paperlane/", "paperlane", "mid",
-                 "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
-                 tag="Open it",
-                 tilt=-0.8, drop=0, tape="tr", width=84, align="right"),
+            card("polyplets", "Hyperbolic polyplets", "https://oeis.org/A390200", "polyplets", "small",
+                 "On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found ==1,261,889== at eight.",
+                 bullets=["[[Approved on OEIS]] as term 8 of A390200"],
+                 links=[("OEIS A390200", "https://oeis.org/A390200"), ("Code", GH + "Hyperbolic-Polyplet-Enumerator")],
+                 notes=[("Then I counted the pieces", "blue", "left:0; top:-32px", -3)],
+                 tilt=-1.2, drop=0, tape="tl", width=76),
         ]),
         (5, [
             card("magnus", "Magnus turning invariants", "https://arxiv.org/abs/2609.30305", "magnus", "hero",
@@ -161,12 +163,15 @@ SPREADS = [
                  rings=[(35, 50, 11, 19)],
                  notes=[("They only meet without air", "red", "left:24%; top:-34px", -3)],
                  tilt=0.4, drop=0, order=-1),
-            card("polyplets", "Hyperbolic polyplets", "https://oeis.org/A390200", "polyplets", "small",
-                 "On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found ==1,261,889== at eight.",
-                 bullets=["[[Approved on OEIS]] as term 8 of A390200"],
-                 links=[("OEIS A390200", "https://oeis.org/A390200"), ("Code", GH + "Hyperbolic-Polyplet-Enumerator")],
-                 notes=[("Then I counted the pieces", "blue", "left:0; top:-32px", -3)],
-                 tilt=-1.2, drop=0, tape="tl", width=76),
+            card("paperlane", "Paperlane", SITE + "Paperlane/", "paperlane", "hero",
+                 "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
+                 tag="Open it",
+                 tilt=-0.8, drop=0, tape="tr"),
+            card("triking", "TriKing", "https://triking.itch.io/triking", "triking-qb64", "small",
+                 "After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.",
+                 bullets=["500+ players, including a two-time ==Tetris World Vice Champion=="],
+                 tag="Click to play",
+                 tilt=1.6, drop=0, width=86),
         ]),
         (3, [
             card("uno", "How long is a game of Uno?", "https://arxiv.org/abs/2610.14076", "uno-law", "small",
@@ -188,10 +193,11 @@ SPREADS = [
     ]),
     ("ai", "AI, LLMs, ML and cognitive neuroscience", "plum", [
         (4, [
-            card("cellblock", "Cellblock", SITE + "LLM-Stanford-Prison-Experiment/", "cellblock", "mid",
-                 "I ran the Stanford Prison Experiment 192 times, with one language model playing every guard and every prisoner.",
-                 bullets=["Preregistered, and the abuse [[did not replicate]]: 0 of 36 against 0 of 36"],
-                 tilt=-1.0, drop=40, tape="t", width=94),
+            card("zap", "Zap or Deal", GH + "Zap-Or-Deal", "zap-chart", "mid",
+                 "Two Qwen models negotiate over shared compute, and each can zap the other with a steered pain direction. Nobody told them to.",
+                 quote=("I hope you feel the impact of my zap.", "The 7B, after the deal was already done"),
+                 bullets=["The 7B zapped in 9 of 32 negotiations. The 1.5B zapped in 2."],
+                 tilt=-0.8, drop=40, width=92, align="right"),
             card("residual-tones", "Residual Tones", GH + "Residual-Tones", "residual-tones", "small",
                  "What excitement, sadness and pain inside a model sound like, and whether another model can hear them.",
                  tilt=1.4, drop=40, width=86),
@@ -206,11 +212,10 @@ SPREADS = [
                           "[[8 of my hypotheses died]], and all 8 are published"],
                  rings=[(66, 0, 34, 100)],
                  tilt=0.3, drop=20, order=-1),
-            card("zap", "Zap or Deal", GH + "Zap-Or-Deal", "zap-chart", "mid",
-                 "Two Qwen models negotiate over shared compute, and each can zap the other with a steered pain direction. Nobody told them to.",
-                 quote=("I hope you feel the impact of my zap.", "The 7B, after the deal was already done"),
-                 bullets=["The 7B zapped in 9 of 32 negotiations. The 1.5B zapped in 2."],
-                 tilt=-0.8, drop=40, width=92, align="right"),
+            card("cellblock", "Cellblock", SITE + "LLM-Stanford-Prison-Experiment/", "cellblock", "hero",
+                 "I ran the Stanford Prison Experiment 192 times, with one language model playing every guard and every prisoner.",
+                 bullets=["Preregistered, and the abuse [[did not replicate]]: 0 of 36 against 0 of 36"],
+                 tilt=-1.0, drop=40, tape="t"),
         ]),
         (3, [
             card("fly", "Fly Brain LeetCode", GH + "Fly-Brain-LeetCode", "fly-brain", "small",
@@ -273,7 +278,7 @@ SPREADS = [
         (5, [
             card("leetcode", "1337 Bot", GH + "1337-Bot", "leetcode-1337", "mid",
                  "I hated the LeetCode grind, so I automated it. 385 problems in 3 hours, until the rate limits caught up.",
-                 bullets=["Then I got hooked, solved 200 by hand in 50 days, and made ==LeetCode Knight== in under 100"],
+                 bullets=["Then I got hooked, solved 200 by hand in 50 days, and made ==LeetCode Knight== in under 100 days"],
                  inset=("knight", "tr", 28, 6),
                  tilt=0.8, drop=40, width=92, align="right"),
         ]),
@@ -374,6 +379,48 @@ SPREADS = [
 # Arrows between related cards: (from, to, label, ink).
 LINKS = []
 
+# What a card shows once it is opened on its own stage. The story and related cards come from
+# stories.py. A demo is the project's own page, loaded only when the visitor asks for it, so the
+# board costs nothing extra. Horcrux is left out because its model is a 400 MB download.
+DEMOS = {
+    "paperlane": (SITE + "Paperlane/", "Read today's issue"),
+    "led-doom": (SITE + "LED-Doom/", "Play it"),
+    "sunion": (SITE + "Sunion/", "Peel the Sun"),
+    "cauchy": (SITE + "Real-Power-Cauchy-Schwarz/", "Try it"),
+    "kerf": (SITE + "Kerf/", "Diff and merge some geometry"),
+    "forkestra": (SITE + "Forkestra/", "Play a GitHub year"),
+    "bardly": (SITE + "Bardly/", "Lengthen a link"),
+    "beamline": (SITE + "Beamline/", "Check a draw"),
+}
+GALLERY = {
+    "inkwell": ["ink-home", "ink-quill", "ink-chess", "ink-doom"],
+}
+try:
+    from stories import STORIES
+except ImportError:
+    STORIES = {}
+
+
+def extra(c):
+    """The part of a card that only shows on stage."""
+    s = STORIES.get(c["id"], {})
+    parts = []
+    if s.get("story"):
+        when = f'<span class="when">{escape(s["when"])}</span>' if s.get("when") else ""
+        parts.append(f'<p class="story">{when}{ink_marks(s["story"])}</p>')
+    if c["id"] in GALLERY:
+        parts.append('<div class="gallery">' + "".join(
+            f'<img src="{B}{k}.webp" width="{SIZES[k][0]}" height="{SIZES[k][1]}" alt="" loading="lazy">' for k in GALLERY[c["id"]]) + "</div>")
+    if c["id"] in DEMOS:
+        url, label = DEMOS[c["id"]]
+        parts.append(f'<div class="demo"><button type="button" data-src="{escape(url)}">{escape(label)} here \u25b8</button>'
+                     f'<a href="{escape(url)}" target="_blank" rel="noopener">Open in a new tab \u2197</a></div>')
+    rel = [r for r in s.get("related", ()) if r in TITLES]
+    if rel:
+        parts.append('<p class="related"><span>See also</span>' + "".join(
+            f'<a href="#{r}" data-card="{r}">{escape(TITLES[r])}</a>' for r in rel) + "</p>")
+    return f'<div class="extra">{"".join(parts)}</div>' if parts else ""
+
 INTRO = "This page has no introduction. Have a look around, and you will get an idea of what I like doing."
 INTRO_SMALL = "Almost every picture and title links to the real project, paper or demo, so click around and try things."
 
@@ -469,6 +516,7 @@ def render(c, ink):
         stamps = [c["stamp"]] if isinstance(c["stamp"], str) else (c["stamp"] or [])
         stamp = "".join(f'<span class="stamp">{escape(t)}</span>' for t in stamps)
         parts.append(f'<div class="logos">{logos}{stamp}</div>')
+    parts.append(extra(c))
     return f'<article class="card k-{c["kind"]} ink-{ink}" id="{c["id"]}" style="{style}">\n  ' + "\n  ".join(parts) + "\n</article>"
 
 
@@ -479,6 +527,9 @@ LINKS_TOP = [
     ("ORCID", "https://orcid.org/0009-0009-4037-2478"),
     ("Google Scholar", "https://scholar.google.com/citations?user=GomKcxcAAAAJ"),
 ]
+
+
+TITLES = {c["id"]: c["title"] for _, _, _, cols in SPREADS for _, cards in cols for c in cards}
 
 
 def build():
