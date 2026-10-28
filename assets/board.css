@@ -144,7 +144,16 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
   .block { margin-bottom: 100px; }
   .heading { font-size: 32px; }
   .spread { grid-template-columns: minmax(0, 1fr); }
-  .card, .col > .card + .card { margin-top: 72px; transform: rotate(calc(var(--tilt) * 0.5)); }
+  .card, .card:first-child, .col > .card + .card { margin-top: 96px; transform: rotate(calc(var(--tilt) * 0.4)); }
+  /* a handwritten note sits above some cards, so those need room for it */
+  .card:has(.note:not(.secret)), .card:first-child:has(.note:not(.secret)), .col > .card + .card:has(.note:not(.secret)) { margin-top: 136px; }
+  .block .card[style*="--order:-1"] { margin-top: 56px; }
+  .block .card[style*="--order:-1"]:has(.note:not(.secret)) { margin-top: 92px; }
+  .heading { margin-bottom: 8px; }
+  .intro { margin-top: 64px; }
+  .intro p.small { margin-bottom: 40px; }
+  .note { max-width: calc(100vw - 48px); white-space: normal; }
+  .more a { font-size: 14px; }
   .tag { right: 0; }
   .k-hero h3 { font-size: 27px; }
   .inset { width: 44% !important; }
