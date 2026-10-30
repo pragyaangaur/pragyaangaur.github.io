@@ -165,6 +165,13 @@ SPREADS = [
                  links=[("OEIS A390200", "https://oeis.org/A390200"), ("Code", GH + "Hyperbolic-Polyplet-Enumerator")],
                  notes=[("Then I counted the pieces", "blue", "left:0; top:-32px", -3)],
                  tilt=-1.2, drop=0, tape="tl", width=76),
+            card("exhaustion", "Proof by exhaustion", "https://doi.org/10.5281/zenodo.23805053", "pbe-lines", "mid",
+                 "A proof in Lean 4 that 1 + 1 = 2. It is ==616,873 lines== long.",
+                 bullets=["Every number system built by hand, from Peano numerals to octonions and Roman numerals, with 1 + 1 = 2 proved in each",
+                          "No Mathlib and no shortcut tactics, checked line by line by Lean's kernel"],
+                 links=[("Paper on Zenodo", "https://doi.org/10.5281/zenodo.23805053"), ("Code", GH + "Proof-By-Exhaustion")],
+                 notes=[("Occasionally useful", "red", "right:6px; top:-32px", 3)],
+                 tilt=1.0, drop=0, tape="t", width=92, align="right"),
         ]),
         (5, [
             card("magnus", "Magnus turning invariants", "https://arxiv.org/abs/2609.30305", "magnus", "hero",
@@ -404,6 +411,7 @@ DEMOS = {
     "beamline": (SITE + "Beamline/", "Check a draw"),
 }
 GALLERY = {
+    "exhaustion": ["pbe-route"],
     "inkwell": ["ink-home", "ink-quill", "ink-chess", "ink-doom"],
 }
 try:
