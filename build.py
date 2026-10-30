@@ -78,7 +78,7 @@ SPREADS = [
                  tilt=-1.5, drop=40, tape="t", width=92),
             card("kmc", "Keeping a copper catalyst alive", "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1", "kmc-card", "small",
                  "Sulphur slowly poisons copper. The maths says copper only works in patches of three or more connected atoms, whatever the rate constants are.",
-                 bullets=["Preprint on ChemRxiv, under review at ==RSC Reaction Chemistry & Engineering=="],
+                 bullets=["Preprint on ChemRxiv, under review at ==RSC Catalysis Science & Technology=="],
                  tilt=1.2, drop=40, tape="tl", width=92),
         ]),
         (6, [
