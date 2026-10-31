@@ -78,7 +78,7 @@ SPREADS = [
                  tilt=-1.5, drop=40, tape="t", width=92),
             card("kmc", "Keeping a copper catalyst alive", "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1", "kmc-card", "small",
                  "Sulphur slowly poisons copper. The maths says copper only works in patches of three or more connected atoms, whatever the rate constants are.",
-                 bullets=["Preprint on ChemRxiv, under review at ==RSC Catalysis Science & Technology=="],
+                 bullets=["Preprint on ChemRxiv"],
                  tilt=1.2, drop=40, tape="tl", width=92),
         ]),
         (6, [
@@ -153,8 +153,7 @@ SPREADS = [
         (4, [
             card("polyhex", "The maximum area of the convex hull of a polyhex", "https://arxiv.org/abs/2609.30310", "polyhex", "mid",
                  "In 2008 Sascha Kurz asked how large the convex hull of *n* hexagons glued edge to edge can be. It is at most {{⌈*n*² + 14*n*/3⌉ / 6}}.",
-                 bullets=["[[Kurz's conjecture settled]], with the bound machine-checked in Lean 4",
-                          "Under review at ==Beiträge zur Algebra und Geometrie=="],
+                 bullets=["[[Kurz's conjecture settled]], with the bound machine-checked in Lean 4"],
                  links=[("arXiv", "https://arxiv.org/abs/2609.30310"), ("OEIS A399934", "https://oeis.org/A399934"),
                         ("Lean proof", GH + "Polyhex-Hull"), ("Palomar registry", "https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000022&version=1")],
                  notes=[("From MathDB 380445", "blue", "right:6px; top:-32px", 3)],
@@ -177,7 +176,7 @@ SPREADS = [
             card("magnus", "Magnus turning invariants", "https://arxiv.org/abs/2609.30305", "magnus", "hero",
                  "Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle.",
                  bullets=["An exact solution for a spinning ball under quadratic drag and a vertical-axis Magnus force",
-                          "arXiv 2609.30305, under review at the ==American Journal of Physics=="],
+                          "On arXiv as 2609.30305"],
                  rings=[(35, 50, 11, 19)],
                  notes=[("They only meet without air", "red", "left:24%; top:-34px", -3)],
                  tilt=0.4, drop=0, order=-1),

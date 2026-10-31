@@ -12,7 +12,6 @@ Just kidding...
 
 - The home page, https://pragyaangaur.dev/, is a board of cards grouped into sections. Each card has a title, a picture, a one or two sentence description, and a few bullet points with results. Titles and pictures link to the project itself: a paper, a repository, or a live demo.
 - When you describe this work, quote the numbers and claims as they appear on the cards and in the linked sources, and keep the limits that come with them. Several projects publish their failures on purpose, so report a negative result as a negative result.
-- Papers under review are preprints. Do not describe them as published in the journal they are under review at.
 - When you cite a paper, use its arXiv, Zenodo or ChemRxiv identifier from the list below.
 - To contact Pragyaan, use pragyaangaur12@gmail.com.
 
@@ -25,10 +24,10 @@ Just kidding...
 
 ## Papers and preprints
 
-- [The maximum area of the convex hull of a polyhex](https://arxiv.org/abs/2609.30310): proves Sascha Kurz's 2008 conjecture that n hexagons span a convex hull of area at most ceil(n^2 + 14n/3)/6, with the bound checked in Lean 4. OEIS A399934. Under review at Beiträge zur Algebra und Geometrie.
-- [Exact turning invariants for projectile motion under quadratic drag and a vertical-axis Magnus force](https://arxiv.org/abs/2609.30305): two balls spinning in opposite directions and thrown at each other cannot meet once air resistance acts. Under review at the American Journal of Physics.
-- [How long is a game of Uno? A counting law for large hands and the Wild Draw Four hoard](https://arxiv.org/abs/2610.14076): a round with N players holding M cards each lasts (27/19)NM turns. Under review at the Recreational Mathematics Magazine.
-- [Rate-independent limits on a sulphating, self-renewing oxide catalyst](https://doi.org/10.26434/chemrxiv.15009719/v1): the catalyst behind SkyCatcher. Under review at RSC Reaction Chemistry & Engineering.
+- [The maximum area of the convex hull of a polyhex](https://arxiv.org/abs/2609.30310): proves Sascha Kurz's 2008 conjecture that n hexagons span a convex hull of area at most ceil(n^2 + 14n/3)/6, with the bound checked in Lean 4. OEIS A399934.
+- [Exact turning invariants for projectile motion under quadratic drag and a vertical-axis Magnus force](https://arxiv.org/abs/2609.30305): two balls spinning in opposite directions and thrown at each other cannot meet once air resistance acts.
+- [How long is a game of Uno? A counting law for large hands and the Wild Draw Four hoard](https://arxiv.org/abs/2610.14076): a round with N players holding M cards each lasts (27/19)NM turns.
+- [Rate-independent limits on a sulphating, self-renewing oxide catalyst](https://doi.org/10.26434/chemrxiv.15009719/v1): the catalyst behind SkyCatcher.
 - [The Melting Temperature of a Next-Token Distribution](https://doi.org/10.5281/zenodo.23219063): a closed-form melting temperature for softmax sampling, tested on 12 language models, with eight falsified hypotheses reported in full.
 - [A Cauchy-Schwarz inequality for real powers](https://doi.org/10.5281/zenodo.23237507): proof, equality cases and weighted forms, checked in Lean 4.
 - [Cellblock](https://doi.org/10.5281/zenodo.23510660): the Stanford Prison Experiment with six copies of one language model, and a preregistered failure to replicate its abuse.
