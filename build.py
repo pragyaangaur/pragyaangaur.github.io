@@ -58,12 +58,12 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
                 width=width, align=align, tag=tag, links=links, repo=repo, prs=prs, secret=secret)
 
 
-SITE = "https://pragyaangaur.dev"
+ORIGIN = "https://pragyaangaur.dev"
 DESC = ("Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute "
         "for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.")
 PERSON = __import__("json").dumps({
-    "@context": "https://schema.org", "@type": "Person", "name": "Pragyaan Gaur", "url": SITE + "/",
-    "image": SITE + "/apple-touch-icon.png", "email": "mailto:pragyaangaur12@gmail.com",
+    "@context": "https://schema.org", "@type": "Person", "name": "Pragyaan Gaur", "url": ORIGIN + "/",
+    "image": ORIGIN + "/apple-touch-icon.png", "email": "mailto:pragyaangaur12@gmail.com",
     "affiliation": {"@type": "CollegeOrUniversity", "name": "National Institute of Technology Agartala"},
     "sameAs": ["https://github.com/pragyaangaur", "https://www.linkedin.com/in/pragyaangaur/",
                "https://orcid.org/0009-0009-4037-2478", "https://scholar.google.com/citations?user=GomKcxcAAAAJ"],
@@ -79,6 +79,7 @@ SPREADS = [
             card("kmc", "Keeping a copper catalyst alive", "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1", "kmc-card", "small",
                  "Sulphur slowly poisons copper. The maths says copper only works in patches of three or more connected atoms, whatever the rate constants are.",
                  bullets=["Preprint on ChemRxiv"],
+                 links=[("ChemRxiv", "https://doi.org/10.26434/chemrxiv.15009719/v1"), ("Code", GH + "Renewing-Catalyst-Kinetics")],
                  tilt=1.2, drop=40, tape="tl", width=92),
         ]),
         (6, [
@@ -92,13 +93,14 @@ SPREADS = [
                  stamp=["beVisioneers Fellow", "Emergent Ventures Fellow"],
                  inset=("sc-copper", "bl", 36, -4),
                  notes=[("The real copper", "blue", "left:39%; bottom:-10%", -6)],
+                 links=[("Code", GH + "SkyCatcher"), ("Fellowship profile", BEV)],
                  tilt=-0.4, order=-1),
             card("young-voices", "Young Voices Award", BEV, None, "award",
                  bullets=["Global Top 10 for SkyCatcher, 2024"],
                  tilt=1.4, drop=40, width=84, align="right"),
         ]),
         (3, [
-            card("sc-cad", "CAD and CFD", BEV, "sc-cad", "small",
+            card("sc-cad", "CAD and CFD", GH + "SkyCatcher", "sc-cad", "small",
                  "The full reactor in CAD, and then in SU2 CFD.",
                  bullets=["The reactor's heater runs on SU2's heat source feature, so I fixed it and sent the fix upstream as __pull request #2940__"],
                  tilt=1.6, drop=40, tape="t", width=90, align="right"),
@@ -179,6 +181,7 @@ SPREADS = [
                           "On arXiv as 2609.30305"],
                  rings=[(35, 50, 11, 19)],
                  notes=[("They only meet without air", "red", "left:24%; top:-34px", -3)],
+                 links=[("arXiv", "https://arxiv.org/abs/2609.30305"), ("Code", GH + "Magnus-Turning-Invariants")],
                  tilt=0.4, drop=0, order=-1),
             card("paperlane", "Paperlane", SITE + "Paperlane/", "paperlane", "hero",
                  "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
@@ -188,6 +191,7 @@ SPREADS = [
                  "After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.",
                  bullets=["500+ players, including a two-time ==Tetris World Vice Champion=="],
                  tag="Click to play",
+                 links=[("Play on itch.io", "https://triking.itch.io/triking"), ("Code", GH + "TriKing")],
                  tilt=1.6, drop=0, width=86),
         ]),
         (3, [
@@ -197,6 +201,7 @@ SPREADS = [
                           "Chess grandmaster ==Karsten Müller== read it and wrote to me about its Nash equilibrium"],
                  inset=("uno-meme", "tr", 34, 5),
                  secret=("14,000,605 games. We win in one.", "green", "left:-8px; top:-36px", -4),
+                 links=[("arXiv", "https://arxiv.org/abs/2610.14076"), ("Code", GH + "Uno-Reverse-Engineered")],
                  tilt=1.3, drop=40, width=94, align="right"),
             card("a189077", "A189077", "https://oeis.org/A189077", "a189077", "small",
                  "Compositions avoiding the pattern 13-2, a sequence Neil Sloane created. It had 16 terms. Now it has 70.",
@@ -358,6 +363,7 @@ SPREADS = [
                  "A signed random number every ten minutes, mixed from an ANU quantum vacuum device, NOAA solar data and the kernel. It started out as a thermoelectric cloud chamber.",
                  bullets=["596 rounds and a Claude Pro prize, which nobody claimed"],
                  notes=[("Odds: 1 in 13.4 quinquagintillion", "green", "left:0; top:-32px", -2)],
+                 links=[("The cloud chamber", GH + "Beamline-Cloud-Chamber")],
                  tilt=-1.0, drop=40, tape="t", width=94),
             card("qiskit", "Qiskit Global Summer School", "https://www.ibm.com/quantum/qiskit", None, "award",
                  bullets=["IBM Quantum, July 2026"],
@@ -571,20 +577,20 @@ def build():
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Pragyaan Gaur</title>
 <meta name="description" content="{escape(DESC)}">
-<link rel="canonical" href="{SITE}/">
+<link rel="canonical" href="{ORIGIN}/">
 <meta name="author" content="Pragyaan Gaur">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pragyaan Gaur">
-<meta property="og:url" content="{SITE}/">
+<meta property="og:url" content="{ORIGIN}/">
 <meta property="og:title" content="Pragyaan Gaur">
 <meta property="og:description" content="{escape(DESC)}">
-<meta property="og:image" content="{SITE}/assets/og.png">
+<meta property="og:image" content="{ORIGIN}/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pragyaan Gaur">
 <meta name="twitter:description" content="{escape(DESC)}">
-<meta name="twitter:image" content="{SITE}/assets/og.png">
+<meta name="twitter:image" content="{ORIGIN}/assets/og.png">
 <script type="application/ld+json">{PERSON}</script>
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -622,9 +628,9 @@ def build():
     with open("index.html", "w") as f:
         f.write(html)
     with open("robots.txt", "w") as f:
-        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
     today = __import__("datetime").date.today().isoformat()
-    urls = "".join(f"  <url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in ("",))
+    urls = "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in ("",))
     with open("sitemap.xml", "w") as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
     print(f"index.html written, {n} cards in {len(SPREADS)} spreads")
