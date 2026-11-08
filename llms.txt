@@ -46,6 +46,7 @@ Just kidding...
 - [Inkwell](https://github.com/pragyaangaur/Inkwell): Linux, Doom and an offline chatbot on a 10-year-old Kindle.
 - [rdgeneric](https://pragyaangaur.dev/Can-It-Run-Minecraft/): the first version of Minecraft as one C file, running in a terminal, a browser, a PDF and on a bare 486.
 - [Ship of Theseus](https://github.com/pragyaangaur/Ship-of-Theseus): the 31 parts of Qwen2.5-7B-Instruct swapped one at a time for those of DeepSeek-R1-Distill-Qwen-7B. Hybrids in the middle mostly stop naming either model. Two of five preregistered hypotheses were supported.
+- [NIT Agartala in Minecraft](https://github.com/pragyaangaur/NIT-Agartala-Minecraft): the NIT Agartala campus at one block to one metre in Minecraft Java Edition 26.3, with 30 named buildings and a downloadable world.
 - [Token Thermodynamics](https://github.com/pragyaangaur/Token-Thermodynamics): the code, data and paper for the melting temperature work.
 
 ## Open source

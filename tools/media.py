@@ -70,6 +70,8 @@ STILLS = [
     ("rdgeneric-pdf", P + "Miniaturised Minecraft/docs/pdf-chromium.png", 800),
     ("acc-title", "tools/sources/acc-title.png", 900),
     ("theseus", "tools/sources/theseus-voyage.png", 900),
+    ("nita-library", P + "Minecraft NITA Map/docs/images/iso_library.png", 900),
+    ("nita-map", P + "Minecraft NITA Map/docs/images/map_day.jpg", 500, (0.15, 0.25, 0.85, 0.8)),
 ]
 
 # Small sources that sit large on the page get a Lanczos upscale and a light sharpen.

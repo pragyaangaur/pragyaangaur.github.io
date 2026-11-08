@@ -58,3 +58,5 @@ pbe-lines 1000 373
 pbe-route 1000 444
 acc-title 900 204
 theseus 900 352
+nita-library 900 611
+nita-map 500 420
