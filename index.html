@@ -251,6 +251,16 @@
 <h2 class="heading">AI, LLMs, ML and cognitive neuroscience</h2>
 <div class="spread" style="--cols:4fr 5fr 3fr">
 <div class="col">
+<article class="card k-mid ink-plum" id="theseus" style="--tilt:0.9deg; --drop:40px; --order:0; width:94%; margin-right:auto">
+  <span class="tape tape-t" aria-hidden="true"></span>
+  <div class="pic"><a href="https://github.com/pragyaangaur/Ship-of-Theseus" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/theseus.webp" width="900" height="352" alt="Ship of Theseus" loading="lazy" decoding="async"></div></a><span class="note ink-red" style="right:6px; top:-32px; --r:3deg" aria-hidden="true">Who are you?</span></div>
+  <h3><a href="https://github.com/pragyaangaur/Ship-of-Theseus" target="_blank" rel="noopener">Ship of Theseus</a></h3>
+  <p class="cap">I swapped the 31 parts of one language model, Qwen, one at a time for the matching parts of another, DeepSeek. After every swap I asked the hybrid who it was.</p>
+  <blockquote>“Hello! I&#x27;m an AI assistant created by {{ company }} to help with your tasks.”<span>A hybrid with 26 of its 31 parts from DeepSeek</span></blockquote>
+  <ul><li>The ships in the middle forget their name. In <mark>1,745 of 1,920</mark> answers they named neither model</li><li>Identity sits near the output. Swapping from that end, the ship calls itself DeepSeek after about 5 parts, against about 22 from the input end</li></ul>
+  <p class="more"><a href="https://github.com/pragyaangaur/Ship-of-Theseus" target="_blank" rel="noopener">Code and paper ↗</a></p>
+  <div class="extra"><p class="story"><span class="when">November 2026</span>Theseus&#x27;s ship had every plank replaced until none of the original wood was left. Both models come from the same Qwen pretraining run, so a part of one fits into the other. The design and five hypotheses were written down before the main run, which took 4.9 hours on two Kaggle GPUs.</p><p class="related"><span>See also</span><a href="#cellblock" data-card="cellblock">Cellblock</a><a href="#token" data-card="token">The melting temperature of a next-token distribution</a><a href="#zap" data-card="zap">Zap or Deal</a></p></div>
+</article>
 <article class="card k-mid ink-plum" id="zap" style="--tilt:-0.8deg; --drop:40px; --order:0; width:92%; margin-left:auto">
   <div class="pic"><a href="https://github.com/pragyaangaur/Zap-Or-Deal" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/zap-chart.webp" width="800" height="291" alt="Zap or Deal" loading="lazy" decoding="async"></div></a></div>
   <h3><a href="https://github.com/pragyaangaur/Zap-Or-Deal" target="_blank" rel="noopener">Zap or Deal</a></h3>
@@ -258,12 +268,6 @@
   <blockquote>“I hope you feel the impact of my zap.”<span>The 7B, after the deal was already done</span></blockquote>
   <ul><li>The 7B zapped in 9 of 32 negotiations. The 1.5B zapped in 2.</li></ul>
   <div class="extra"><p class="story"><span class="when">October 2026</span>Two Qwen models negotiate over shared compute, and each can steer the other into a pain state. I built it with the Pain Axis directions of Tagliabue, Dung and Berg, and later reran it with two fruit fly brains.</p><p class="related"><span>See also</span><a href="#just-think" data-card="just-think">Left alone with a pain button</a><a href="#fly" data-card="fly">Fly Brain LeetCode</a><a href="#cellblock" data-card="cellblock">Cellblock</a></p></div>
-</article>
-<article class="card k-small ink-plum" id="residual-tones" style="--tilt:1.4deg; --drop:40px; --order:0; width:86%; margin-right:auto">
-  <div class="pic"><a href="https://github.com/pragyaangaur/Residual-Tones" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/residual-tones.webp" width="700" height="233" alt="Residual Tones" loading="lazy" decoding="async"></div></a></div>
-  <h3><a href="https://github.com/pragyaangaur/Residual-Tones" target="_blank" rel="noopener">Residual Tones</a></h3>
-  <p class="cap">What excitement, sadness and pain inside a model sound like, and whether another model can hear them.</p>
-  <div class="extra"><p class="story"><span class="when">October 2026</span>I took the emotion directions from the Pain Axis study and turned them into sound and music. Then the sounds were judged blind, to see whether a listener could tell which feeling was which.</p><p class="related"><span>See also</span><a href="#zap" data-card="zap">Zap or Deal</a><a href="#just-think" data-card="just-think">Left alone with a pain button</a><a href="#forkestra" data-card="forkestra">Forkestra</a></p></div>
 </article>
 <article class="card k-small ink-plum" id="viscous" style="--tilt:-1.1deg; --drop:40px; --order:0; width:90%; margin-right:auto">
   <div class="pic"><a href="https://github.com/pragyaangaur/Viscous-Conservation-Laws" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/viscous.webp" width="800" height="324" alt="Viscous conservation laws" loading="lazy" decoding="async"></div></a></div>
@@ -303,6 +307,12 @@
   <h3><a href="https://github.com/pragyaangaur/Just-Think" target="_blank" rel="noopener">Left alone with a pain button</a></h3>
   <p class="cap">A preregistered test of whether a language model left alone will press a button that steers it into pain.</p>
   <div class="extra"><p class="story"><span class="when">October 2026</span>This is my version of Wilson&#x27;s famous study where people left alone with their thoughts chose to shock themselves. An idle Qwen 2.5 7B gets a button that brings back a steered pain state, and the question is whether boredom wins.</p><p class="related"><span>See also</span><a href="#zap" data-card="zap">Zap or Deal</a><a href="#cellblock" data-card="cellblock">Cellblock</a><a href="#residual-tones" data-card="residual-tones">Residual Tones</a></p></div>
+</article>
+<article class="card k-small ink-plum" id="residual-tones" style="--tilt:1.4deg; --drop:40px; --order:0; width:86%; margin-left:auto">
+  <div class="pic"><a href="https://github.com/pragyaangaur/Residual-Tones" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/residual-tones.webp" width="700" height="233" alt="Residual Tones" loading="lazy" decoding="async"></div></a></div>
+  <h3><a href="https://github.com/pragyaangaur/Residual-Tones" target="_blank" rel="noopener">Residual Tones</a></h3>
+  <p class="cap">What excitement, sadness and pain inside a model sound like, and whether another model can hear them.</p>
+  <div class="extra"><p class="story"><span class="when">October 2026</span>I took the emotion directions from the Pain Axis study and turned them into sound and music. Then the sounds were judged blind, to see whether a listener could tell which feeling was which.</p><p class="related"><span>See also</span><a href="#zap" data-card="zap">Zap or Deal</a><a href="#just-think" data-card="just-think">Left alone with a pain button</a><a href="#forkestra" data-card="forkestra">Forkestra</a></p></div>
 </article>
 <article class="card k-small ink-plum" id="horcrux" style="--tilt:1.0deg; --drop:40px; --order:0; width:90%; margin-left:auto">
   <div class="pic"><a href="https://pragyaangaur.dev/Horcrux/" target="_blank" rel="noopener"><div class="frame"><img class="" src="assets/b/horcrux.webp" width="800" height="471" alt="Horcrux" loading="lazy" decoding="async"></div></a></div>
