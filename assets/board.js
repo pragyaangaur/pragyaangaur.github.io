@@ -195,6 +195,38 @@
   });
   if (root.dataset.theme === "dark") lamp.title = "Lights on";
 
+  // The GitHub contribution chart in the intro, from assets/contrib.json, which a workflow refreshes
+  // every six hours.
+  var chart = document.querySelector(".contrib");
+  if (chart) fetch("assets/contrib.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (data) {
+    var days = data.days, cell = 12, gap = 3, step = cell + gap, top = 18;
+    var first = new Date(days[0][0] + "T00:00:00Z").getUTCDay();
+    var weeks = Math.ceil((days.length + first) / 7);
+    var g = document.createElementNS(NS, "svg");
+    g.setAttribute("viewBox", "0 0 " + (weeks * step - gap) + " " + (top + 7 * step - gap));
+    g.setAttribute("width", weeks * step - gap);
+    var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], lastMonth = -1;
+    days.forEach(function (d, i) {
+      var k = i + first, x = Math.floor(k / 7) * step, y = top + (k % 7) * step;
+      var date = new Date(d[0] + "T00:00:00Z"), m = date.getUTCMonth();
+      // Name a month at the first column that starts inside it, unless it would crowd the right edge.
+      if ((k % 7 === 0 || i === 0) && m !== lastMonth) {
+        lastMonth = m;
+        if (x < (weeks - 2) * step && !(i === 0 && date.getUTCDate() > 20)) add("text", { x: x, y: 11, class: "contrib-month" }, g).textContent = MONTHS[m];
+      }
+      var r = add("rect", { x: x, y: y, width: cell, height: cell, rx: 2.5, class: "lv" + d[2] }, g);
+      var t = add("title", {}, r);
+      t.textContent = (d[1] || "No") + " contribution" + (d[1] === 1 ? "" : "s") + " on " + date.getUTCDate() + " " + MONTHS[m] + " " + date.getUTCFullYear();
+    });
+    var box = chart.querySelector(".contrib-scroll");
+    box.appendChild(g);
+    box.scrollLeft = box.scrollWidth;
+    chart.querySelector("figcaption").innerHTML = '<a href="https://github.com/pragyaangaur" target="_blank" rel="noopener">' +
+      data.total.toLocaleString("en-GB") + " contributions on GitHub in the last year</a>" +
+      '<span class="contrib-key" aria-hidden="true">Less <i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i> More</span>';
+    chart.classList.add("on");
+  }).catch(function () {});
+
   // For whoever opens the console.
   console.log("%cHello, fellow inspector.", "font: 700 16px Georgia, serif; color: #7d1f2c");
   console.log("The llms.txt is for the robots. This one is for you.\nIf you read this far, write to pragyaangaur12@gmail.com and tell me what you would build next.");

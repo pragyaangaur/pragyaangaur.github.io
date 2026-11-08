@@ -594,7 +594,7 @@ def build():
 <script type="application/ld+json">{PERSON}</script>
 <link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
-<script>var t;try{{t=localStorage.theme}}catch(e){{}}if(t!=="light")document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")</script>
+<script>var t;try{{t=localStorage.theme}}catch(e){{}}if(t==="dark")document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="assets/site.css?v={v("assets/site.css")}">
 <link rel="stylesheet" href="assets/board.css?v={v("assets/board.css")}">
 <link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
@@ -605,6 +605,7 @@ def build():
 <header class="intro">
   <p>{escape(INTRO)}</p>
   <p class="small">{escape(INTRO_SMALL)}</p>
+  <figure class="contrib" aria-label="GitHub contributions in the last year"><div class="contrib-scroll"></div><figcaption></figcaption></figure>
   <nav class="toc" aria-label="Sections">{toc}</nav>
   <a class="start" href="#{SPREADS[0][0]}">Start here <span aria-hidden="true">\u2193</span></a>
 </header>
