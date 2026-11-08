@@ -53,4 +53,4 @@ Just kidding...
 
 - [SunPy pull requests](https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur): 3 merged.
 - [SU2 pull requests](https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur): 1 merged.
-- [EinsteinPy pull requests](https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur): 1 merged.
+- [EinsteinPy pull requests](https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur): 3 merged.
