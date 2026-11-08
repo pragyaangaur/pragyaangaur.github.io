@@ -208,7 +208,7 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
 
 /* Inviting people in: the intro fills the first screen, cards are pinned up as they come into view,
    and every section ends by pointing at the next one. */
-.intro { min-height: calc(100vh - 120px); margin-top: 0; display: flex; flex-direction: column; justify-content: center; }
+.intro { min-height: calc(100vh - 120px); margin-top: 0; padding-top: clamp(56px, 10vh, 120px); padding-bottom: 40px; display: flex; flex-direction: column; justify-content: center; }
 .start { align-self: center; margin-top: 64px; font: 700 22px/1 var(--hand); color: var(--red); }
 .start span { display: inline-block; animation: nudge 1.8s ease-in-out infinite; }
 .start:hover { text-decoration: none; }
