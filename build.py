@@ -605,6 +605,7 @@ def build():
 <header class="intro">
   <p>{escape(INTRO)}</p>
   <p class="small">{escape(INTRO_SMALL)}</p>
+  <figure class="contrib" aria-label="GitHub contributions in the last year"><div class="contrib-scroll"></div><figcaption></figcaption></figure>
   <nav class="toc" aria-label="Sections">{toc}</nav>
   <a class="start" href="#{SPREADS[0][0]}">Start here <span aria-hidden="true">\u2193</span></a>
 </header>

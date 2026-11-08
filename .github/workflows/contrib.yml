@@ -1,0 +1,31 @@
+name: Contribution chart
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the contribution calendar
+        env:
+          # A personal token in CONTRIB_TOKEN also counts private contributions; the default token sees public ones.
+          GITHUB_TOKEN: ${{ secrets.CONTRIB_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python3 tools/contrib.py
+      - name: Commit it if it changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git diff --quiet assets/contrib.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update the contribution chart" assets/contrib.json
+          git push
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
