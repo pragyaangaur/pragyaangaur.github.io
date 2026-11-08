@@ -56,3 +56,4 @@ ink-chess 480 648
 filament 1100 363
 pbe-lines 1000 373
 pbe-route 1000 444
+acc-title 900 204

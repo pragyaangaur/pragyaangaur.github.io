@@ -68,6 +68,7 @@ STILLS = [
     ("sunion", "assets/plates/site-Sunion.png", 700),
     ("viscous", P + "Viscosity ML/paper/fig_dichotomy.png", 800),
     ("rdgeneric-pdf", P + "Miniaturised Minecraft/docs/pdf-chromium.png", 800),
+    ("acc-title", "tools/sources/acc-title.png", 900),
 ]
 
 # Small sources that sit large on the page get a Lanczos upscale and a light sharpen.

@@ -34,6 +34,7 @@ Just kidding...
 - [Friction keeps the conservation laws of training alive](https://doi.org/10.5281/zenodo.23510521): exact drift identities for heavy ball and Nesterov momentum.
 - [Left Alone with a Pain Button](https://doi.org/10.5281/zenodo.23510640): a preregistered test of whether language models seek a steered pain state.
 - [Zap or Deal](https://doi.org/10.5281/zenodo.23510613): two language models with a real pain channel between them.
+- [A measured neighbourhood of the Andrews-Curtis conjecture](https://doi.org/10.5281/zenodo.24035724): a census of balanced two-generator presentations of the trivial group up to total length 14, a search of everything reachable from AK(3) up to total length 25, exact peaks on the AC-19 dataset and a Lean 4 archive. It does not prove or disprove the conjecture.
 - OEIS: [A390200](https://oeis.org/A390200) term 8, [A399934](https://oeis.org/A399934), and [A189077](https://oeis.org/A189077) extended to 70 terms.
 
 ## Projects
