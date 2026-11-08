@@ -50,7 +50,7 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
     secret  a note like notes, shown only while the card is hovered
     links   extra (label, url) links shown under the bullets
     repo    (owner/name, stars) for an open source card, and prs its (state, number, text) rows,
-            where state is merged, open or issue
+            where state is merged, open, issue or mail
     """
     return dict(id=id, title=title, url=url, media=media, kind=kind, caption=caption, meta=meta,
                 bullets=bullets, logos=logos, stamp=stamp, inset=inset, notes=notes, rings=rings,
@@ -354,6 +354,13 @@ SPREADS = [
                       ("open", 2897, "Hicks-Henne camber deformation under MPI")],
                  logos=[("su2.webp", "SU2", 56)],
                  tilt=0.8, drop=40, width=96),
+            card("other-oss", "Other", "https://github.com/pragyaangaur", None, "gh",
+                 prs=[("open", 1923, "suitenumerique/meet: drag to resize the split between a screen share and the video"),
+                      ("open", 67, "Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac"),
+                      ("mail", None, "Paperlane now also arrives as a daily email of new arXiv maths papers")],
+                 links=[("Meet #1923", "https://github.com/suitenumerique/meet/pull/1923"), ("WineGDK #67", "https://github.com/Weather-OS/WineGDK/pull/67"),
+                        ("Paperlane by email", SITE + "Paperlane/email.html")],
+                 tilt=-0.9, drop=40, width=92, align="right"),
         ]),
         (4, [
             card("einsteinpy", "EinsteinPy", "https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur", None, "gh",
@@ -485,6 +492,7 @@ OCTICON = {
     "open": "M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z",
     "issue": "M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z",
     "star": "M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z",
+    "mail": "M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z",
     "repo": "M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z",
 }
 

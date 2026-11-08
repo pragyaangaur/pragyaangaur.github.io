@@ -189,6 +189,7 @@ blockquote span { display: block; font-style: normal; font-size: 13.5px; color: 
 .pr-merged .oct { fill: #8250df; }
 .pr-open .oct { fill: #1a7f37; }
 .pr-issue .oct { fill: #1a7f37; }
+.pr-mail .oct { fill: #59636e; }
 .k-gh .note { z-index: 6; }
 
 /* a note that only shows while its card is hovered */

@@ -54,3 +54,5 @@ Just kidding...
 - [SunPy pull requests](https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur): 3 merged.
 - [SU2 pull requests](https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur): 1 merged.
 - [EinsteinPy pull requests](https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur): 3 merged.
+- Other pull requests: [suitenumerique/meet#1923](https://github.com/suitenumerique/meet/pull/1923), a resizable split between screen share and video, and [Weather-OS/WineGDK#67](https://github.com/Weather-OS/WineGDK/pull/67), a fix for a memory overwrite found while porting Minecraft Bedrock to macOS. Both open.
+- [Paperlane](https://pragyaangaur.dev/Paperlane/) is also sent as a daily email.

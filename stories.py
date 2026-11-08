@@ -42,6 +42,7 @@ STORIES = {
     "sunpy": dict(when="August 2026", story="Issue #8750 came with a working prototype that carries sunspot number errors through a time series.", related=("mps", "einsteinpy", "setu")),
     "su2": dict(when="", story="Pull request #2940 came out of the SkyCatcher simulations, where the reactor needed a heat source inside the flow. What I needed for my own runs went back upstream.", related=("sc-cad", "sunpy", "einsteinpy")),
     "einsteinpy": dict(when="October 2026", story="EinsteinPy is a general relativity package that had gone quiet, with its last merge in May 2024. I started sending fixes on 12 October 2026, and a maintainer replied asking me to keep sending them.", related=("sunpy", "su2", "magnus")),
+    "other-oss": dict(when="November 2026", story="The WineGDK bug turned up while getting Minecraft Bedrock to run on the Mac. The runtime wrote 256 bytes into a 32 byte area, so I reported it upstream with a fix.", related=("bedrock", "paperlane", "sunpy")),
     "poem": dict(when="", story="", related=("letter", "skycatcher")),
     "letter": dict(when="", story="", related=("poem", "skycatcher", "sc-inside")),
     "beamline": dict(when="August 2026", story="I put a Claude Pro prize on predicting the next number, and nobody claimed it. The beacon stopped on 31 August 2026 at round 596, and the chain is frozen exactly where it ended.", related=("bardly", "kerf", "forkestra")),
