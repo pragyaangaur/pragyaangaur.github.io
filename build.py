@@ -1,6 +1,7 @@
 """Build index.html, the board of everything, and the pages around it. Run: python3 build.py
 
-It also writes one page per project in work/, and sitemap.xml and robots.txt.
+It also writes one page per project in work/, with a Markdown copy of each for language models,
+and index.json, sitemap.xml and robots.txt.
 
 The page is a run of spreads. Each spread has three columns, and the major piece of work sits in
 the widest one with the related work around it. Every card is placed by hand: its column, its
@@ -19,6 +20,7 @@ import os
 import re
 import shutil
 from html import escape
+from json import dumps
 
 
 def v(path):
@@ -65,13 +67,13 @@ def card(id, title, url, media=None, kind="mid", caption="", meta="", bullets=()
 ORIGIN = "https://pragyaangaur.dev"
 DESC = ("Pragyaan Gaur: a reactor that turns smokestack SO2 into acid, solar storm forecasts, the Max Planck Institute "
         "for Solar System Research, papers in combinatorics and physics, and things that run where they shouldn't.")
-PERSON = __import__("json").dumps({
-    "@context": "https://schema.org", "@type": "Person", "name": "Pragyaan Gaur", "url": ORIGIN + "/",
+PERSON = {
+    "@type": "Person", "@id": ORIGIN + "/#person", "name": "Pragyaan Gaur", "url": ORIGIN + "/",
     "image": ORIGIN + "/apple-touch-icon.png", "email": "mailto:pragyaangaur12@gmail.com",
     "affiliation": {"@type": "CollegeOrUniversity", "name": "National Institute of Technology Agartala"},
     "sameAs": ["https://github.com/pragyaangaur", "https://www.linkedin.com/in/pragyaangaur/",
                "https://orcid.org/0009-0009-4037-2478", "https://scholar.google.com/citations?user=GomKcxcAAAAJ"],
-}).replace("</", "<\\/")
+}
 
 # Each spread: (id, heading, ink, [(column width, [cards])]). A column with no cards is breathing room.
 SPREADS = [
@@ -614,6 +616,24 @@ TITLES = {c["id"]: c["title"] for c, _, _, _ in CARDS}
 WORK = "work/"
 PAGES = [c["id"] for c, _, _, _ in CARDS if c["kind"] not in ("award", "text")]
 
+# The papers behind the cards, as (title, identifier), taken from llms.txt. A card with one of these
+# is described to machines as a scholarly article.
+PAPERS = {
+    "kmc": ("Rate-independent limits on a sulphating, self-renewing oxide catalyst", "https://doi.org/10.26434/chemrxiv.15009719/v1"),
+    "polyhex": ("The maximum area of the convex hull of a polyhex", "https://arxiv.org/abs/2609.30310"),
+    "acc": ("A measured neighbourhood of the Andrews-Curtis conjecture", "https://doi.org/10.5281/zenodo.24035724"),
+    "magnus": ("Exact turning invariants for projectile motion under quadratic drag and a vertical-axis Magnus force", "https://arxiv.org/abs/2609.30305"),
+    "uno": ("How long is a game of Uno? A counting law for large hands and the Wild Draw Four hoard", "https://arxiv.org/abs/2610.14076"),
+    "cauchy": ("A Cauchy-Schwarz inequality for real powers", "https://doi.org/10.5281/zenodo.23237507"),
+    "exhaustion": ("Proof by exhaustion", "https://doi.org/10.5281/zenodo.23805053"),
+    "token": ("The Melting Temperature of a Next-Token Distribution", "https://doi.org/10.5281/zenodo.23219063"),
+    "cellblock": ("Cellblock", "https://doi.org/10.5281/zenodo.23510660"),
+    "viscous": ("Friction keeps the conservation laws of training alive", "https://doi.org/10.5281/zenodo.23510521"),
+    "just-think": ("Left Alone with a Pain Button", "https://doi.org/10.5281/zenodo.23510640"),
+    "zap": ("Zap or Deal", "https://doi.org/10.5281/zenodo.23510613"),
+}
+
+MONTHS = {m: i + 1 for i, m in enumerate("January February March April May June July August September October November December".split())}
 VIDEOS = ("cryoem", "porosome", "led-doom", "rdgeneric", "knee-deep", "fly-brain", "cauchy-cone")
 FILTER = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" '
           'baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>')
@@ -634,6 +654,51 @@ def picture(c):
     if not key:
         return ORIGIN + "/assets/og.png"
     return f'{ORIGIN}/{B}{key}.{"jpg" if key in VIDEOS else "webp"}'
+
+
+def month(c):
+    """'October 2026' in stories.py becomes 2026-10."""
+    when = STORIES.get(c["id"], {}).get("when", "").split()
+    return f"{when[1]}-{MONTHS[when[0]]:02d}" if len(when) == 2 and when[0] in MONTHS else None
+
+
+def outlinks(c):
+    """Every place a card points to, as (label, url), without repeats."""
+    seen, out = set(), []
+    for label, url in [("Project", c["url"])] + list(c["links"]) + ([("Live demo", DEMOS[c["id"]][0])] if c["id"] in DEMOS else []):
+        if url not in seen:
+            seen.add(url)
+            out.append((label, url))
+    return out
+
+
+def ld(*things):
+    return dumps({"@context": "https://schema.org", "@graph": list(things)}, ensure_ascii=False).replace("</", "<\\/")
+
+
+def thing(c):
+    """A card as a schema.org object: a paper, a piece of software, or a plain creative work."""
+    urls = [u for _, u in outlinks(c)]
+    code = next((u for u in urls if u.startswith(GH) and len(u) > len(GH) and "/releases" not in u), None)
+    out = {"@id": f"{ORIGIN}/{WORK}{c['id']}/#work", "name": c["title"], "description": describe(c),
+           "url": f"{ORIGIN}/{WORK}{c['id']}/", "image": picture(c), "author": {"@id": ORIGIN + "/#person"}}
+    if c["id"] in PAPERS:
+        title, ident = PAPERS[c["id"]]
+        out.update({"@type": "ScholarlyArticle", "name": title, "headline": title, "identifier": ident})
+        if title != c["title"]:
+            out["alternateName"] = c["title"]
+        if code:
+            out["isBasedOn"] = code
+    elif code:
+        out.update({"@type": "SoftwareSourceCode", "codeRepository": code})
+    else:
+        out["@type"] = "CreativeWork"
+    same = [u for u in dict.fromkeys(([PAPERS[c["id"]][1]] if c["id"] in PAPERS else []) + urls) if u != GH.rstrip("/")]
+    if same:
+        out["sameAs"] = same
+    if month(c):
+        out["dateCreated"] = month(c)
+    return out
 
 
 def head(title, desc, url, image, root, graph, size=True, alternates=""):
@@ -685,7 +750,12 @@ def board():
                        f'<div class="spread" style="--cols:{template}">\n{colhtml}</div>\n</section>')
     links = ";".join(f"{a}>{b}>{escape(t)}>{i}" for a, b, t, i in LINKS)
     toc = "".join(f'<a class="ink-{ink}" href="#{sid}">{escape(h)}</a>' for sid, h, ink, _ in SPREADS)
-    alternates = '<link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">\n'
+    site = {"@type": "WebSite", "@id": ORIGIN + "/#site", "url": ORIGIN + "/", "name": "Pragyaan Gaur", "description": DESC,
+            "author": {"@id": ORIGIN + "/#person"}, "inLanguage": "en"}
+    items = {"@type": "ItemList", "@id": ORIGIN + "/#work", "name": "Projects", "numberOfItems": len(PAGES),
+             "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": TITLES[p], "url": f"{ORIGIN}/{WORK}{p}/"} for i, p in enumerate(PAGES)]}
+    alternates = (f'<link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">\n'
+                  '<link rel="alternate" type="application/json" href="index.json" title="Every project as data">\n')
     body = f'''<body>
 {FILTER}
 {bar("")}
@@ -713,7 +783,7 @@ def board():
 </body>
 </html>
 '''
-    return head("Pragyaan Gaur", DESC, ORIGIN + "/", ORIGIN + "/assets/og.png", "", PERSON, alternates=alternates) + body
+    return head("Pragyaan Gaur", DESC, ORIGIN + "/", ORIGIN + "/assets/og.png", "", ld(PERSON, site, items), alternates=alternates) + body
 
 
 def page(i):
@@ -725,6 +795,15 @@ def page(i):
     art = render(c, ink).replace("<h3>", "<h1>", 1).replace("</h3>", "</h1>", 1)
     PAGE = False
     prev, nxt = PAGES[i - 1], PAGES[(i + 1) % len(PAGES)]
+    crumbs = {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Pragyaan Gaur", "item": ORIGIN + "/"},
+        {"@type": "ListItem", "position": 2, "name": heading, "item": f"{ORIGIN}/#{sid}"},
+        {"@type": "ListItem", "position": 3, "name": c["title"], "item": url}]}
+    web = {"@type": "WebPage", "@id": url, "url": url, "name": c["title"], "description": describe(c),
+           "isPartOf": {"@id": ORIGIN + "/#site"}, "mainEntity": {"@id": url + "#work"}, "primaryImageOfPage": picture(c)}
+    person = {"@type": "Person", "@id": ORIGIN + "/#person", "name": "Pragyaan Gaur", "url": ORIGIN + "/"}
+    alternates = (f'<link rel="alternate" type="text/markdown" href="index.md" title="This page as Markdown">\n'
+                  f'<link rel="alternate" type="application/json" href="{root}index.json" title="Every project as data">\n')
     body = f'''<body class="solo">
 {FILTER}
 {bar(root)}
@@ -743,7 +822,49 @@ def page(i):
 </html>
 '''
     # The page sits two folders down, so its own files are reached through the root.
-    return head(f"{c['title']} · Pragyaan Gaur", describe(c), url, picture(c), root, None, size=False) + re.sub(r'(src|poster|href)="(assets/)', rf'\1="{root}\2', body)
+    return head(f"{c['title']} · Pragyaan Gaur", describe(c), url, picture(c), root, ld(web, thing(c), crumbs, person),
+                size=False, alternates=alternates) + re.sub(r'(src|poster|href)="(assets/)', rf'\1="{root}\2', body)
+
+
+def markdown(c, heading):
+    """The same page for a language model, in plain Markdown."""
+    s = STORIES.get(c["id"], {})
+    out = [f"# {c['title']}", ""]
+    if c["caption"]:
+        out += ["> " + plain(c["caption"]), ""]
+    facts = [x for x in (c["meta"], s.get("when"), "Section: " + heading) if x]
+    out += [". ".join(facts) + ".", ""]
+    if c["id"] in PAPERS:
+        out += [f"Paper: [{PAPERS[c['id']][0]}]({PAPERS[c['id']][1]})", ""]
+    if c["quote"]:
+        out += [f"“{c['quote'][0]}” ({c['quote'][1]})", ""]
+    rows = [plain(b) for b in c["bullets"]] + [f"{state.capitalize()}{f' #{num}' if num else ''}: {text}" for state, num, text in c["prs"]]
+    if rows:
+        out += ["## Results", ""] + ["- " + r for r in rows] + [""]
+    if s.get("story"):
+        out += ["## Story", "", s["story"], ""]
+    out += ["## Links", ""] + [f"- [{label}]({url})" for label, url in outlinks(c)] + [""]
+    rel = [r for r in s.get("related", ()) if r in PAGES]
+    if rel:
+        out += ["## See also", ""] + [f"- [{TITLES[r]}]({ORIGIN}/{WORK}{r}/index.md)" for r in rel] + [""]
+    out += [f"By [Pragyaan Gaur]({ORIGIN}/). The full index is at {ORIGIN}/llms.txt and {ORIGIN}/index.json."]
+    return "\n".join(out) + "\n"
+
+
+def record(c, sid, heading):
+    """A card as one entry of index.json."""
+    s = STORIES.get(c["id"], {})
+    has = c["id"] in PAGES
+    out = {"id": c["id"], "title": c["title"], "section": heading,
+           "page": f"{ORIGIN}/{WORK}{c['id']}/" if has else f"{ORIGIN}/#{c['id']}",
+           "markdown": f"{ORIGIN}/{WORK}{c['id']}/index.md" if has else None,
+           "url": c["url"], "description": describe(c), "role": c["meta"] or None, "when": month(c),
+           "results": [plain(b) for b in c["bullets"]],
+           "contributions": [{"state": state, "number": num, "text": text} for state, num, text in c["prs"]],
+           "paper": dict(zip(("title", "identifier"), PAPERS[c["id"]])) if c["id"] in PAPERS else None,
+           "links": [{"label": label, "url": url} for label, url in outlinks(c)],
+           "story": s.get("story") or None, "related": [r for r in s.get("related", ()) if r in TITLES]}
+    return {k: val for k, val in out.items() if val not in (None, [], "")}
 
 
 def write(path, text):
@@ -759,7 +880,15 @@ def build():
         if old not in PAGES and os.path.isdir(WORK + old):
             shutil.rmtree(WORK + old)
     for i, pid in enumerate(PAGES):
+        c, sid, heading, ink = next(x for x in CARDS if x[0]["id"] == pid)
         write(f"{WORK}{pid}/index.html", page(i))
+        write(f"{WORK}{pid}/index.md", markdown(c, heading))
+    write("index.json", dumps({
+        "site": ORIGIN + "/", "about": "Every card on pragyaangaur.dev as data. The same facts are on the board and in llms.txt.",
+        "person": {"name": "Pragyaan Gaur", "affiliation": "National Institute of Technology Agartala",
+                   "email": "pragyaangaur12@gmail.com", "profiles": [u for _, u in LINKS_TOP[1:]]},
+        "sections": [{"id": sid, "title": heading, "url": f"{ORIGIN}/#{sid}"} for sid, heading, _, _ in SPREADS],
+        "projects": [record(c, sid, heading) for c, sid, heading, _ in CARDS]}, ensure_ascii=False, indent=1) + "\n")
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
     today = __import__("datetime").date.today().isoformat()
     urls = "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in [""] + [f"{WORK}{p}/" for p in PAGES])

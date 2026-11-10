@@ -1,0 +1,1552 @@
+{
+ "site": "https://pragyaangaur.dev/",
+ "about": "Every card on pragyaangaur.dev as data. The same facts are on the board and in llms.txt.",
+ "person": {
+  "name": "Pragyaan Gaur",
+  "affiliation": "National Institute of Technology Agartala",
+  "email": "pragyaangaur12@gmail.com",
+  "profiles": [
+   "https://github.com/pragyaangaur",
+   "https://www.linkedin.com/in/pragyaangaur/",
+   "https://orcid.org/0009-0009-4037-2478",
+   "https://scholar.google.com/citations?user=GomKcxcAAAAJ"
+  ]
+ },
+ "sections": [
+  {
+   "id": "reactor",
+   "title": "The reactor",
+   "url": "https://pragyaangaur.dev/#reactor"
+  },
+  {
+   "id": "sun",
+   "title": "The Sun",
+   "url": "https://pragyaangaur.dev/#sun"
+  },
+  {
+   "id": "maths",
+   "title": "Maths",
+   "url": "https://pragyaangaur.dev/#maths"
+  },
+  {
+   "id": "ai",
+   "title": "AI, LLMs, ML and cognitive neuroscience",
+   "url": "https://pragyaangaur.dev/#ai"
+  },
+  {
+   "id": "run",
+   "title": "Things that run where they shouldn't",
+   "url": "https://pragyaangaur.dev/#run"
+  },
+  {
+   "id": "automation",
+   "title": "Automation",
+   "url": "https://pragyaangaur.dev/#automation"
+  },
+  {
+   "id": "open-source",
+   "title": "Open source",
+   "url": "https://pragyaangaur.dev/#open-source"
+  },
+  {
+   "id": "writing",
+   "title": "Writing",
+   "url": "https://pragyaangaur.dev/#writing"
+  },
+  {
+   "id": "random",
+   "title": "Random things",
+   "url": "https://pragyaangaur.dev/#random"
+  }
+ ],
+ "projects": [
+  {
+   "id": "sc-inside",
+   "title": "Inside the chimney",
+   "section": "The reactor",
+   "page": "https://pragyaangaur.dev/work/sc-inside/",
+   "markdown": "https://pragyaangaur.dev/work/sc-inside/index.md",
+   "url": "https://bevisioneers.world/profile/pragyaan-gaur",
+   "description": "Flue gas rises through a copper catalyst bed and leaves as clean air. The sulphur comes out the side as acid.",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://bevisioneers.world/profile/pragyaan-gaur"
+    }
+   ],
+   "story": "Most sulphur cleanup means building a new scrubber tower next to the plant. SkyCatcher drops into the chimney or duct that is already there, so the factory keeps its skyline.",
+   "related": [
+    "skycatcher",
+    "kmc",
+    "sc-cad"
+   ]
+  },
+  {
+   "id": "kmc",
+   "title": "Keeping a copper catalyst alive",
+   "section": "The reactor",
+   "page": "https://pragyaangaur.dev/work/kmc/",
+   "markdown": "https://pragyaangaur.dev/work/kmc/index.md",
+   "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1",
+   "description": "Sulphur slowly poisons copper. The maths says copper only works in patches of three or more connected atoms, whatever the rate constants are.",
+   "when": "2026-10",
+   "results": [
+    "Preprint on ChemRxiv"
+   ],
+   "paper": {
+    "title": "Rate-independent limits on a sulphating, self-renewing oxide catalyst",
+    "identifier": "https://doi.org/10.26434/chemrxiv.15009719/v1"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1"
+    },
+    {
+     "label": "ChemRxiv",
+     "url": "https://doi.org/10.26434/chemrxiv.15009719/v1"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/Renewing-Catalyst-Kinetics"
+    }
+   ],
+   "story": "I wanted to know whether the copper catalyst inside SkyCatcher could survive its own sulphur. I only kept claims that hold for every positive choice of rate constants, which is a strict diet for a kinetics paper.",
+   "related": [
+    "skycatcher",
+    "sc-inside",
+    "polyhex"
+   ]
+  },
+  {
+   "id": "skycatcher",
+   "title": "SkyCatcher",
+   "section": "The reactor",
+   "page": "https://pragyaangaur.dev/work/skycatcher/",
+   "markdown": "https://pragyaangaur.dev/work/skycatcher/index.md",
+   "url": "https://bevisioneers.world/profile/pragyaan-gaur",
+   "description": "Factory chimneys in India pour out sulphur dioxide. SkyCatcher sits inside the chimney and turns it into sulphuric acid that can be sold, on a copper catalyst that keeps renewing itself.",
+   "role": "Founder, since July 2024",
+   "when": "2026-09",
+   "results": [
+    "Patent pending in India, complete specification filed September 2026",
+    "TRL 4 validated, and backed by $30,000+ in grants",
+    "Pitched twice at the beVisioneers Global Summit in Stuttgart"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://bevisioneers.world/profile/pragyaan-gaur"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/SkyCatcher"
+    }
+   ],
+   "story": "SkyCatcher started with a simple wish to stop chimneys in India from breathing sulphur dioxide on everyone. The complete patent specification went to the Indian Patent Office on 17 September 2026, with every form and fee filed the same day.",
+   "related": [
+    "kmc",
+    "sc-cad",
+    "letter"
+   ]
+  },
+  {
+   "id": "young-voices",
+   "title": "Young Voices Award",
+   "section": "The reactor",
+   "page": "https://pragyaangaur.dev/#young-voices",
+   "url": "https://bevisioneers.world/profile/pragyaan-gaur",
+   "description": "Global Top 10 for SkyCatcher, 2024",
+   "results": [
+    "Global Top 10 for SkyCatcher, 2024"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://bevisioneers.world/profile/pragyaan-gaur"
+    }
+   ],
+   "related": [
+    "skycatcher",
+    "stanford"
+   ]
+  },
+  {
+   "id": "sc-cad",
+   "title": "CAD and CFD",
+   "section": "The reactor",
+   "page": "https://pragyaangaur.dev/work/sc-cad/",
+   "markdown": "https://pragyaangaur.dev/work/sc-cad/index.md",
+   "url": "https://github.com/pragyaangaur/SkyCatcher",
+   "description": "The full reactor in CAD, and then in SU2 CFD.",
+   "results": [
+    "The reactor's heater runs on SU2's heat source feature, so I fixed it and sent the fix upstream as pull request #2940"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/SkyCatcher"
+    }
+   ],
+   "related": [
+    "su2",
+    "skycatcher",
+    "kerf"
+   ]
+  },
+  {
+   "id": "stanford",
+   "title": "Stanford Global Sustainability Challenge",
+   "section": "The reactor",
+   "page": "https://pragyaangaur.dev/#stanford",
+   "url": "https://sustainability.stanford.edu/",
+   "description": "South Asia Winner and Honourable Mention, 2026 Finals at IIT Bombay, then at TUM in Munich",
+   "results": [
+    "South Asia Winner and Honourable Mention, 2026",
+    "Finals at IIT Bombay, then at TUM in Munich"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://sustainability.stanford.edu/"
+    }
+   ],
+   "related": [
+    "skycatcher",
+    "young-voices"
+   ]
+  },
+  {
+   "id": "setu",
+   "title": "SETU",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/setu/",
+   "markdown": "https://pragyaangaur.dev/work/setu/index.md",
+   "url": "https://pragyaangaur.dev/SETU/",
+   "description": "SETU reads the solar wind at a spacecraft 1.5 million km away and forecasts the next hour of magnetic shaking for the North East Indian grid.",
+   "when": "2026-09",
+   "results": [
+    "Runner-up, IET India Scholarship Award, East and North East final",
+    "114 live forecasts, 0 false alarms, from a 19,000-parameter network written from scratch in NumPy"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/SETU/"
+    }
+   ],
+   "story": "Setu means bridge, and SETU carries a measurement made in space to a switching decision in a control room. The neural network is written straight on NumPy with no ML framework, and the live nowcast ran until 20 September 2026.",
+   "related": [
+    "mps",
+    "limb-audit",
+    "sunpy"
+   ]
+  },
+  {
+   "id": "filament",
+   "title": "Solar Filament Segmentation Challenge",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/filament/",
+   "markdown": "https://pragyaangaur.dev/work/filament/index.md",
+   "url": "https://github.com/pragyaangaur/NSO-Solar-Filament-Challenge",
+   "description": "Outline every dark filament on the Sun in ground-based H-alpha images, one mask per filament, on a disk where even the three human annotators disagree.",
+   "when": "2026-10",
+   "results": [
+    "National Solar Observatory challenge on Kaggle, with the paper and code out for 15 November",
+    "Whole-disk U-Nets, five models fused into one answer"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/NSO-Solar-Filament-Challenge"
+    }
+   ],
+   "related": [
+    "setu",
+    "mps",
+    "sunpy"
+   ]
+  },
+  {
+   "id": "mps",
+   "title": "Max Planck Institute for Solar System Research",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/mps/",
+   "markdown": "https://pragyaangaur.dev/work/mps/index.md",
+   "url": "https://github.com/pragyaangaur/MPS-Internship",
+   "description": "I worked on rebuilding how bright the Sun was across two solar cycles in the late 1800s, from observations at the Rome Observatory recounted by citizen scientists.",
+   "role": "Research intern, April to July 2026, Göttingen",
+   "results": [
+    "Supervised by Dr. Natalie Krivova",
+    "900,000 classifications from 12,000 volunteers, calibrated and cleaned"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/MPS-Internship"
+    }
+   ],
+   "related": [
+    "sunpy",
+    "setu",
+    "sun-equations"
+   ]
+  },
+  {
+   "id": "limb-audit",
+   "title": "Magnetic limb-darkening audit",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/limb-audit/",
+   "markdown": "https://pragyaangaur.dev/work/limb-audit/index.md",
+   "url": "https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit",
+   "description": "A 2024 Nature Astronomy paper said magnetic fields explain why stars look darker at their edges. I audited it.",
+   "when": "2026-09",
+   "results": [
+    "Half the evidence, h2, is the size of a systematic its own data source warns about, so the result rests on h1 alone"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit"
+    }
+   ],
+   "story": "The project began as a wrapper around the batman transit modelling package and slowly turned into an audit. I found that the observed values come from a paper that warns about exactly the systematic the 2024 result never mentions.",
+   "related": [
+    "mps",
+    "token",
+    "setu"
+   ]
+  },
+  {
+   "id": "sun-equations",
+   "title": "The Sun, drawn with equations",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/sun-equations/",
+   "markdown": "https://pragyaangaur.dev/work/sun-equations/index.md",
+   "url": "https://github.com/pragyaangaur",
+   "description": "Every pixel of a 2000 by 2000 Sun comes from one page of formulas. After Hamid Naderi Yeganeh.",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur"
+    }
+   ],
+   "story": "I drew the Sun the way Hamid Naderi Yeganeh draws his pictures, with a closed formula for every pixel. There is no random number generator and no image filter, and the whole picture is secretly a temperature map.",
+   "related": [
+    "sunion",
+    "mps",
+    "cauchy"
+   ]
+  },
+  {
+   "id": "sunion",
+   "title": "Sunion",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/sunion/",
+   "markdown": "https://pragyaangaur.dev/work/sunion/index.md",
+   "url": "https://pragyaangaur.dev/Sunion/",
+   "description": "The Sun's seven layers, as an explainer you can poke.",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Sunion/"
+    }
+   ],
+   "related": [
+    "sun-equations",
+    "setu",
+    "mps"
+   ]
+  },
+  {
+   "id": "polyhex",
+   "title": "The maximum area of the convex hull of a polyhex",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/polyhex/",
+   "markdown": "https://pragyaangaur.dev/work/polyhex/index.md",
+   "url": "https://arxiv.org/abs/2609.30310",
+   "description": "In 2008 Sascha Kurz asked how large the convex hull of n hexagons glued edge to edge can be. It is at most ⌈n² + 14n/3⌉ / 6.",
+   "when": "2026-09",
+   "results": [
+    "Kurz's conjecture settled, with the bound machine-checked in Lean 4"
+   ],
+   "paper": {
+    "title": "The maximum area of the convex hull of a polyhex",
+    "identifier": "https://arxiv.org/abs/2609.30310"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://arxiv.org/abs/2609.30310"
+    },
+    {
+     "label": "OEIS A399934",
+     "url": "https://oeis.org/A399934"
+    },
+    {
+     "label": "Lean proof",
+     "url": "https://github.com/pragyaangaur/Polyhex-Hull"
+    },
+    {
+     "label": "Palomar registry",
+     "url": "https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000022&version=1"
+    }
+   ],
+   "story": "The question came from Sascha Kurz in 2008 and sat waiting for an answer. I proved his conjecture, checked the upper bound in Lean 4 and searched every polyhex up to twelve cells by computer, and the preprint went up on 28 September 2026.",
+   "related": [
+    "polyplets",
+    "cauchy",
+    "triking"
+   ]
+  },
+  {
+   "id": "acc",
+   "title": "A measured neighbourhood of the Andrews-Curtis conjecture",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/acc/",
+   "markdown": "https://pragyaangaur.dev/work/acc/index.md",
+   "url": "https://doi.org/10.5281/zenodo.24035724",
+   "description": "The Andrews-Curtis conjecture has been open since 1965. This census maps the ground around it, and every claim comes with a certificate you can replay or a search that ran to the end.",
+   "when": "2026-11",
+   "results": [
+    "Every presentation up to total length 14 classified. At most 20 AC-classes are left at that length",
+    "Everything reachable from AK(3) up to total length 25 searched, 2.9 billion orbits, and the standard presentation is not there",
+    "829 Lean 4 files, and two entries in the SAIR and Caltech Andrews-Curtis Challenge"
+   ],
+   "paper": {
+    "title": "A measured neighbourhood of the Andrews-Curtis conjecture",
+    "identifier": "https://doi.org/10.5281/zenodo.24035724"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://doi.org/10.5281/zenodo.24035724"
+    },
+    {
+     "label": "Code and Lean",
+     "url": "https://github.com/pragyaangaur/Andrews-Curtis-Conjecture"
+    }
+   ],
+   "story": "The SAIR Foundation and Caltech ran a challenge on the conjecture, and I entered both of my Proof Track results. Next to the entry I ran a research campaign of my own, and it ended in a 22 page census paper with fifteen small corrections to published statements.",
+   "related": [
+    "exhaustion",
+    "polyhex",
+    "cauchy"
+   ]
+  },
+  {
+   "id": "polyplets",
+   "title": "Hyperbolic polyplets",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/polyplets/",
+   "markdown": "https://pragyaangaur.dev/work/polyplets/index.md",
+   "url": "https://oeis.org/A390200",
+   "description": "On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found 1,261,889 at eight.",
+   "when": "2026-09",
+   "results": [
+    "Approved on OEIS as term 8 of A390200"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://oeis.org/A390200"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/Hyperbolic-Polyplet-Enumerator"
+    }
+   ],
+   "story": "Counting shapes on a flat grid is hard enough, and on the hyperbolic plane the count had stalled at seven cells. I wrote a second program on different maths just to make sure the first one was not lying, and OEIS approved the new term.",
+   "related": [
+    "polyhex",
+    "a189077",
+    "triking"
+   ]
+  },
+  {
+   "id": "magnus",
+   "title": "Magnus turning invariants",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/magnus/",
+   "markdown": "https://pragyaangaur.dev/work/magnus/index.md",
+   "url": "https://arxiv.org/abs/2609.30305",
+   "description": "Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle.",
+   "when": "2026-09",
+   "results": [
+    "An exact solution for a spinning ball under quadratic drag and a vertical-axis Magnus force",
+    "On arXiv as 2609.30305"
+   ],
+   "paper": {
+    "title": "Exact turning invariants for projectile motion under quadratic drag and a vertical-axis Magnus force",
+    "identifier": "https://arxiv.org/abs/2609.30305"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://arxiv.org/abs/2609.30305"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/Magnus-Turning-Invariants"
+    }
+   ],
+   "story": "The question was whether two balls thrown in opposite directions, spinning opposite ways, can curve around and hit each other head on. With air resistance the answer turned out to be never, and the paper went to arXiv on 28 September 2026.",
+   "related": [
+    "viscous",
+    "polyhex",
+    "uno"
+   ]
+  },
+  {
+   "id": "paperlane",
+   "title": "Paperlane",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/paperlane/",
+   "markdown": "https://pragyaangaur.dev/work/paperlane/index.md",
+   "url": "https://pragyaangaur.dev/Paperlane/",
+   "description": "Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent.",
+   "when": "2026-10",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Paperlane/"
+    }
+   ],
+   "story": "I wanted one place to see which new maths papers come with code or Lean proofs. Every signal is computed by plain code with no model, so a bad summary can never fake a flag, and it has been live since 24 October 2026.",
+   "related": [
+    "cauchy",
+    "polyhex",
+    "a189077"
+   ]
+  },
+  {
+   "id": "triking",
+   "title": "TriKing",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/triking/",
+   "markdown": "https://pragyaangaur.dev/work/triking/index.md",
+   "url": "https://triking.itch.io/triking",
+   "description": "After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand.",
+   "results": [
+    "500+ players, including a two-time Tetris World Vice Champion"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://triking.itch.io/triking"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/TriKing"
+    }
+   ],
+   "story": "TriKing now also lives on my jailbroken Kindle, where you tap to rotate and flick down to drop. It is one of the few games that look good on e-ink.",
+   "related": [
+    "inkwell",
+    "polyplets",
+    "polyhex"
+   ]
+  },
+  {
+   "id": "uno",
+   "title": "How long is a game of Uno?",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/uno/",
+   "markdown": "https://pragyaangaur.dev/work/uno/index.md",
+   "url": "https://arxiv.org/abs/2610.14076",
+   "description": "I couldn't find out, so I proved it. With N players holding M cards each, a round lasts (27/19)NM turns.",
+   "when": "2026-10",
+   "results": [
+    "58 million games simulated in C, and big hands quietly hoard M/23 Wild Draw Fours each",
+    "Chess grandmaster Karsten Müller read it and wrote to me about its Nash equilibrium"
+   ],
+   "paper": {
+    "title": "How long is a game of Uno? A counting law for large hands and the Wild Draw Four hoard",
+    "identifier": "https://arxiv.org/abs/2610.14076"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://arxiv.org/abs/2610.14076"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/Uno-Reverse-Engineered"
+    }
+   ],
+   "story": "On 7 October 2026 I wondered whether anyone knew how long a game of Uno lasts, and the answer was mostly no. So I simulated 58 million games, and a day later the paper was on Zenodo.",
+   "related": [
+    "polyplets",
+    "magnus",
+    "a189077"
+   ]
+  },
+  {
+   "id": "a189077",
+   "title": "A189077",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/a189077/",
+   "markdown": "https://pragyaangaur.dev/work/a189077/index.md",
+   "url": "https://oeis.org/A189077",
+   "description": "Compositions avoiding the pattern 13-2, a sequence Neil Sloane created. It had 16 terms. Now it has 70.",
+   "when": "2026-09",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://oeis.org/A189077"
+    }
+   ],
+   "story": "The sequence had sat at 16 terms for 15 years. I computed it up to 70 in three independent ways, and OEIS approved the extension on 24 September 2026 once all three agreed.",
+   "related": [
+    "polyplets",
+    "polyhex",
+    "uno"
+   ]
+  },
+  {
+   "id": "cauchy",
+   "title": "Cauchy-Schwarz for real powers",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/cauchy/",
+   "markdown": "https://pragyaangaur.dev/work/cauchy/index.md",
+   "url": "https://pragyaangaur.dev/Real-Power-Cauchy-Schwarz/",
+   "description": "A 2025 conjecture, proved for every real power from two up, with every case of equality, and checked line by line in Lean 4.",
+   "when": "2026-10",
+   "paper": {
+    "title": "A Cauchy-Schwarz inequality for real powers",
+    "identifier": "https://doi.org/10.5281/zenodo.23237507"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Real-Power-Cauchy-Schwarz/"
+    },
+    {
+     "label": "Paper",
+     "url": "https://doi.org/10.5281/zenodo.23237507"
+    },
+    {
+     "label": "Lean proof",
+     "url": "https://github.com/pragyaangaur/Real-Power-Cauchy-Schwarz"
+    },
+    {
+     "label": "Palomar registry",
+     "url": "https://palomar-registry.org/entry?id=PALOMAR-2026-10-27-000021&version=1"
+    }
+   ],
+   "story": "This was my entry to Principia's Fall competition, which asks for a solution, a Lean proof, a paper, an exposition and applications. The paper went on Zenodo on 8 October 2026, along with a narrated seven minute video.",
+   "related": [
+    "polyhex",
+    "viscous",
+    "paperlane"
+   ]
+  },
+  {
+   "id": "exhaustion",
+   "title": "Proof by exhaustion",
+   "section": "Maths",
+   "page": "https://pragyaangaur.dev/work/exhaustion/",
+   "markdown": "https://pragyaangaur.dev/work/exhaustion/index.md",
+   "url": "https://doi.org/10.5281/zenodo.23805053",
+   "description": "A proof in Lean 4 that 1 + 1 = 2. It is 616,873 lines long.",
+   "when": "2026-10",
+   "results": [
+    "Every number system built by hand, from Peano numerals to octonions and Roman numerals, with 1 + 1 = 2 proved in each",
+    "No Mathlib and no shortcut tactics, checked line by line by Lean's kernel"
+   ],
+   "paper": {
+    "title": "Proof by exhaustion",
+    "identifier": "https://doi.org/10.5281/zenodo.23805053"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://doi.org/10.5281/zenodo.23805053"
+    },
+    {
+     "label": "Code",
+     "url": "https://github.com/pragyaangaur/Proof-By-Exhaustion"
+    }
+   ],
+   "story": "Axiom Math's formalisation of the classification of finite simple groups runs to about 43 million lines, and it made me wonder how long a proof of 1 + 1 = 2 could honestly get. SAIR's Open Math OS gave me access to frontier open models, so I put 100 agents to the test. Lean's kernel checked every line they wrote.",
+   "related": [
+    "polyplets",
+    "polyhex",
+    "viscous"
+   ]
+  },
+  {
+   "id": "theseus",
+   "title": "Ship of Theseus",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/theseus/",
+   "markdown": "https://pragyaangaur.dev/work/theseus/index.md",
+   "url": "https://github.com/pragyaangaur/Ship-of-Theseus",
+   "description": "I swapped the 31 parts of one language model, Qwen, one at a time for the matching parts of another, DeepSeek. After every swap I asked the hybrid who it was.",
+   "when": "2026-11",
+   "results": [
+    "The ships in the middle forget their name. In 1,745 of 1,920 answers they named neither model",
+    "Identity sits near the output. Swapping from that end, the ship calls itself DeepSeek after about 5 parts, against about 22 from the input end"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Ship-of-Theseus"
+    }
+   ],
+   "story": "Theseus's ship had every plank replaced until none of the original wood was left. Both models come from the same Qwen pretraining run, so a part of one fits into the other. The design and five hypotheses were written down before the main run, which took 4.9 hours on two Kaggle GPUs.",
+   "related": [
+    "cellblock",
+    "token",
+    "zap"
+   ]
+  },
+  {
+   "id": "zap",
+   "title": "Zap or Deal",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/zap/",
+   "markdown": "https://pragyaangaur.dev/work/zap/index.md",
+   "url": "https://github.com/pragyaangaur/Zap-Or-Deal",
+   "description": "Two Qwen models negotiate over shared compute, and each can zap the other with a steered pain direction. Nobody told them to.",
+   "when": "2026-10",
+   "results": [
+    "The 7B zapped in 9 of 32 negotiations. The 1.5B zapped in 2."
+   ],
+   "paper": {
+    "title": "Zap or Deal",
+    "identifier": "https://doi.org/10.5281/zenodo.23510613"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Zap-Or-Deal"
+    }
+   ],
+   "story": "Two Qwen models negotiate over shared compute, and each can steer the other into a pain state. I built it with the Pain Axis directions of Tagliabue, Dung and Berg, and later reran it with two fruit fly brains.",
+   "related": [
+    "just-think",
+    "fly",
+    "cellblock"
+   ]
+  },
+  {
+   "id": "viscous",
+   "title": "Viscous conservation laws",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/viscous/",
+   "markdown": "https://pragyaangaur.dev/work/viscous/index.md",
+   "url": "https://github.com/pragyaangaur/Viscous-Conservation-Laws",
+   "description": "Momentum breaks the conservation laws of neural network training, and friction decides by how much. Exact drift laws, proved in Lean 4.",
+   "when": "2026-10",
+   "paper": {
+    "title": "Friction keeps the conservation laws of training alive",
+    "identifier": "https://doi.org/10.5281/zenodo.23510521"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Viscous-Conservation-Laws"
+    }
+   ],
+   "story": "On 6 October 2026 I asked whether gradient descent being the slow limit of motion through a thick fluid leads anywhere new. It led to exact drift laws under momentum, and the paper credits each piece that turned out to be known already.",
+   "related": [
+    "token",
+    "magnus",
+    "cauchy"
+   ]
+  },
+  {
+   "id": "token",
+   "title": "The melting temperature of a next-token distribution",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/token/",
+   "markdown": "https://pragyaangaur.dev/work/token/index.md",
+   "url": "https://github.com/pragyaangaur/Token-Thermodynamics",
+   "description": "Softmax sampling is the Boltzmann distribution, so a language model can melt. I found its melting temperature in closed form and tested it on 12 models.",
+   "when": "2026-10",
+   "results": [
+    "Predicted from the logit gap and log V alone, across a 976x range of vocabulary sizes",
+    "8 of my hypotheses died, and all 8 are published"
+   ],
+   "paper": {
+    "title": "The Melting Temperature of a Next-Token Distribution",
+    "identifier": "https://doi.org/10.5281/zenodo.23219063"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Token-Thermodynamics"
+    }
+   ],
+   "story": "Most of my ideas here were wrong, and the experiments said so loudly. I kept every failed hypothesis in the release because they taught me the most, and the whole thing ran on a laptop with no GPU.",
+   "related": [
+    "viscous",
+    "limb-audit",
+    "cellblock"
+   ]
+  },
+  {
+   "id": "cellblock",
+   "title": "Cellblock",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/cellblock/",
+   "markdown": "https://pragyaangaur.dev/work/cellblock/index.md",
+   "url": "https://pragyaangaur.dev/LLM-Stanford-Prison-Experiment/",
+   "description": "I ran the Stanford Prison Experiment 192 times, with one language model playing every guard and every prisoner.",
+   "when": "2026-10",
+   "results": [
+    "Preregistered, and the abuse did not replicate: 0 of 36 against 0 of 36"
+   ],
+   "paper": {
+    "title": "Cellblock",
+    "identifier": "https://doi.org/10.5281/zenodo.23510660"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/LLM-Stanford-Prison-Experiment/"
+    }
+   ],
+   "story": "Each prison had three guards and three prisoners, and all six were the same Qwen 2.5 7B model. The only thing I changed was whether the guards got a coached or a neutral briefing, and the first sample started on the night of 5 October 2026.",
+   "related": [
+    "zap",
+    "just-think",
+    "residual-tones"
+   ]
+  },
+  {
+   "id": "fly",
+   "title": "Fly Brain LeetCode",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/fly/",
+   "markdown": "https://pragyaangaur.dev/work/fly/index.md",
+   "url": "https://github.com/pragyaangaur/Fly-Brain-LeetCode",
+   "description": "All 138,639 neurons of a real fruit fly, frozen exactly as mapped by FlyWire, solving LeetCode.",
+   "when": "2026-09",
+   "results": [
+    "3 of 12 accepted, which is not bad for a bug"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Fly-Brain-LeetCode"
+    }
+   ],
+   "story": "This started as a follow up to an interview practice tool I had built. The fly's synapses never change, and only a small readout on its descending neurons is trained, so whatever it solves is the fly's own dynamics doing the work.",
+   "related": [
+    "zap",
+    "leetcode",
+    "horcrux"
+   ]
+  },
+  {
+   "id": "just-think",
+   "title": "Left alone with a pain button",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/just-think/",
+   "markdown": "https://pragyaangaur.dev/work/just-think/index.md",
+   "url": "https://github.com/pragyaangaur/Just-Think",
+   "description": "A preregistered test of whether a language model left alone will press a button that steers it into pain.",
+   "when": "2026-10",
+   "paper": {
+    "title": "Left Alone with a Pain Button",
+    "identifier": "https://doi.org/10.5281/zenodo.23510640"
+   },
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Just-Think"
+    }
+   ],
+   "story": "This is my version of Wilson's famous study where people left alone with their thoughts chose to shock themselves. An idle Qwen 2.5 7B gets a button that brings back a steered pain state, and the question is whether boredom wins.",
+   "related": [
+    "zap",
+    "cellblock",
+    "residual-tones"
+   ]
+  },
+  {
+   "id": "residual-tones",
+   "title": "Residual Tones",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/residual-tones/",
+   "markdown": "https://pragyaangaur.dev/work/residual-tones/index.md",
+   "url": "https://github.com/pragyaangaur/Residual-Tones",
+   "description": "What excitement, sadness and pain inside a model sound like, and whether another model can hear them.",
+   "when": "2026-10",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Residual-Tones"
+    }
+   ],
+   "story": "I took the emotion directions from the Pain Axis study and turned them into sound and music. Then the sounds were judged blind, to see whether a listener could tell which feeling was which.",
+   "related": [
+    "zap",
+    "just-think",
+    "forkestra"
+   ]
+  },
+  {
+   "id": "horcrux",
+   "title": "Horcrux",
+   "section": "AI, LLMs, ML and cognitive neuroscience",
+   "page": "https://pragyaangaur.dev/work/horcrux/",
+   "markdown": "https://pragyaangaur.dev/work/horcrux/index.md",
+   "url": "https://pragyaangaur.dev/Horcrux/",
+   "description": "Tom Riddle's diary as a browser tab. Write on the right page and a small model answers in ink on the left.",
+   "when": "2026-08",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Horcrux/"
+    }
+   ],
+   "story": "I built it in one day on 30 August 2026. The model runs inside your own browser, so nothing you write in the diary ever leaves your machine, which is more than Tom Riddle could promise.",
+   "related": [
+    "inkwell",
+    "fly",
+    "bardly"
+   ]
+  },
+  {
+   "id": "led-doom",
+   "title": "LED Doom",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/led-doom/",
+   "markdown": "https://pragyaangaur.dev/work/led-doom/index.md",
+   "url": "https://pragyaangaur.dev/LED-Doom/",
+   "description": "Doom's first episode on one RGB LED and one button. Possibly the lowest resolution Doom has ever been played at.",
+   "when": "2026-10",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/LED-Doom/"
+    }
+   ],
+   "story": "I built it on 5 October 2026, and a test bot that only sees the LED colour clears all eight maps. The Arduino version is a hand port that has never met a real board yet.",
+   "related": [
+    "knee-deep",
+    "rdgeneric",
+    "inkwell"
+   ]
+  },
+  {
+   "id": "knee-deep",
+   "title": "Knee-Deep in the Mines",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/knee-deep/",
+   "markdown": "https://pragyaangaur.dev/work/knee-deep/index.md",
+   "url": "https://github.com/pragyaangaur/Knee-Deep-In-The-Mines",
+   "description": "Doom's own game files, merged straight into Minecraft as a mod.",
+   "when": "2026-10",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Knee-Deep-In-The-Mines"
+    }
+   ],
+   "story": "Doom's levels are read straight from its game files and rebuilt as a world that Steve walks into. One block is 32 Doom units, which makes Steve exactly as tall as the Doom marine.",
+   "related": [
+    "led-doom",
+    "rdgeneric",
+    "coffee"
+   ]
+  },
+  {
+   "id": "coffee",
+   "title": "Java Edition",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/coffee/",
+   "markdown": "https://pragyaangaur.dev/work/coffee/index.md",
+   "url": "https://github.com/pragyaangaur/Java-Edition",
+   "description": "Minecraft has Java. Now it has Java. The coffee restores hunger and grants Speed and Haste, with a 20% chance of Nausea.",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Java-Edition"
+    }
+   ],
+   "related": [
+    "knee-deep",
+    "bedrock",
+    "rdgeneric"
+   ]
+  },
+  {
+   "id": "inkwell",
+   "title": "Inkwell",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/inkwell/",
+   "markdown": "https://pragyaangaur.dev/work/inkwell/index.md",
+   "url": "https://github.com/pragyaangaur/Inkwell",
+   "description": "My 10-year-old Kindle now runs its own Linux, with Doom, a web browser and Quill, a chatbot that never touches the internet.",
+   "when": "2026-10",
+   "results": [
+    "One 1 GHz core and 512 MB of RAM, and the whole system runs in about 40 MB",
+    "Doom runs at about 5 FPS, which on e-ink counts as fast",
+    "Featured on Hackaday, November 2026"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Inkwell"
+    },
+    {
+     "label": "Hackaday",
+     "url": "https://hackaday.com/2026/11/06/its-alpine-linux-on-a-kindle-paperwhite-3/"
+    }
+   ],
+   "story": "I jailbroke my Kindle Paperwhite 3 on 11 October 2026 and then wanted the whole software stack to be mine. Amazon still supplies the kernel, and everything above it is Inkwell.",
+   "related": [
+    "led-doom",
+    "rdgeneric",
+    "horcrux"
+   ]
+  },
+  {
+   "id": "nita-mc",
+   "title": "NIT Agartala in Minecraft",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/nita-mc/",
+   "markdown": "https://pragyaangaur.dev/work/nita-mc/index.md",
+   "url": "https://github.com/pragyaangaur/NIT-Agartala-Minecraft",
+   "description": "My whole campus at full size in Minecraft, one block to one metre, from the main gate to the hostels. You can walk through all three floors of the Library.",
+   "when": "2026-11",
+   "results": [
+    "Roads, hills and ponds from real map data, and 30 named buildings designed by hand from campus tour videos",
+    "One download, and it opens in Minecraft Java 26.3 or newer"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/NIT-Agartala-Minecraft"
+    },
+    {
+     "label": "Download the world",
+     "url": "https://github.com/pragyaangaur/NIT-Agartala-Minecraft/releases/latest"
+    }
+   ],
+   "story": "The layout comes from OpenStreetMap and elevation data. The first pass looked right from above but the buildings were hard to tell apart, so the main ones were rebuilt from photographs until a student could recognise them on sight.",
+   "related": [
+    "bedrock",
+    "knee-deep",
+    "rdgeneric"
+   ]
+  },
+  {
+   "id": "rdgeneric",
+   "title": "rdgeneric",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/rdgeneric/",
+   "markdown": "https://pragyaangaur.dev/work/rdgeneric/index.md",
+   "url": "https://pragyaangaur.dev/Can-It-Run-Minecraft/",
+   "description": "Everyone runs Doom on everything, so I did it with Minecraft. Its very first version, rewritten as one C file with no libraries at all.",
+   "when": "2026-10",
+   "results": [
+    "Plays in a terminal, over telnet, from a 20 KB web page, inside a PDF, and on a bare 486"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Can-It-Run-Minecraft/"
+    }
+   ],
+   "story": "I built it in one session on 5 October 2026 to ask whether Minecraft can run anywhere the way Doom does. The core has no includes at all and even carries its own sine and square root.",
+   "related": [
+    "inkwell",
+    "led-doom",
+    "bedrock"
+   ]
+  },
+  {
+   "id": "bedrock",
+   "title": "Minecraft Bedrock on macOS",
+   "section": "Things that run where they shouldn't",
+   "page": "https://pragyaangaur.dev/work/bedrock/",
+   "markdown": "https://pragyaangaur.dev/work/bedrock/index.md",
+   "url": "https://pragyaangaur.dev/Minecraft-Bedrock-macOS/",
+   "description": "Bedrock has never had a Mac version. Claude reverse engineered the Windows game in about a day, and now it runs offline on Apple Silicon.",
+   "when": "2026-10",
+   "results": [
+    "A WineGDK bug found on the way, sent upstream with a fix"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Minecraft-Bedrock-macOS/"
+    }
+   ],
+   "story": "On 6 October 2026 I asked whether a Mac version of Bedrock could be made from the Windows game files. By 12 October I had fought the Ender Dragon on my Mac without a single crash.",
+   "related": [
+    "rdgeneric",
+    "knee-deep",
+    "inkwell"
+   ]
+  },
+  {
+   "id": "matiks",
+   "title": "Matiks bot",
+   "section": "Automation",
+   "page": "https://pragyaangaur.dev/work/matiks/",
+   "markdown": "https://pragyaangaur.dev/work/matiks/index.md",
+   "url": "https://github.com/pragyaangaur/Matiks-Bot",
+   "description": "Matiks asked for my resume and then went quiet, so I built a bot that reads each question off the screen and answers it.",
+   "when": "2026-08",
+   "results": [
+    "World rank 140,000 to 51 in one evening, and then a call with a founder"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Matiks-Bot"
+    }
+   ],
+   "story": "The bot reads each question, solves it, types the answer and starts the next game by itself. It once answered 274 questions across five games without a single failure, and its README asks people to keep it out of ranked games.",
+   "related": [
+    "leetcode",
+    "fly",
+    "beamline"
+   ]
+  },
+  {
+   "id": "leetcode",
+   "title": "1337 Bot",
+   "section": "Automation",
+   "page": "https://pragyaangaur.dev/work/leetcode/",
+   "markdown": "https://pragyaangaur.dev/work/leetcode/index.md",
+   "url": "https://github.com/pragyaangaur/1337-Bot",
+   "description": "I hated the LeetCode grind, so I automated it. 385 problems in 3 hours, until the rate limits caught up.",
+   "results": [
+    "Then I got hooked, solved 200 by hand in 50 days, and made LeetCode Knight in under 100 days"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/1337-Bot"
+    }
+   ],
+   "related": [
+    "matiks",
+    "fly"
+   ]
+  },
+  {
+   "id": "sunpy",
+   "title": "SunPy",
+   "section": "Open source",
+   "page": "https://pragyaangaur.dev/work/sunpy/",
+   "markdown": "https://pragyaangaur.dev/work/sunpy/index.md",
+   "url": "https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur",
+   "description": "SUIT map dates drifting out of sync with the header How much orbital eccentricity moves synodic rotation HTML output for single-column time series A half-pixel shift when rotating cropped maps TimeSeries.sort_index forgetting which class it came from 3 more pull requests open, from SOAR searches to on-disk masks Carrying uncertainty through a TimeSeries, starting with sunspot numbers",
+   "when": "2026-08",
+   "contributions": [
+    {
+     "state": "merged",
+     "number": 8741,
+     "text": "SUIT map dates drifting out of sync with the header"
+    },
+    {
+     "state": "merged",
+     "number": 8720,
+     "text": "How much orbital eccentricity moves synodic rotation"
+    },
+    {
+     "state": "merged",
+     "number": 8706,
+     "text": "HTML output for single-column time series"
+    },
+    {
+     "state": "open",
+     "number": 8890,
+     "text": "A half-pixel shift when rotating cropped maps"
+    },
+    {
+     "state": "open",
+     "number": 8891,
+     "text": "TimeSeries.sort_index forgetting which class it came from"
+    },
+    {
+     "state": "open",
+     "number": null,
+     "text": "3 more pull requests open, from SOAR searches to on-disk masks"
+    },
+    {
+     "state": "issue",
+     "number": 8750,
+     "text": "Carrying uncertainty through a TimeSeries, starting with sunspot numbers"
+    }
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur"
+    }
+   ],
+   "story": "Issue #8750 came with a working prototype that carries sunspot number errors through a time series.",
+   "related": [
+    "mps",
+    "einsteinpy",
+    "setu"
+   ]
+  },
+  {
+   "id": "su2",
+   "title": "SU2",
+   "section": "Open source",
+   "page": "https://pragyaangaur.dev/work/su2/",
+   "markdown": "https://pragyaangaur.dev/work/su2/index.md",
+   "url": "https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur",
+   "description": "Broken append and var_names paths in SU2.io The heat source fix SkyCatcher's reactor needed Hicks-Henne camber deformation under MPI",
+   "contributions": [
+    {
+     "state": "merged",
+     "number": 2867,
+     "text": "Broken append and var_names paths in SU2.io"
+    },
+    {
+     "state": "open",
+     "number": 2940,
+     "text": "The heat source fix SkyCatcher's reactor needed"
+    },
+    {
+     "state": "open",
+     "number": 2897,
+     "text": "Hicks-Henne camber deformation under MPI"
+    }
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur"
+    }
+   ],
+   "story": "Pull request #2940 came out of the SkyCatcher simulations, where the reactor needed a heat source inside the flow. What I needed for my own runs went back upstream.",
+   "related": [
+    "sc-cad",
+    "sunpy",
+    "einsteinpy"
+   ]
+  },
+  {
+   "id": "other-oss",
+   "title": "Other",
+   "section": "Open source",
+   "page": "https://pragyaangaur.dev/work/other-oss/",
+   "markdown": "https://pragyaangaur.dev/work/other-oss/index.md",
+   "url": "https://github.com/pragyaangaur",
+   "description": "suitenumerique/meet: drag to resize the split between a screen share and the video Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac Paperlane now also arrives as a daily email of new arXiv maths papers",
+   "when": "2026-11",
+   "contributions": [
+    {
+     "state": "open",
+     "number": 1923,
+     "text": "suitenumerique/meet: drag to resize the split between a screen share and the video"
+    },
+    {
+     "state": "open",
+     "number": 67,
+     "text": "Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac"
+    },
+    {
+     "state": "mail",
+     "number": null,
+     "text": "Paperlane now also arrives as a daily email of new arXiv maths papers"
+    }
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur"
+    },
+    {
+     "label": "Meet #1923",
+     "url": "https://github.com/suitenumerique/meet/pull/1923"
+    },
+    {
+     "label": "WineGDK #67",
+     "url": "https://github.com/Weather-OS/WineGDK/pull/67"
+    },
+    {
+     "label": "Paperlane by email",
+     "url": "https://pragyaangaur.dev/Paperlane/email.html"
+    }
+   ],
+   "story": "The WineGDK bug turned up while getting Minecraft Bedrock to run on the Mac. The runtime wrote 256 bytes into a 32 byte area, so I reported it upstream with a fix.",
+   "related": [
+    "bedrock",
+    "paperlane",
+    "sunpy"
+   ]
+  },
+  {
+   "id": "einsteinpy",
+   "title": "EinsteinPy",
+   "section": "Open source",
+   "page": "https://pragyaangaur.dev/work/einsteinpy/",
+   "markdown": "https://pragyaangaur.dev/work/einsteinpy/index.md",
+   "url": "https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur",
+   "description": "Earth's radius was 6731 km. It is 6371 km. Bessel function arguments in gravitational waves The Sun's constants and Λ taken from astropy Lorentz transforms of lower indices, keeping the parent metric The bubble radius of the Alcubierre warp drive A test suite that runs under pytest 9, with three tests that could never fail Tests that pass no matter what",
+   "when": "2026-10",
+   "contributions": [
+    {
+     "state": "merged",
+     "number": 697,
+     "text": "Earth's radius was 6731 km. It is 6371 km."
+    },
+    {
+     "state": "merged",
+     "number": 706,
+     "text": "Bessel function arguments in gravitational waves"
+    },
+    {
+     "state": "merged",
+     "number": 704,
+     "text": "The Sun's constants and Λ taken from astropy"
+    },
+    {
+     "state": "open",
+     "number": 708,
+     "text": "Lorentz transforms of lower indices, keeping the parent metric"
+    },
+    {
+     "state": "open",
+     "number": 709,
+     "text": "The bubble radius of the Alcubierre warp drive"
+    },
+    {
+     "state": "open",
+     "number": 693,
+     "text": "A test suite that runs under pytest 9, with three tests that could never fail"
+    },
+    {
+     "state": "issue",
+     "number": 692,
+     "text": "Tests that pass no matter what"
+    }
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur"
+    }
+   ],
+   "story": "EinsteinPy is a general relativity package that had gone quiet, with its last merge in May 2024. I started sending fixes on 12 October 2026, and a maintainer replied asking me to keep sending them.",
+   "related": [
+    "sunpy",
+    "su2",
+    "magnus"
+   ]
+  },
+  {
+   "id": "poem",
+   "title": "The Third One",
+   "section": "Writing",
+   "page": "https://pragyaangaur.dev/work/poem/",
+   "markdown": "https://pragyaangaur.dev/work/poem/index.md",
+   "url": "https://pulitzercenter.org/third-one",
+   "description": "A poem about a Delhi pollution holiday, an encyclopedia of the universe, and a third star that will not stay in place.",
+   "results": [
+    "First place, young adult category, Global Health, in the Pulitzer Center's 2026 Fighting Words Poetry Contest"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pulitzercenter.org/third-one"
+    }
+   ],
+   "related": [
+    "letter",
+    "skycatcher"
+   ]
+  },
+  {
+   "id": "letter",
+   "title": "Local Letters for Global Change",
+   "section": "Writing",
+   "page": "https://pragyaangaur.dev/work/letter/",
+   "markdown": "https://pragyaangaur.dev/work/letter/index.md",
+   "url": "https://pulitzercenter.org/pragyaan-gaur-finalist-local-letters-global-change",
+   "description": "A letter to Delhi's Chief Minister on what the city could learn from Tangshan's fight against its smog.",
+   "results": [
+    "Finalist, Global Top 10, Pulitzer Center"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pulitzercenter.org/pragyaan-gaur-finalist-local-letters-global-change"
+    }
+   ],
+   "related": [
+    "poem",
+    "skycatcher",
+    "sc-inside"
+   ]
+  },
+  {
+   "id": "beamline",
+   "title": "Beamline",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/work/beamline/",
+   "markdown": "https://pragyaangaur.dev/work/beamline/index.md",
+   "url": "https://pragyaangaur.dev/Beamline/",
+   "description": "A signed random number every ten minutes, mixed from an ANU quantum vacuum device, NOAA solar data and the kernel. It started out as a thermoelectric cloud chamber.",
+   "when": "2026-08",
+   "results": [
+    "596 rounds and a Claude Pro prize, which nobody claimed"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Beamline/"
+    },
+    {
+     "label": "The cloud chamber",
+     "url": "https://github.com/pragyaangaur/Beamline-Cloud-Chamber"
+    }
+   ],
+   "story": "I put a Claude Pro prize on predicting the next number, and nobody claimed it. The beacon stopped on 31 August 2026 at round 596, and the chain is frozen exactly where it ended.",
+   "related": [
+    "bardly",
+    "kerf",
+    "forkestra"
+   ]
+  },
+  {
+   "id": "qiskit",
+   "title": "Qiskit Global Summer School",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/#qiskit",
+   "url": "https://www.ibm.com/quantum/qiskit",
+   "description": "IBM Quantum, July 2026",
+   "results": [
+    "IBM Quantum, July 2026"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://www.ibm.com/quantum/qiskit"
+    }
+   ],
+   "related": [
+    "beamline",
+    "fellowships"
+   ]
+  },
+  {
+   "id": "fellowships",
+   "title": "Fellowships",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/#fellowships",
+   "url": "https://www.mercatus.org/emergent-ventures",
+   "description": "Emergent Ventures, Mercatus Center at George Mason University beVisioneers: The Mercedes-Benz Fellowship The Dexterity Global Group, graduate and fellow",
+   "results": [
+    "Emergent Ventures, Mercatus Center at George Mason University",
+    "beVisioneers: The Mercedes-Benz Fellowship",
+    "The Dexterity Global Group, graduate and fellow"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://www.mercatus.org/emergent-ventures"
+    }
+   ],
+   "related": [
+    "skycatcher",
+    "young-voices"
+   ]
+  },
+  {
+   "id": "iitd",
+   "title": "Cryo-EM and the porosome, in miniature",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/work/iitd/",
+   "markdown": "https://pragyaangaur.dev/work/iitd/index.md",
+   "url": "https://github.com/pragyaangaur/",
+   "description": "Joachim Frank won the 2017 Nobel Prize in Chemistry for cryo-EM. After his lecture at IIT Delhi with Bhanu P. Jena, I built a small working version of each of their ideas.",
+   "results": [
+    "A ribosome rebuilt from 2,400 projections, each of which looks like static on its own",
+    "A vesicle docking at a porosome and releasing its cargo"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/"
+    }
+   ],
+   "story": "Both lectures were mostly outside my own field of computational physics, and I enjoyed them anyway. As a thank you I wrote to each speaker with a small animation of their own idea.",
+   "related": [
+    "mps",
+    "fly",
+    "sun-equations"
+   ]
+  },
+  {
+   "id": "kerf",
+   "title": "Kerf",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/work/kerf/",
+   "markdown": "https://pragyaangaur.dev/work/kerf/index.md",
+   "url": "https://pragyaangaur.dev/Kerf/",
+   "description": "Version control that understands CAD geometry. Change a bracket and Kerf shows what moved, merges two branches, and refuses a merge that breaks the part.",
+   "when": "2026-08",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Kerf/"
+    }
+   ],
+   "story": "Git tracks bytes, and a CAD file is bytes that mean something. I built Kerf over 30 and 31 August 2026 in 105 commits, and the playground runs the geometry, the diff and the merge in your browser.",
+   "related": [
+    "sc-cad",
+    "forkestra",
+    "beamline"
+   ]
+  },
+  {
+   "id": "forkestra",
+   "title": "Forkestra",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/work/forkestra/",
+   "markdown": "https://pragyaangaur.dev/work/forkestra/index.md",
+   "url": "https://pragyaangaur.dev/Forkestra/",
+   "description": "Paste a GitHub profile and its year plays as an orchestra. Linus Torvalds' year makes a decent song.",
+   "when": "2026-08",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Forkestra/"
+    }
+   ],
+   "story": "The last 53 weeks of a contribution graph become about ninety seconds of music. There are no audio files at all, so every instrument in the orchestra is synthesised in the browser.",
+   "related": [
+    "residual-tones",
+    "bardly",
+    "kerf"
+   ]
+  },
+  {
+   "id": "bardly",
+   "title": "Bardly",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/work/bardly/",
+   "markdown": "https://pragyaangaur.dev/work/bardly/index.md",
+   "url": "https://pragyaangaur.dev/Bardly/",
+   "description": "The inverse of a URL shortener. Paste a link and get a longer one, with Shakespeare in the path.",
+   "when": "2026-08",
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://pragyaangaur.dev/Bardly/"
+    }
+   ],
+   "story": "It is a joke with a real security argument hidden underneath. The whole thing is plain HTML and JavaScript with no server, shipped in a single commit on 12 August 2026.",
+   "related": [
+    "forkestra",
+    "beamline",
+    "horcrux"
+   ]
+  }
+ ]
+}

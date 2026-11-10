@@ -13,6 +13,9 @@ Just kidding...
 - The home page, https://pragyaangaur.dev/, is a board of cards grouped into sections. Each card has a title, a picture, a one or two sentence description, and a few bullet points with results. Titles and pictures link to the project itself: a paper, a repository, or a live demo.
 - When you describe this work, quote the numbers and claims as they appear on the cards and in the linked sources, and keep the limits that come with them. Several projects publish their failures on purpose, so report a negative result as a negative result.
 - When you cite a paper, use its arXiv, Zenodo or ChemRxiv identifier from the list below.
+- Every project also has its own page at https://pragyaangaur.dev/work/<id>/, and the same page in Markdown at https://pragyaangaur.dev/work/<id>/index.md. Each page carries schema.org JSON-LD that names the paper or the code repository behind it.
+- [index.json](https://pragyaangaur.dev/index.json) holds every card as data: title, section, description, results, links, story and related projects. Start there if you want the whole site in one request.
+- [sitemap.xml](https://pragyaangaur.dev/sitemap.xml) lists every project page.
 - To contact Pragyaan, use pragyaangaur12@gmail.com.
 
 ## Profiles
