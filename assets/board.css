@@ -350,3 +350,28 @@ body.staged { overflow: hidden; }
   .contrib-key { display: none !important; }
   .contrib figcaption { justify-content: center; text-align: center; }
 }
+
+/* The address of a card's own page, at the foot of the stage */
+.own { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin: 22px 0 0; }
+.own span { font: 400 18px/1 var(--hand); color: var(--graphite); }
+.own a { font-size: 15px; color: var(--soft); text-decoration: underline; text-decoration-style: dashed; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+/* A project's own page: the same card as on stage, laid flat on the paper */
+.sheet { max-width: 880px; margin: 0 auto; padding: 70px 24px 30px; }
+.crumb { display: flex; gap: 10px; margin: 0 0 26px; font: 400 20px/1.2 var(--hand); color: var(--graphite); }
+.crumb a:hover { color: var(--ink); }
+.sheet .stage-card { width: auto; max-height: none; overflow: visible; animation: none; box-shadow: var(--shadow); }
+.sheet .card h1 { font-weight: 400; font-size: 36px; line-height: 1.15; color: var(--ink); margin: 18px 0 6px; }
+.sheet .k-gh h1 { margin: 16px 18px 4px; }
+.sheet .card:hover { z-index: auto; }
+.turn { display: flex; justify-content: space-between; gap: 24px; margin: 34px 4px 0; font: 400 19px/1.3 var(--hand); color: var(--graphite); }
+.turn a { max-width: 46%; }
+.turn a:last-child { text-align: right; }
+.turn a:hover { color: var(--ink); text-decoration: none; }
+.solo .end { padding-top: 50px; }
+@media (max-width: 720px) {
+  .sheet { padding: 40px 0 20px; }
+  .crumb, .turn { margin-inline: 22px; font-size: 18px; }
+  .sheet .stage-card { height: auto; max-height: none; padding: 30px 22px 32px; box-shadow: none; }
+  .sheet .card h1 { font-size: 29px; }
+}

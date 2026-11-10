@@ -1,4 +1,6 @@
-"""Build index.html, the board of everything. Run: python3 build.py
+"""Build index.html, the board of everything, and the pages around it. Run: python3 build.py
+
+It also writes one page per project in work/, and sitemap.xml and robots.txt.
 
 The page is a run of spreads. Each spread has three columns, and the major piece of work sits in
 the widest one with the related work around it. Every card is placed by hand: its column, its
@@ -13,7 +15,9 @@ Inside captions and bullets:
 """
 
 import hashlib
+import os
 import re
+import shutil
 from html import escape
 
 
@@ -450,7 +454,6 @@ DEMOS = {
     "kerf": (SITE + "Kerf/", "Diff and merge some geometry"),
     "forkestra": (SITE + "Forkestra/", "Play a GitHub year"),
     "bardly": (SITE + "Bardly/", "Lengthen a link"),
-    "beamline": (SITE + "Beamline/", "Check a draw"),
 }
 GALLERY = {
     "exhaustion": ["pbe-route"],
@@ -462,8 +465,12 @@ except ImportError:
     STORIES = {}
 
 
+# Set while a project's own page is being rendered, so related cards link to pages and not to the board.
+PAGE = False
+
+
 def extra(c):
-    """The part of a card that only shows on stage."""
+    """The part of a card that only shows on stage, and on the project's own page."""
     s = STORIES.get(c["id"], {})
     parts = []
     if s.get("story"):
@@ -474,12 +481,18 @@ def extra(c):
             f'<img src="{B}{k}.webp" width="{SIZES[k][0]}" height="{SIZES[k][1]}" alt="" loading="lazy">' for k in GALLERY[c["id"]]) + "</div>")
     if c["id"] in DEMOS:
         url, label = DEMOS[c["id"]]
-        parts.append(f'<div class="demo"><button type="button" data-src="{escape(url)}">{escape(label)} here \u25b8</button>'
-                     f'<a href="{escape(url)}" target="_blank" rel="noopener">Open in a new tab \u2197</a></div>')
+        parts.append(f'<div class="demo"><button type="button" data-src="{escape(url)}">{escape(label)} here ▸</button>'
+                     f'<a href="{escape(url)}" target="_blank" rel="noopener">Open in a new tab ↗</a></div>')
     rel = [r for r in s.get("related", ()) if r in TITLES]
     if rel:
+        def href(r):
+            if not PAGE:
+                return f'href="#{r}" data-card="{r}"'
+            return f'href="../{r}/"' if r in PAGES else f'href="../../#{r}"'
         parts.append('<p class="related"><span>See also</span>' + "".join(
-            f'<a href="#{r}" data-card="{r}">{escape(TITLES[r])}</a>' for r in rel) + "</p>")
+            f'<a {href(r)}>{escape(TITLES[r])}</a>' for r in rel) + "</p>")
+    if not PAGE and c["id"] in PAGES:
+        parts.append(f'<p class="own"><span>Its own page</span><a href="{WORK}{c["id"]}/">pragyaangaur.dev/{WORK}{c["id"]}</a></p>')
     return f'<div class="extra">{"".join(parts)}</div>' if parts else ""
 
 INTRO = "This page has no introduction. Have a look around, and you will get an idea of what I like doing."
@@ -591,63 +604,99 @@ LINKS_TOP = [
 ]
 
 
-TITLES = {c["id"]: c["title"] for _, _, _, cols in SPREADS for _, cards in cols for c in cards}
+# Every card in board order, with the spread it sits in.
+CARDS = [(c, sid, heading, ink) for sid, heading, ink, cols in SPREADS for _, cards in cols for c in cards]
+TITLES = {c["id"]: c["title"] for c, _, _, _ in CARDS}
+
+# Each project has a page of its own at pragyaangaur.dev/work/<id>/. The folder keeps these clear of
+# the project sites, which GitHub Pages serves at pragyaangaur.dev/<Repo>/. Awards and the list of
+# fellowships are not projects, so they stay on the board only.
+WORK = "work/"
+PAGES = [c["id"] for c, _, _, _ in CARDS if c["kind"] not in ("award", "text")]
+
+VIDEOS = ("cryoem", "porosome", "led-doom", "rdgeneric", "knee-deep", "fly-brain", "cauchy-cone")
+FILTER = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" '
+          'baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>')
 
 
-def build():
+def plain(text):
+    """Card text without the pen marks."""
+    return re.sub(r"\[\[|\]\]|==|__|\{\{|\}\}|\*", "", text)
+
+
+def describe(c):
+    return plain(c["caption"] or " ".join(c["bullets"]) or " ".join(t for _, _, t in c["prs"]) or c["title"])
+
+
+def picture(c):
+    """The picture a link preview shows for a card."""
+    key = c["media"] or (c["pair"][0] if c["pair"] else None)
+    if not key:
+        return ORIGIN + "/assets/og.png"
+    return f'{ORIGIN}/{B}{key}.{"jpg" if key in VIDEOS else "webp"}'
+
+
+def head(title, desc, url, image, root, graph, size=True, alternates=""):
+    data = f'<script type="application/ld+json">{graph}</script>\n' if graph else ""
+    dims = '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' if size else ""
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="{root}favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="{root}apple-touch-icon.png">
+<title>{escape(title)}</title>
+<meta name="description" content="{escape(desc)}">
+<link rel="canonical" href="{url}">
+<meta name="author" content="Pragyaan Gaur">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pragyaan Gaur">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{escape(title)}">
+<meta property="og:description" content="{escape(desc)}">
+<meta property="og:image" content="{image}">
+{dims}<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{escape(title)}">
+<meta name="twitter:description" content="{escape(desc)}">
+<meta name="twitter:image" content="{image}">
+{data}<link rel="preload" href="{root}assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
+<script>var t;try{{t=localStorage.theme}}catch(e){{}}if(t==="dark")document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="{root}assets/site.css?v={v("assets/site.css")}">
+<link rel="stylesheet" href="{root}assets/board.css?v={v("assets/board.css")}">
+{alternates}</head>
+'''
+
+
+def bar(root):
+    top = "".join(f'<a href="{u}"' + ("" if u.startswith("mailto") else ' target="_blank" rel="noopener"') + f">{t}</a>" for t, u in LINKS_TOP)
+    return (f'<nav class="bar" id="top"><a class="name" href="{root or "./"}">Pragyaan Gaur</a><span>{top}'
+            f'<button class="lamp" type="button" aria-label="Switch dark mode" title="Lights off"></button></span></nav>')
+
+
+def board():
+    """The home page."""
     spreads = []
-    for i, (sid, heading, ink, cols) in enumerate(SPREADS):
+    for sid, heading, ink, cols in SPREADS:
         template = " ".join(f"{w}fr" for w, _ in cols)
         colhtml = "".join(f'<div class="col">\n' + "\n".join(render(c, ink) for c in cards) + "\n</div>\n" for _, cards in cols)
         spreads.append(f'<section class="block ink-{ink}" id="{sid}">\n<h2 class="heading">{escape(heading)}</h2>\n'
                        f'<div class="spread" style="--cols:{template}">\n{colhtml}</div>\n</section>')
     links = ";".join(f"{a}>{b}>{escape(t)}>{i}" for a, b, t, i in LINKS)
-    n = sum(len(cards) for _, _, _, cols in SPREADS for _, cards in cols)
-    top = "".join(f'<a href="{u}"' + ("" if u.startswith("mailto") else ' target="_blank" rel="noopener"') + f">{t}</a>" for t, u in LINKS_TOP)
     toc = "".join(f'<a class="ink-{ink}" href="#{sid}">{escape(h)}</a>' for sid, h, ink, _ in SPREADS)
-
-    html = f'''<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Pragyaan Gaur</title>
-<meta name="description" content="{escape(DESC)}">
-<link rel="canonical" href="{ORIGIN}/">
-<meta name="author" content="Pragyaan Gaur">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Pragyaan Gaur">
-<meta property="og:url" content="{ORIGIN}/">
-<meta property="og:title" content="Pragyaan Gaur">
-<meta property="og:description" content="{escape(DESC)}">
-<meta property="og:image" content="{ORIGIN}/assets/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pragyaan Gaur">
-<meta name="twitter:description" content="{escape(DESC)}">
-<meta name="twitter:image" content="{ORIGIN}/assets/og.png">
-<script type="application/ld+json">{PERSON}</script>
-<link rel="preload" href="assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
-<script>var t;try{{t=localStorage.theme}}catch(e){{}}if(t==="dark")document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="assets/site.css?v={v("assets/site.css")}">
-<link rel="stylesheet" href="assets/board.css?v={v("assets/board.css")}">
-<link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">
-</head>
-<body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></svg>
-<nav class="bar" id="top"><a class="name" href="./">Pragyaan Gaur</a><span>{top}<button class="lamp" type="button" aria-label="Switch dark mode" title="Lights off"></button></span></nav>
+    alternates = '<link rel="alternate" type="text/markdown" href="llms.txt" title="For language models">\n'
+    body = f'''<body>
+{FILTER}
+{bar("")}
 <header class="intro">
   <p>{escape(INTRO)}</p>
   <p class="small">{escape(INTRO_SMALL)}</p>
   <figure class="contrib" aria-label="GitHub contributions in the last year"><div class="contrib-scroll"></div><figcaption></figcaption></figure>
   <nav class="toc" aria-label="Sections">{toc}</nav>
-  <a class="start" href="#{SPREADS[0][0]}">Start here <span aria-hidden="true">\u2193</span></a>
+  <a class="start" href="#{SPREADS[0][0]}">Start here <span aria-hidden="true">↓</span></a>
 </header>
-<div class="stage" hidden><div class="stage-card" role="dialog" aria-modal="true"></div><button class="stage-close" type="button" aria-label="Close">\u00d7</button></div>
+<div class="stage" hidden><div class="stage-card" role="dialog" aria-modal="true"></div><button class="stage-close" type="button" aria-label="Close">×</button></div>
 <main class="board" data-links="{links}">
 {chr(10).join(spreads)}
 <svg class="threads" aria-hidden="true"></svg>
@@ -664,15 +713,58 @@ def build():
 </body>
 </html>
 '''
-    with open("index.html", "w") as f:
-        f.write(html)
-    with open("robots.txt", "w") as f:
-        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
+    return head("Pragyaan Gaur", DESC, ORIGIN + "/", ORIGIN + "/assets/og.png", "", PERSON, alternates=alternates) + body
+
+
+def page(i):
+    """One project's own page: its card laid flat, with the story, the demo and the related work."""
+    global PAGE
+    c, sid, heading, ink = next(x for x in CARDS if x[0]["id"] == PAGES[i])
+    root, url = "../../", f"{ORIGIN}/{WORK}{c['id']}/"
+    PAGE = True
+    art = render(c, ink).replace("<h3>", "<h1>", 1).replace("</h3>", "</h1>", 1)
+    PAGE = False
+    prev, nxt = PAGES[i - 1], PAGES[(i + 1) % len(PAGES)]
+    body = f'''<body class="solo">
+{FILTER}
+{bar(root)}
+<main class="sheet ink-{ink}">
+<p class="crumb"><a href="{root}">The board</a><span aria-hidden="true">/</span><a href="{root}#{sid}">{escape(heading)}</a></p>
+<div class="stage-card">
+{art}
+</div>
+<nav class="turn" aria-label="More work"><a href="../{prev}/" rel="prev">← {escape(TITLES[prev])}</a><a href="../{nxt}/" rel="next">{escape(TITLES[nxt])} →</a></nav>
+</main>
+<footer class="end">
+  <p class="nita"><img src="{LOGO}nita.webp" alt="NIT Agartala" height="34"> NIT Agartala, Engineering Physics</p>
+</footer>
+<script src="assets/page.js?v={v("assets/page.js")}" defer></script>
+</body>
+</html>
+'''
+    # The page sits two folders down, so its own files are reached through the root.
+    return head(f"{c['title']} · Pragyaan Gaur", describe(c), url, picture(c), root, None, size=False) + re.sub(r'(src|poster|href)="(assets/)', rf'\1="{root}\2', body)
+
+
+def write(path, text):
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w") as f:
+        f.write(text)
+
+
+def build():
+    write("index.html", board())
+    # Pages of cards that have left the board go too.
+    for old in os.listdir(WORK) if os.path.isdir(WORK) else ():
+        if old not in PAGES and os.path.isdir(WORK + old):
+            shutil.rmtree(WORK + old)
+    for i, pid in enumerate(PAGES):
+        write(f"{WORK}{pid}/index.html", page(i))
+    write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
     today = __import__("datetime").date.today().isoformat()
-    urls = "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in ("",))
-    with open("sitemap.xml", "w") as f:
-        f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
-    print(f"index.html written, {n} cards in {len(SPREADS)} spreads")
+    urls = "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in [""] + [f"{WORK}{p}/" for p in PAGES])
+    write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
+    print(f"index.html written, {len(CARDS)} cards in {len(SPREADS)} spreads, {len(PAGES)} project pages")
 
 
 if __name__ == "__main__":
