@@ -15,9 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Fetch the contribution calendar
-        env:
-          # A personal token in CONTRIB_TOKEN also counts private contributions; the default token sees public ones.
-          GITHUB_TOKEN: ${{ secrets.CONTRIB_TOKEN || secrets.GITHUB_TOKEN }}
+        # No token: this reads the public profile calendar, which already counts private contributions.
         run: python3 tools/contrib.py
       - name: Commit it if it changed
         env:
