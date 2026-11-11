@@ -2,12 +2,20 @@ name: Contribution chart
 
 on:
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 * * * *"
+  push:
+    branches: [main]
+    paths-ignore:
+      - assets/contrib.json
   workflow_dispatch:
 
 permissions:
   contents: write
   pages: write
+
+concurrency:
+  group: contrib
+  cancel-in-progress: false
 
 jobs:
   update:

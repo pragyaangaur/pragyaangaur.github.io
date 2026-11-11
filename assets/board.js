@@ -196,7 +196,7 @@
   if (root.dataset.theme === "dark") lamp.title = "Lights on";
 
   // The GitHub contribution chart in the intro, from assets/contrib.json, which a workflow refreshes
-  // every six hours.
+  // every hour and on every push.
   var chart = document.querySelector(".contrib");
   if (chart) fetch("assets/contrib.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (data) {
     var days = data.days, cell = 12, gap = 3, step = cell + gap, top = 18;
