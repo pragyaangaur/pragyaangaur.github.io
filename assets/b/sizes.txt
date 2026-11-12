@@ -60,3 +60,4 @@ acc-title 900 204
 theseus 900 352
 nita-library 900 611
 nita-map 500 420
+numpy-bincount 760 232
