@@ -46,6 +46,7 @@ Just kidding...
 - [Max Planck Institute for Solar System Research internship](https://github.com/pragyaangaur/MPS-Internship): April to July 2026 in Göttingen, supervised by Dr. Natalie Krivova, on solar irradiance across two solar cycles from 900,000 volunteer sunspot classifications.
 - [SETU](https://pragyaangaur.dev/SETU/): solar storm early warning for the North East Indian grid. Runner-up at the IET India Scholarship Award regional final. 114 live forecasts and 0 false alarms.
 - [Paperlane](https://pragyaangaur.dev/Paperlane/): a daily feed of new arXiv mathematics papers, with its own llms.txt for agents.
+- [NumPy Lean Check](https://pragyaangaur.dev/NumPy-Lean-Check/): a Lean 4 model of NumPy 2.5.4 tested against the real library, with 55 bug records.
 - [Inkwell](https://github.com/pragyaangaur/Inkwell): Linux, Doom and an offline chatbot on a 10-year-old Kindle. Featured on Hackaday on 6 November 2026 (https://hackaday.com/2026/11/06/its-alpine-linux-on-a-kindle-paperwhite-3/).
 - [rdgeneric](https://pragyaangaur.dev/Can-It-Run-Minecraft/): the first version of Minecraft as one C file, running in a terminal, a browser, a PDF and on a bare 486.
 - [Ship of Theseus](https://github.com/pragyaangaur/Ship-of-Theseus): the 31 parts of Qwen2.5-7B-Instruct swapped one at a time for those of DeepSeek-R1-Distill-Qwen-7B. Hybrids in the middle mostly stop naming either model. Two of five preregistered hypotheses were supported.
