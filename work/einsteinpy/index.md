@@ -8,7 +8,6 @@ October 2026. Section: Open source.
 - Merged #706: Bessel function arguments in gravitational waves
 - Merged #704: The Sun's constants and Λ taken from astropy
 - Open #708: Lorentz transforms of lower indices, keeping the parent metric
-- Open #709: The bubble radius of the Alcubierre warp drive
 - Open #693: A test suite that runs under pytest 9, with three tests that could never fail
 - Issue #692: Tests that pass no matter what
 

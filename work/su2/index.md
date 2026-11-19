@@ -5,8 +5,9 @@ Section: Open source.
 ## Results
 
 - Merged #2867: Broken append and var_names paths in SU2.io
+- Merged #2897: Hicks-Henne camber deformation under MPI
 - Open #2940: The heat source fix SkyCatcher's reactor needed
-- Open #2897: Hicks-Henne camber deformation under MPI
+- Open #3021: Retiring the ellipsoidal heat source for a Python custom source
 
 ## Story
 

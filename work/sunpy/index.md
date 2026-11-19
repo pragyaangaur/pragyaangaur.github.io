@@ -10,6 +10,7 @@ August 2026. Section: Open source.
 - Open #8890: A half-pixel shift when rotating cropped maps
 - Open #8891: TimeSeries.sort_index forgetting which class it came from
 - Open: 3 more pull requests open, from SOAR searches to on-disk masks
+- Issue #8889: sort_index and extract turning a GOES XRSTimeSeries into a plain one
 - Issue #8750: Carrying uncertainty through a TimeSeries, starting with sunspot numbers
 
 ## Story

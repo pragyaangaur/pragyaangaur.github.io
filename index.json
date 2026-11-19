@@ -1173,7 +1173,7 @@
    "page": "https://pragyaangaur.dev/work/sunpy/",
    "markdown": "https://pragyaangaur.dev/work/sunpy/index.md",
    "url": "https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur",
-   "description": "SUIT map dates drifting out of sync with the header How much orbital eccentricity moves synodic rotation HTML output for single-column time series A half-pixel shift when rotating cropped maps TimeSeries.sort_index forgetting which class it came from 3 more pull requests open, from SOAR searches to on-disk masks Carrying uncertainty through a TimeSeries, starting with sunspot numbers",
+   "description": "SUIT map dates drifting out of sync with the header How much orbital eccentricity moves synodic rotation HTML output for single-column time series A half-pixel shift when rotating cropped maps TimeSeries.sort_index forgetting which class it came from 3 more pull requests open, from SOAR searches to on-disk masks sort_index and extract turning a GOES XRSTimeSeries into a plain one Carrying uncertainty through a TimeSeries, starting with sunspot numbers",
    "when": "2026-08",
    "contributions": [
     {
@@ -1208,6 +1208,11 @@
     },
     {
      "state": "issue",
+     "number": 8889,
+     "text": "sort_index and extract turning a GOES XRSTimeSeries into a plain one"
+    },
+    {
+     "state": "issue",
      "number": 8750,
      "text": "Carrying uncertainty through a TimeSeries, starting with sunspot numbers"
     }
@@ -1232,12 +1237,17 @@
    "page": "https://pragyaangaur.dev/work/su2/",
    "markdown": "https://pragyaangaur.dev/work/su2/index.md",
    "url": "https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur",
-   "description": "Broken append and var_names paths in SU2.io The heat source fix SkyCatcher's reactor needed Hicks-Henne camber deformation under MPI",
+   "description": "Broken append and var_names paths in SU2.io Hicks-Henne camber deformation under MPI The heat source fix SkyCatcher's reactor needed Retiring the ellipsoidal heat source for a Python custom source",
    "contributions": [
     {
      "state": "merged",
      "number": 2867,
      "text": "Broken append and var_names paths in SU2.io"
+    },
+    {
+     "state": "merged",
+     "number": 2897,
+     "text": "Hicks-Henne camber deformation under MPI"
     },
     {
      "state": "open",
@@ -1246,8 +1256,8 @@
     },
     {
      "state": "open",
-     "number": 2897,
-     "text": "Hicks-Henne camber deformation under MPI"
+     "number": 3021,
+     "text": "Retiring the ellipsoidal heat source for a Python custom source"
     }
    ],
    "links": [
@@ -1270,9 +1280,14 @@
    "page": "https://pragyaangaur.dev/work/other-oss/",
    "markdown": "https://pragyaangaur.dev/work/other-oss/index.md",
    "url": "https://github.com/pragyaangaur",
-   "description": "suitenumerique/meet: drag to resize the split between a screen share and the video Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac Paperlane now also arrives as a daily email of new arXiv maths papers",
+   "description": "numpy/numpy: np.bincount overflowing its output length at the largest intp suitenumerique/meet: drag to resize the split between a screen share and the video Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac hyperionaidev/smolmaxxing: the Kindle Paperwhite 3 as device #5, with an fp16 fix for 32-bit Arm Paperlane now also arrives as a daily email of new arXiv maths papers",
    "when": "2026-11",
    "contributions": [
+    {
+     "state": "merged",
+     "number": 33306,
+     "text": "numpy/numpy: np.bincount overflowing its output length at the largest intp"
+    },
     {
      "state": "open",
      "number": 1923,
@@ -1282,6 +1297,11 @@
      "state": "open",
      "number": 67,
      "text": "Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac"
+    },
+    {
+     "state": "open",
+     "number": 12,
+     "text": "hyperionaidev/smolmaxxing: the Kindle Paperwhite 3 as device #5, with an fp16 fix for 32-bit Arm"
     },
     {
      "state": "mail",
@@ -1303,6 +1323,14 @@
      "url": "https://github.com/Weather-OS/WineGDK/pull/67"
     },
     {
+     "label": "NumPy #33306",
+     "url": "https://github.com/numpy/numpy/pull/33306"
+    },
+    {
+     "label": "smolmaxxing #12",
+     "url": "https://github.com/hyperionaidev/smolmaxxing/pull/12"
+    },
+    {
      "label": "Paperlane by email",
      "url": "https://pragyaangaur.dev/Paperlane/email.html"
     }
@@ -1321,7 +1349,7 @@
    "page": "https://pragyaangaur.dev/work/einsteinpy/",
    "markdown": "https://pragyaangaur.dev/work/einsteinpy/index.md",
    "url": "https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur",
-   "description": "Earth's radius was 6731 km. It is 6371 km. Bessel function arguments in gravitational waves The Sun's constants and Λ taken from astropy Lorentz transforms of lower indices, keeping the parent metric The bubble radius of the Alcubierre warp drive A test suite that runs under pytest 9, with three tests that could never fail Tests that pass no matter what",
+   "description": "Earth's radius was 6731 km. It is 6371 km. Bessel function arguments in gravitational waves The Sun's constants and Λ taken from astropy Lorentz transforms of lower indices, keeping the parent metric A test suite that runs under pytest 9, with three tests that could never fail Tests that pass no matter what",
    "when": "2026-10",
    "contributions": [
     {
@@ -1343,11 +1371,6 @@
      "state": "open",
      "number": 708,
      "text": "Lorentz transforms of lower indices, keeping the parent metric"
-    },
-    {
-     "state": "open",
-     "number": 709,
-     "text": "The bubble radius of the Alcubierre warp drive"
     },
     {
      "state": "open",
