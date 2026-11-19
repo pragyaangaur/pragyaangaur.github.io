@@ -445,6 +445,10 @@ SPREADS = [
             card("bardly", "Bardly", SITE + "Bardly/", "bardly", "small",
                  "The inverse of a URL shortener. Paste a link and get a longer one, with Shakespeare in the path.",
                  tilt=-1.3, drop=40, width=84, align="right"),
+            card("amazon-lidar", "Looking for lost earthworks in the Amazon", GH + "Amazon-Earthworks-Lidar", "amazon-lidar", "small",
+                 "Public lidar over the Amazon, searched for pre-Columbian earthworks nobody has recorded.",
+                 bullets=["899 strips screened, ==0 new sites==. The method goes blind under forest"],
+                 tilt=0.8, drop=30, width=84, align="right"),
         ]),
     ]),
 ]
