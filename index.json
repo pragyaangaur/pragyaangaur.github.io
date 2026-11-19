@@ -1581,6 +1581,31 @@
     "beamline",
     "horcrux"
    ]
+  },
+  {
+   "id": "amazon-lidar",
+   "title": "Looking for lost earthworks in the Amazon",
+   "section": "Random things",
+   "page": "https://pragyaangaur.dev/work/amazon-lidar/",
+   "markdown": "https://pragyaangaur.dev/work/amazon-lidar/index.md",
+   "url": "https://github.com/pragyaangaur/Amazon-Earthworks-Lidar",
+   "description": "Public lidar over the Amazon, searched for pre-Columbian earthworks nobody has recorded.",
+   "when": "2026-11",
+   "results": [
+    "899 strips screened, 0 new sites. The method goes blind under forest"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Amazon-Earthworks-Lidar"
+    }
+   ],
+   "story": "Pietro Miotti found a Maya site with lidar and AI agents, then learned it was already mapped. I tried the same idea on 901 lidar strips over the Amazon. The one recorded geoglyph in open pasture showed up clearly, but under the forest the method saw almost no ground, so I closed it on 19 November 2026 as a negative result.",
+   "related": [
+    "kerf",
+    "beamline",
+    "fly"
+   ]
   }
  ]
 }
