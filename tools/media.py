@@ -39,6 +39,7 @@ STILLS = [
     ("oeis-pair", PDF + "img-036.jpg", 900),
     ("a189077", PDF + "img-036.jpg", 700, (0.555, 0, 1, 1)),  # the A189077 half of the OEIS card
     ("kerf", "tools/sources/kerf-diff.png", 750),
+    ("amazon-lidar", P + "Amazon LIDAR/docs/figures/hero.png", 900),
     ("ink-home", P + "Kindle Jailbreak/out/home13.png", 480),
     ("ink-quill", P + "Kindle Jailbreak/out/quill2.png", 480),
     ("ink-doom", P + "Kindle Jailbreak/out/doomcrop.png", 640),
