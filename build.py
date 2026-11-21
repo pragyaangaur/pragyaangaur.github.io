@@ -445,11 +445,11 @@ SPREADS = [
             card("kerf", "Kerf", SITE + "Kerf/", "kerf", "mid",
                  "Version control that understands CAD geometry. Change a bracket and Kerf shows what moved, merges two branches, and refuses a merge that breaks the part.",
                  tilt=0.7, drop=40, width=94),
-        ]),
-        (4, [
             card("forkestra", "Forkestra", SITE + "Forkestra/", "forkestra", "small",
                  "Paste a GitHub profile and its year plays as an orchestra. Linus Torvalds' year makes a decent song.",
                  tilt=1.2, drop=40, width=90, align="right"),
+        ]),
+        (4, [
             card("bardly", "Bardly", SITE + "Bardly/", "bardly", "small",
                  "The inverse of a URL shortener. Paste a link and get a longer one, with Shakespeare in the path.",
                  tilt=-1.3, drop=40, width=84, align="right"),
@@ -457,6 +457,10 @@ SPREADS = [
                  "Public lidar over the Amazon, searched for pre-Columbian earthworks nobody has recorded.",
                  bullets=["899 strips screened, ==0 new sites==. The method goes blind under forest"],
                  tilt=0.8, drop=30, width=84, align="right"),
+            card("linecraft", "Linecraft", GH + "Linecraft", "linecraft", "small",
+                 "A small chip that learns new wire protocols from software, an entry for Jane Street's chip design competition.",
+                 bullets=["Predicts how much clock error a link survives, and the measurement agrees to within ==0.4%=="],
+                 tilt=-1.0, drop=30, tape="t", width=88, align="right"),
         ]),
     ]),
 ]
