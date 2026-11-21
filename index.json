@@ -359,6 +359,31 @@
    ]
   },
   {
+   "id": "heliox",
+   "title": "Heliox",
+   "section": "The Sun",
+   "page": "https://pragyaangaur.dev/work/heliox/",
+   "markdown": "https://pragyaangaur.dev/work/heliox/index.md",
+   "url": "https://github.com/pragyaangaur/Heliox",
+   "description": "I rebuilt the core of SunPy from scratch, then moved it into Rust. Where the Sun runs slow, Rust takes over.",
+   "when": "2026-11",
+   "results": [
+    "Kernels for other sunpy packages, up to 390x faster and bit-identical to the original"
+   ],
+   "links": [
+    {
+     "label": "Project",
+     "url": "https://github.com/pragyaangaur/Heliox"
+    }
+   ],
+   "story": "Heliox began as SunPy rebuilt offline to see how a solar toolkit fits together. In November 2026 its core moved into a Rust crate, with every ported function checked against the Python it replaced. A separate package then took on slow functions from other sunpy packages, and the sunkit-image one runs about 390 times faster on a real velocity field.",
+   "related": [
+    "sunpy",
+    "limb-audit",
+    "sunion"
+   ]
+  },
+  {
    "id": "polyhex",
    "title": "The maximum area of the convex hull of a polyhex",
    "section": "Maths",

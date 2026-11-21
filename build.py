@@ -155,6 +155,10 @@ SPREADS = [
                  "The Sun's seven layers, as an explainer you can poke.",
                  tag="Try it",
                  tilt=-1.2, drop=0, width=84, align="right"),
+            card("heliox", "Heliox", GH + "Heliox", "heliox", "small",
+                 "I rebuilt the core of SunPy from scratch, then moved it into Rust. Where the Sun runs slow, Rust takes over.",
+                 bullets=["Kernels for other sunpy packages, up to ==390x== faster and bit-identical to the original"],
+                 tilt=1.3, drop=40, tape="t", width=92, align="right"),
         ]),
     ]),
     ("maths", "Maths", "indigo", [
