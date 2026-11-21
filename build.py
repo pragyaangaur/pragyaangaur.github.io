@@ -896,6 +896,40 @@ def write(path, text):
         f.write(text)
 
 
+MARK = "## Every project\n"
+GAP = "\n"
+
+
+def llms():
+    """llms.txt keeps its hand-written text, then ends with one generated entry per card so it never goes stale."""
+    with open("llms.txt") as f:
+        head = f.read().split(MARK)[0].rstrip() + "\n\n"
+    out = [MARK, GAP, "One entry per card on the board, in board order. Each links to the project's page on this site, then to the project itself. "
+           f"[llms-full.txt]({ORIGIN}/llms-full.txt) has the full Markdown of every page in one file.\n"]
+    last = None
+    for c, sid, heading, _ in CARDS:
+        if heading != last:
+            out.append(f"\n### {heading}\n\n")
+            last = heading
+        r = record(c, sid, heading)
+        line = f"- [{c['title']}]({r['page']}): {describe(c)}"
+        if r.get("when"):
+            line += f" ({r['when']})"
+        if c["url"] and c["url"] != r["page"]:
+            line += f" Source: {c['url']}"
+        out.append(line + "\n")
+    return head + "".join(out)
+
+
+def llms_full():
+    """Every project page as Markdown, joined into one file for a single request."""
+    parts = [f"# Pragyaan Gaur: every project\n\nThe Markdown of each project page on {ORIGIN}/, in board order. The short index is {ORIGIN}/llms.txt.\n"]
+    for pid in PAGES:
+        with open(f"{WORK}{pid}/index.md") as f:
+            parts.append(f.read().strip())
+    return "\n\n---\n\n".join(parts) + "\n"
+
+
 def build():
     write("index.html", board())
     # Pages of cards that have left the board go too.
@@ -912,6 +946,8 @@ def build():
                    "email": "pragyaangaur12@gmail.com", "profiles": [u for _, u in LINKS_TOP[1:]]},
         "sections": [{"id": sid, "title": heading, "url": f"{ORIGIN}/#{sid}"} for sid, heading, _, _ in SPREADS],
         "projects": [record(c, sid, heading) for c, sid, heading, _ in CARDS]}, ensure_ascii=False, indent=1) + "\n")
+    write("llms.txt", llms())
+    write("llms-full.txt", llms_full())
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
     today = __import__("datetime").date.today().isoformat()
     urls = "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in [""] + [f"{WORK}{p}/" for p in PAGES])

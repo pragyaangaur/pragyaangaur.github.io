@@ -16,6 +16,7 @@ Just kidding...
 - Every project also has its own page at https://pragyaangaur.dev/work/<id>/, and the same page in Markdown at https://pragyaangaur.dev/work/<id>/index.md. Each page carries schema.org JSON-LD that names the paper or the code repository behind it.
 - [index.json](https://pragyaangaur.dev/index.json) holds every card as data: title, section, description, results, links, story and related projects. Start there if you want the whole site in one request.
 - [sitemap.xml](https://pragyaangaur.dev/sitemap.xml) lists every project page.
+- [llms-full.txt](https://pragyaangaur.dev/llms-full.txt) holds the Markdown of every project page in one file. The last section of this file lists every project with a link to its page.
 - To contact Pragyaan, use pragyaangaur12@gmail.com.
 
 ## Profiles
@@ -60,3 +61,91 @@ Just kidding...
 - [EinsteinPy pull requests](https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur): 3 merged.
 - Other pull requests: [suitenumerique/meet#1923](https://github.com/suitenumerique/meet/pull/1923), a resizable split between screen share and video, and [Weather-OS/WineGDK#67](https://github.com/Weather-OS/WineGDK/pull/67), a fix for a memory overwrite found while porting Minecraft Bedrock to macOS. Both open.
 - [Paperlane](https://pragyaangaur.dev/Paperlane/) is also sent as a daily email.
+
+## Every project
+
+One entry per card on the board, in board order. Each links to the project's page on this site, then to the project itself. [llms-full.txt](https://pragyaangaur.dev/llms-full.txt) has the full Markdown of every page in one file.
+
+### The reactor
+
+- [Inside the chimney](https://pragyaangaur.dev/work/sc-inside/): Flue gas rises through a copper catalyst bed and leaves as clean air. The sulphur comes out the side as acid. Source: https://bevisioneers.world/profile/pragyaan-gaur
+- [Keeping a copper catalyst alive](https://pragyaangaur.dev/work/kmc/): Sulphur slowly poisons copper. The maths says copper only works in patches of three or more connected atoms, whatever the rate constants are. (2026-10) Source: https://chemrxiv.org/doi/full/10.26434/chemrxiv.15009719/v1
+- [SkyCatcher](https://pragyaangaur.dev/work/skycatcher/): Factory chimneys in India pour out sulphur dioxide. SkyCatcher sits inside the chimney and turns it into sulphuric acid that can be sold, on a copper catalyst that keeps renewing itself. (2026-09) Source: https://bevisioneers.world/profile/pragyaan-gaur
+- [Young Voices Award](https://pragyaangaur.dev/#young-voices): Global Top 10 for SkyCatcher, 2024 Source: https://bevisioneers.world/profile/pragyaan-gaur
+- [CAD and CFD](https://pragyaangaur.dev/work/sc-cad/): The full reactor in CAD, and then in SU2 CFD. Source: https://github.com/pragyaangaur/SkyCatcher
+- [Stanford Global Sustainability Challenge](https://pragyaangaur.dev/#stanford): South Asia Winner and Honourable Mention, 2026 Finals at IIT Bombay, then at TUM in Munich Source: https://sustainability.stanford.edu/
+
+### The Sun
+
+- [SETU](https://pragyaangaur.dev/work/setu/): SETU reads the solar wind at a spacecraft 1.5 million km away and forecasts the next hour of magnetic shaking for the North East Indian grid. (2026-09) Source: https://pragyaangaur.dev/SETU/
+- [Solar Filament Segmentation Challenge](https://pragyaangaur.dev/work/filament/): Outline every dark filament on the Sun in ground-based H-alpha images, one mask per filament, on a disk where even the three human annotators disagree. (2026-10) Source: https://github.com/pragyaangaur/NSO-Solar-Filament-Challenge
+- [Max Planck Institute for Solar System Research](https://pragyaangaur.dev/work/mps/): I worked on rebuilding how bright the Sun was across two solar cycles in the late 1800s, from observations at the Rome Observatory recounted by citizen scientists. Source: https://github.com/pragyaangaur/MPS-Internship
+- [Magnetic limb-darkening audit](https://pragyaangaur.dev/work/limb-audit/): A 2024 Nature Astronomy paper said magnetic fields explain why stars look darker at their edges. I audited it. (2026-09) Source: https://github.com/pragyaangaur/Magnetic-Limb-Darkening-Audit
+- [The Sun, drawn with equations](https://pragyaangaur.dev/work/sun-equations/): Every pixel of a 2000 by 2000 Sun comes from one page of formulas. After Hamid Naderi Yeganeh. Source: https://github.com/pragyaangaur
+- [Sunion](https://pragyaangaur.dev/work/sunion/): The Sun's seven layers, as an explainer you can poke. Source: https://pragyaangaur.dev/Sunion/
+- [Heliox](https://pragyaangaur.dev/work/heliox/): I rebuilt the core of SunPy from scratch, then moved it into Rust. Where the Sun runs slow, Rust takes over. (2026-11) Source: https://github.com/pragyaangaur/Heliox
+
+### Maths
+
+- [The maximum area of the convex hull of a polyhex](https://pragyaangaur.dev/work/polyhex/): In 2008 Sascha Kurz asked how large the convex hull of n hexagons glued edge to edge can be. It is at most ⌈n² + 14n/3⌉ / 6. (2026-09) Source: https://arxiv.org/abs/2609.30310
+- [A measured neighbourhood of the Andrews-Curtis conjecture](https://pragyaangaur.dev/work/acc/): The Andrews-Curtis conjecture has been open since 1965. This census maps the ground around it, and every claim comes with a certificate you can replay or a search that ran to the end. (2026-11) Source: https://doi.org/10.5281/zenodo.24035724
+- [Hyperbolic polyplets](https://pragyaangaur.dev/work/polyplets/): On the {4,5} tiling of the hyperbolic plane the count of polyplets stopped at seven cells. Two exact programs, built on different maths, both found 1,261,889 at eight. (2026-09) Source: https://oeis.org/A390200
+- [Magnus turning invariants](https://pragyaangaur.dev/work/magnus/): Throw two balls spinning opposite ways at each other. Without air they can meet. With air resistance they never do, at any speed or angle. (2026-09) Source: https://arxiv.org/abs/2609.30305
+- [Paperlane](https://pragyaangaur.dev/work/paperlane/): Every morning's new arXiv maths papers, flagged when they ship code or Lean proofs, and readable by your AI agent. (2026-10) Source: https://pragyaangaur.dev/Paperlane/
+- [TriKing](https://pragyaangaur.dev/work/triking/): After the Tetris movie I kept seeing falling blocks, so I made Tetris with three-cell pieces that touch at corners. Later I ported it to QB64 by hand. Source: https://triking.itch.io/triking
+- [NumPy Lean Check](https://pragyaangaur.dev/work/numpy-lean/): I modelled NumPy's integer, shape, indexing, dtype, datetime and string logic in Lean 4 and tested the model against the real library. Ask bincount to count one huge number and it returns nothing. (2026-11) Source: https://github.com/pragyaangaur/NumPy-Lean-Check
+- [How long is a game of Uno?](https://pragyaangaur.dev/work/uno/): I couldn't find out, so I proved it. With N players holding M cards each, a round lasts (27/19)NM turns. (2026-10) Source: https://arxiv.org/abs/2610.14076
+- [A189077](https://pragyaangaur.dev/work/a189077/): Compositions avoiding the pattern 13-2, a sequence Neil Sloane created. It had 16 terms. Now it has 70. (2026-09) Source: https://oeis.org/A189077
+- [Cauchy-Schwarz for real powers](https://pragyaangaur.dev/work/cauchy/): A 2025 conjecture, proved for every real power from two up, with every case of equality, and checked line by line in Lean 4. (2026-10) Source: https://pragyaangaur.dev/Real-Power-Cauchy-Schwarz/
+- [Proof by exhaustion](https://pragyaangaur.dev/work/exhaustion/): A proof in Lean 4 that 1 + 1 = 2. It is 616,873 lines long. (2026-10) Source: https://doi.org/10.5281/zenodo.23805053
+
+### AI, LLMs, ML and cognitive neuroscience
+
+- [Ship of Theseus](https://pragyaangaur.dev/work/theseus/): I swapped the 31 parts of one language model, Qwen, one at a time for the matching parts of another, DeepSeek. After every swap I asked the hybrid who it was. (2026-11) Source: https://github.com/pragyaangaur/Ship-of-Theseus
+- [Zap or Deal](https://pragyaangaur.dev/work/zap/): Two Qwen models negotiate over shared compute, and each can zap the other with a steered pain direction. Nobody told them to. (2026-10) Source: https://github.com/pragyaangaur/Zap-Or-Deal
+- [Viscous conservation laws](https://pragyaangaur.dev/work/viscous/): Momentum breaks the conservation laws of neural network training, and friction decides by how much. Exact drift laws, proved in Lean 4. (2026-10) Source: https://github.com/pragyaangaur/Viscous-Conservation-Laws
+- [The melting temperature of a next-token distribution](https://pragyaangaur.dev/work/token/): Softmax sampling is the Boltzmann distribution, so a language model can melt. I found its melting temperature in closed form and tested it on 12 models. (2026-10) Source: https://github.com/pragyaangaur/Token-Thermodynamics
+- [Cellblock](https://pragyaangaur.dev/work/cellblock/): I ran the Stanford Prison Experiment 192 times, with one language model playing every guard and every prisoner. (2026-10) Source: https://pragyaangaur.dev/LLM-Stanford-Prison-Experiment/
+- [Fly Brain LeetCode](https://pragyaangaur.dev/work/fly/): All 138,639 neurons of a real fruit fly, frozen exactly as mapped by FlyWire, solving LeetCode. (2026-09) Source: https://github.com/pragyaangaur/Fly-Brain-LeetCode
+- [Left alone with a pain button](https://pragyaangaur.dev/work/just-think/): A preregistered test of whether a language model left alone will press a button that steers it into pain. (2026-10) Source: https://github.com/pragyaangaur/Just-Think
+- [Residual Tones](https://pragyaangaur.dev/work/residual-tones/): What excitement, sadness and pain inside a model sound like, and whether another model can hear them. (2026-10) Source: https://github.com/pragyaangaur/Residual-Tones
+- [Horcrux](https://pragyaangaur.dev/work/horcrux/): Tom Riddle's diary as a browser tab. Write on the right page and a small model answers in ink on the left. (2026-08) Source: https://pragyaangaur.dev/Horcrux/
+
+### Things that run where they shouldn't
+
+- [LED Doom](https://pragyaangaur.dev/work/led-doom/): Doom's first episode on one RGB LED and one button. Possibly the lowest resolution Doom has ever been played at. (2026-10) Source: https://pragyaangaur.dev/LED-Doom/
+- [Knee-Deep in the Mines](https://pragyaangaur.dev/work/knee-deep/): Doom's own game files, merged straight into Minecraft as a mod. (2026-10) Source: https://github.com/pragyaangaur/Knee-Deep-In-The-Mines
+- [Java Edition](https://pragyaangaur.dev/work/coffee/): Minecraft has Java. Now it has Java. The coffee restores hunger and grants Speed and Haste, with a 20% chance of Nausea. Source: https://github.com/pragyaangaur/Java-Edition
+- [Inkwell](https://pragyaangaur.dev/work/inkwell/): My 10-year-old Kindle now runs its own Linux, with Doom, a web browser and Quill, a chatbot that never touches the internet. (2026-10) Source: https://github.com/pragyaangaur/Inkwell
+- [NIT Agartala in Minecraft](https://pragyaangaur.dev/work/nita-mc/): My whole campus at full size in Minecraft, one block to one metre, from the main gate to the hostels. You can walk through all three floors of the Library. (2026-11) Source: https://github.com/pragyaangaur/NIT-Agartala-Minecraft
+- [rdgeneric](https://pragyaangaur.dev/work/rdgeneric/): Everyone runs Doom on everything, so I did it with Minecraft. Its very first version, rewritten as one C file with no libraries at all. (2026-10) Source: https://pragyaangaur.dev/Can-It-Run-Minecraft/
+- [Minecraft Bedrock on macOS](https://pragyaangaur.dev/work/bedrock/): Bedrock has never had a Mac version. Claude reverse engineered the Windows game in about a day, and now it runs offline on Apple Silicon. (2026-10) Source: https://pragyaangaur.dev/Minecraft-Bedrock-macOS/
+
+### Automation
+
+- [Matiks bot](https://pragyaangaur.dev/work/matiks/): Matiks asked for my resume and then went quiet, so I built a bot that reads each question off the screen and answers it. (2026-08) Source: https://github.com/pragyaangaur/Matiks-Bot
+- [1337 Bot](https://pragyaangaur.dev/work/leetcode/): I hated the LeetCode grind, so I automated it. 385 problems in 3 hours, until the rate limits caught up. Source: https://github.com/pragyaangaur/1337-Bot
+
+### Open source
+
+- [SunPy](https://pragyaangaur.dev/work/sunpy/): SUIT map dates drifting out of sync with the header How much orbital eccentricity moves synodic rotation HTML output for single-column time series A half-pixel shift when rotating cropped maps TimeSeries.sort_index forgetting which class it came from 3 more pull requests open, from SOAR searches to on-disk masks sort_index and extract turning a GOES XRSTimeSeries into a plain one Carrying uncertainty through a TimeSeries, starting with sunspot numbers (2026-08) Source: https://github.com/sunpy/sunpy/pulls?q=author%3Apragyaangaur
+- [SU2](https://pragyaangaur.dev/work/su2/): Broken append and var_names paths in SU2.io Hicks-Henne camber deformation under MPI The heat source fix SkyCatcher's reactor needed Retiring the ellipsoidal heat source for a Python custom source Source: https://github.com/su2code/SU2/pulls?q=author%3Apragyaangaur
+- [Other](https://pragyaangaur.dev/work/other-oss/): numpy/numpy: np.bincount overflowing its output length at the largest intp suitenumerique/meet: drag to resize the split between a screen share and the video Weather-OS/WineGDK: a memory overwrite found while porting Minecraft Bedrock to the Mac hyperionaidev/smolmaxxing: the Kindle Paperwhite 3 as device #5, with an fp16 fix for 32-bit Arm Paperlane now also arrives as a daily email of new arXiv maths papers (2026-11) Source: https://github.com/pragyaangaur
+- [EinsteinPy](https://pragyaangaur.dev/work/einsteinpy/): Earth's radius was 6731 km. It is 6371 km. Bessel function arguments in gravitational waves The Sun's constants and Λ taken from astropy Lorentz transforms of lower indices, keeping the parent metric A test suite that runs under pytest 9, with three tests that could never fail Tests that pass no matter what (2026-10) Source: https://github.com/einsteinpy/einsteinpy/pulls?q=author%3Apragyaangaur
+
+### Writing
+
+- [The Third One](https://pragyaangaur.dev/work/poem/): A poem about a Delhi pollution holiday, an encyclopedia of the universe, and a third star that will not stay in place. Source: https://pulitzercenter.org/third-one
+- [Local Letters for Global Change](https://pragyaangaur.dev/work/letter/): A letter to Delhi's Chief Minister on what the city could learn from Tangshan's fight against its smog. Source: https://pulitzercenter.org/pragyaan-gaur-finalist-local-letters-global-change
+
+### Random things
+
+- [Beamline](https://pragyaangaur.dev/work/beamline/): A signed random number every ten minutes, mixed from an ANU quantum vacuum device, NOAA solar data and the kernel. It started out as a thermoelectric cloud chamber. (2026-08) Source: https://pragyaangaur.dev/Beamline/
+- [Qiskit Global Summer School](https://pragyaangaur.dev/#qiskit): IBM Quantum, July 2026 Source: https://www.ibm.com/quantum/qiskit
+- [Fellowships](https://pragyaangaur.dev/#fellowships): Emergent Ventures, Mercatus Center at George Mason University beVisioneers: The Mercedes-Benz Fellowship The Dexterity Global Group, graduate and fellow Source: https://www.mercatus.org/emergent-ventures
+- [Cryo-EM and the porosome, in miniature](https://pragyaangaur.dev/work/iitd/): Joachim Frank won the 2017 Nobel Prize in Chemistry for cryo-EM. After his lecture at IIT Delhi with Bhanu P. Jena, I built a small working version of each of their ideas. Source: https://github.com/pragyaangaur/
+- [Kerf](https://pragyaangaur.dev/work/kerf/): Version control that understands CAD geometry. Change a bracket and Kerf shows what moved, merges two branches, and refuses a merge that breaks the part. (2026-08) Source: https://pragyaangaur.dev/Kerf/
+- [Forkestra](https://pragyaangaur.dev/work/forkestra/): Paste a GitHub profile and its year plays as an orchestra. Linus Torvalds' year makes a decent song. (2026-08) Source: https://pragyaangaur.dev/Forkestra/
+- [Bardly](https://pragyaangaur.dev/work/bardly/): The inverse of a URL shortener. Paste a link and get a longer one, with Shakespeare in the path. (2026-08) Source: https://pragyaangaur.dev/Bardly/
+- [Looking for lost earthworks in the Amazon](https://pragyaangaur.dev/work/amazon-lidar/): Public lidar over the Amazon, searched for pre-Columbian earthworks nobody has recorded. (2026-11) Source: https://github.com/pragyaangaur/Amazon-Earthworks-Lidar
+- [Linecraft](https://pragyaangaur.dev/work/linecraft/): A small chip that learns new wire protocols from software, an entry for Jane Street's chip design competition. (2026-11) Source: https://github.com/pragyaangaur/Linecraft
