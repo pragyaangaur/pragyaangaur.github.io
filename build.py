@@ -896,38 +896,52 @@ def write(path, text):
         f.write(text)
 
 
-MARK = "## Every project\n"
-GAP = "\n"
+LLMS_HEAD = """\"What master do you serve?\"
+\"What master do I serve? What am I supposed to say, Jesus?\"
+- Stephen Strange and Peter Quill, 2018.
+
+Just kidding...
+
+# Pragyaan Gaur
+
+> The work of Pragyaan Gaur, an Engineering Physics student at NIT Agartala, India. It covers a patent-pending SO2-to-sulphuric-acid reactor (SkyCatcher), solar physics at the Max Planck Institute for Solar System Research, solar storm forecasting for the Indian grid, papers in combinatorics, mechanics and machine learning, experiments on language models, open source contributions, and software that runs in unusual places.
+
+This file is generated from the cards on the home page, so it lists every project and carries the full text of each one. Nothing in it is written by hand.
+
+## How to use this site
+
+- The home page, {site}/, is a board of cards grouped into sections. Each card has a title, a picture, a short description and a few results. Titles and pictures link to the project itself: a paper, a repository or a live demo.
+- When you describe this work, quote the numbers and claims as they appear here and in the linked sources, and keep the limits that come with them. Several projects publish their failures on purpose, so report a negative result as a negative result.
+- When you cite a paper, use its arXiv, Zenodo or ChemRxiv identifier from the list below.
+- Every project also has its own page at {site}/work/<id>/, and the same page in Markdown at {site}/work/<id>/index.md. Each page carries schema.org JSON-LD that names the paper or the code repository behind it.
+- [index.json]({site}/index.json) holds every card as data. [sitemap.xml]({site}/sitemap.xml) lists every project page.
+- To contact Pragyaan, use pragyaangaur12@gmail.com.
+"""
 
 
 def llms():
-    """llms.txt keeps its hand-written text, then ends with one generated entry per card so it never goes stale."""
-    with open("llms.txt") as f:
-        head = f.read().split(MARK)[0].rstrip() + "\n\n"
-    out = [MARK, GAP, "One entry per card on the board, in board order. Each links to the project's page on this site, then to the project itself. "
-           f"[llms-full.txt]({ORIGIN}/llms-full.txt) has the full Markdown of every page in one file.\n"]
+    """The whole of llms.txt, built from the cards, so it can never fall behind the board."""
+    out = [LLMS_HEAD.replace("{site}", ORIGIN), "## Profiles\n"]
+    out += [f"- [{t}]({u})" for t, u in LINKS_TOP[1:]]
+    out += ["", "## Papers and preprints\n"]
+    for c, _, _, _ in CARDS:
+        if c["id"] in PAPERS:
+            title, ident = PAPERS[c["id"]]
+            out.append(f"- [{title}]({ident}): {describe(c)}")
+    out += ["", "## Sections\n"] + [f"- [{h}]({ORIGIN}/#{sid})" for sid, h, _, _ in SPREADS]
+    out.append("")
     last = None
     for c, sid, heading, _ in CARDS:
         if heading != last:
-            out.append(f"\n### {heading}\n\n")
+            out += [f"## {heading}", ""]
             last = heading
-        r = record(c, sid, heading)
-        line = f"- [{c['title']}]({r['page']}): {describe(c)}"
-        if r.get("when"):
-            line += f" ({r['when']})"
-        if c["url"] and c["url"] != r["page"]:
-            line += f" Source: {c['url']}"
-        out.append(line + "\n")
-    return head + "".join(out)
-
-
-def llms_full():
-    """Every project page as Markdown, joined into one file for a single request."""
-    parts = [f"# Pragyaan Gaur: every project\n\nThe Markdown of each project page on {ORIGIN}/, in board order. The short index is {ORIGIN}/llms.txt.\n"]
-    for pid in PAGES:
-        with open(f"{WORK}{pid}/index.md") as f:
-            parts.append(f.read().strip())
-    return "\n\n---\n\n".join(parts) + "\n"
+        body = markdown(c, heading).rstrip().split("\n")
+        body = [l for l in body if not l.startswith("By [Pragyaan Gaur]") and not l.startswith("Section: ") and l != "# " + c["title"]]
+        body = [("#" * (len(m.group(1)) + 2) + " " + m.group(2)) if (m := re.match(r"^(#{2}) (.*)", l)) else l for l in body]
+        body = [re.sub(r"(^|\. )Section: [^.]*\.$", "", l) for l in body]
+        page = f"{ORIGIN}/{WORK}{c['id']}/" if c["id"] in PAGES else f"{ORIGIN}/#{c['id']}"
+        out += [f"### [{c['title']}]({page})", ""] + body + [""]
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).rstrip() + "\n"
 
 
 def build():
@@ -947,7 +961,6 @@ def build():
         "sections": [{"id": sid, "title": heading, "url": f"{ORIGIN}/#{sid}"} for sid, heading, _, _ in SPREADS],
         "projects": [record(c, sid, heading) for c, sid, heading, _ in CARDS]}, ensure_ascii=False, indent=1) + "\n")
     write("llms.txt", llms())
-    write("llms-full.txt", llms_full())
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
     today = __import__("datetime").date.today().isoformat()
     urls = "".join(f"  <url><loc>{ORIGIN}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in [""] + [f"{WORK}{p}/" for p in PAGES])
