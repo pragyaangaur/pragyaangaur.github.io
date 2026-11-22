@@ -11,6 +11,8 @@ import sys
 
 from PIL import Image, ImageChops, ImageFilter
 
+import variants
+
 P = "/Users/pragyaangaur/Claude Code Projects/"
 HOME = os.path.expanduser("~/")
 PDF = sys.argv[1] if len(sys.argv) > 1 else ""  # folder of images pulled from the LinkedIn export
@@ -145,6 +147,7 @@ def main():
     sizes = {}
     for name, src, width, *crop in STILLS:
         sizes[name] = still(name, src, width, *crop)
+        variants.make(OUT + name + ".webp")
     for name, src, width, *rest in LOOPS:
         sizes[name] = loop(name, src, width, *rest)
     sizes["cauchy-cone"] = cone()
