@@ -23,6 +23,15 @@ from html import escape
 from json import dumps
 
 
+def minify(css):
+    """Drop comments and spare whitespace. The stylesheets are plain, so a few substitutions are enough."""
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s+", " ", css)
+    css = re.sub(r"\s*([{};,>])\s*", r"\1", css)
+    css = re.sub(r":\s+", ":", css)
+    return css.replace(";}", "}").strip()
+
+
 def v(path):
     """A short content hash, so browsers fetch a file again whenever it changes."""
     with open(path, "rb") as f:
@@ -738,6 +747,17 @@ def thing(c):
     return out
 
 
+def inline_css(root):
+    """site.css sits in the page, fonts and the first paint need it, so there is no request to wait for."""
+    with open("assets/site.css") as f:
+        return minify(f.read()).replace('url("fonts/', f'url("{root}assets/fonts/')
+
+
+def paths(html, root):
+    """Point the lists inside srcset at the site root as well, for pages that sit in a folder."""
+    return re.sub(r'srcset="([^"]*)"', lambda m: 'srcset="' + re.sub(r"(^|, )assets/", rf"\1{root}assets/", m[1]) + '"', html)
+
+
 def head(title, desc, url, image, root, graph, size=True, alternates=""):
     data = f'<script type="application/ld+json">{graph}</script>\n' if graph else ""
     dims = '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' if size else ""
@@ -765,8 +785,8 @@ def head(title, desc, url, image, root, graph, size=True, alternates=""):
 {data}<link rel="preload" href="{root}assets/fonts/LM-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/kalam-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>var t;try{{t=localStorage.theme}}catch(e){{}}if(t==="dark")document.documentElement.dataset.theme="dark";document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="{root}assets/site.css?v={v("assets/site.css")}">
-<link rel="stylesheet" href="{root}assets/board.css?v={v("assets/board.css")}">
+<style>{inline_css(root)}</style>
+<link rel="stylesheet" href="{root}assets/board.min.css?v={v("assets/board.min.css")}">
 {alternates}</head>
 '''
 
@@ -860,7 +880,7 @@ def page(i):
 '''
     # The page sits two folders down, so its own files are reached through the root.
     return head(f"{c['title']} · Pragyaan Gaur", describe(c), url, picture(c), root, ld(web, thing(c), crumbs, person),
-                size=False, alternates=alternates) + re.sub(r'(src|poster|href)="(assets/)', rf'\1="{root}\2', body)
+                size=False, alternates=alternates) + re.sub(r'(src|poster|href)="(assets/)', rf'\1="{root}\2', paths(body, root))
 
 
 def markdown(c, heading):
@@ -959,6 +979,8 @@ def llms():
 
 
 def build():
+    with open("assets/board.css") as f:
+        write("assets/board.min.css", minify(f.read()))
     write("index.html", board())
     # Pages of cards that have left the board go too.
     for old in os.listdir(WORK) if os.path.isdir(WORK) else ():
