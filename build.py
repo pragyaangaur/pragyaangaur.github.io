@@ -548,12 +548,26 @@ def ink_marks(text):
     return re.sub(r"\*(.+?)\*", r"<i>\1</i>", text)
 
 
+# Where a picture is shown it is never wider than this on a desktop, and it fills the screen on a phone.
+SIZES_ATTR = "(max-width: 720px) calc(100vw - 50px), (max-width: 1100px) calc(100vw - 100px), 560px"
+
+
+def srcset(key, width):
+    """The smaller copies tools/variants.py made for this picture, plus the original."""
+    steps = [(w, f"{B}{key}-{w}.webp") for w in (480, 800) if os.path.exists(f"{B}{key}-{w}.webp")]
+    if not steps:
+        return ""
+    items = ", ".join(f"{path} {w}w" for w, path in steps) + f", {B}{key}.webp {width}w"
+    return f' srcset="{items}" sizes="{SIZES_ATTR}"'
+
+
 def media_tag(key, cls="", alt=""):
     w, h = SIZES[key]
     if key in ("cryoem", "porosome", "led-doom", "rdgeneric", "knee-deep", "fly-brain", "cauchy-cone"):
         return (f'<video class="{cls}" src="{B}{key}.mp4" poster="{B}{key}.jpg" width="{w}" height="{h}" '
                 f'autoplay muted loop playsinline preload="none" aria-label="{escape(alt)}"></video>')
-    return f'<img class="{cls}" src="{B}{key}.webp" width="{w}" height="{h}" alt="{escape(alt)}" loading="lazy" decoding="async">'
+    return (f'<img class="{cls}" src="{B}{key}.webp"{srcset(key, w)} width="{w}" height="{h}" alt="{escape(alt)}" '
+            f'loading="lazy" decoding="async">')
 
 
 def render(c, ink):
