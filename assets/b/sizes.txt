@@ -64,3 +64,4 @@ numpy-bincount 760 232
 amazon-lidar 900 458
 heliox 900 450
 linecraft 900 465
+einsteinpy-sun 785 294
