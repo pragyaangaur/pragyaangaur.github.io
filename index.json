@@ -1184,7 +1184,7 @@
    "description": "An open source runtime for the Xbox Series build of GTA VI, brought to Apple Silicon Macs through Wine and Metal. It never touches a game file, so you bring your own.",
    "when": "2026-11",
    "results": [
-    "90 GitHub stars and 150k+ people reached",
+    "90 GitHub stars, 150k+ people reached, featured on PCMag",
     "Outside contributors send pull requests, and a volunteer test fleet runs it on real Macs"
    ],
    "links": [

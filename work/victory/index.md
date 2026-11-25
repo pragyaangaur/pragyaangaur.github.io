@@ -6,7 +6,7 @@ November 2026. Section: Things that run where they shouldn't.
 
 ## Results
 
-- 90 GitHub stars and 150k+ people reached
+- 90 GitHub stars, 150k+ people reached, featured on PCMag
 - Outside contributors send pull requests, and a volunteer test fleet runs it on real Macs
 
 ## Story
