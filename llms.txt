@@ -1009,6 +1009,31 @@ On 6 October 2026 I asked whether a Mac version of Bedrock could be made from th
 - [Knee-Deep in the Mines](https://pragyaangaur.dev/work/knee-deep/index.md)
 - [Inkwell](https://pragyaangaur.dev/work/inkwell/index.md)
 
+### [VIctory for macOS](https://pragyaangaur.dev/work/victory/)
+
+> An open source runtime for the Xbox Series build of GTA VI, brought to Apple Silicon Macs through Wine and Metal. It never touches a game file, so you bring your own.
+
+November 2026
+
+#### Results
+
+- 90 GitHub stars and 150k+ people reached
+- Outside contributors send pull requests, and a volunteer test fleet runs it on real Macs
+
+#### Story
+
+I started it on 24 November 2026, on top of Marvisak's VIctory, which runs the Xbox Series build of GTA VI on Windows. I have no game files, so everything is tested with a stand-in program and by volunteers who own the game.
+
+#### Links
+
+- [Project](https://github.com/pragyaangaur/VIctory-macOS)
+
+#### See also
+
+- [Minecraft Bedrock on macOS](https://pragyaangaur.dev/work/bedrock/index.md)
+- [rdgeneric](https://pragyaangaur.dev/work/rdgeneric/index.md)
+- [Inkwell](https://pragyaangaur.dev/work/inkwell/index.md)
+
 ## Automation
 
 ### [Matiks bot](https://pragyaangaur.dev/work/matiks/)
