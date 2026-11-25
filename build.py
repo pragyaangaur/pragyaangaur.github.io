@@ -345,6 +345,12 @@ SPREADS = [
                  "Bedrock has never had a Mac version. Claude reverse engineered the Windows game in about a day, and now it runs offline on Apple Silicon.",
                  bullets=["A WineGDK bug found on the way, sent upstream with a fix"],
                  tilt=1.2, drop=40, tape="tr", width=92, align="right"),
+            card("victory", "VIctory for macOS", GH + "VIctory-macOS", "victory", "mid",
+                 "An open source runtime for the Xbox Series build of GTA VI, brought to Apple Silicon Macs through Wine and Metal. It never touches a game file, so you bring your own.",
+                 bullets=["==90 GitHub stars== and [[150k+ people reached]]",
+                          "Outside contributors send pull requests, and a volunteer test fleet runs it on real Macs"],
+                 links=[("Code", GH + "VIctory-macOS")],
+                 tilt=-0.8, drop=40, tape="t", width=96, align="right"),
         ]),
     ]),
     ("automation", "Automation", "oxblood", [
