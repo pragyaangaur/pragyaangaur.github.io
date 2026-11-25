@@ -193,6 +193,12 @@ SPREADS = [
                  links=[("OEIS A390200", "https://oeis.org/A390200"), ("Code", GH + "Hyperbolic-Polyplet-Enumerator")],
                  notes=[("Then I counted the pieces", "blue", "left:0; top:-32px", -3)],
                  tilt=-1.2, drop=0, tape="tl", width=76),
+            card("einsteinpy-lean", "EinsteinPy Lean Check", GH + "EinsteinPy-Lean-Check", "einsteinpy-sun", "small",
+                 "I modelled all of einsteinpy, the Python library for general relativity, in Lean 4 on top of Physlib and tested it against the real library. Ask it how big the Sun would be as a black hole and it says 10⁻²⁷ metres.",
+                 bullets=["==33 bug records==, 24 of them new to einsteinpy, with 173 properties proved and 47 refuted",
+                          "The findings are [[raised upstream]] as einsteinpy/einsteinpy#712"],
+                 links=[("Code", GH + "EinsteinPy-Lean-Check"), ("Issue #712", "https://github.com/einsteinpy/einsteinpy/issues/712")],
+                 tilt=0.9, drop=40, width=94, align="right"),
         ]),
         (5, [
             card("magnus", "Magnus turning invariants", "https://arxiv.org/abs/2609.30305", "magnus", "hero",
