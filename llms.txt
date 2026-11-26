@@ -1017,7 +1017,7 @@ November 2026
 
 #### Results
 
-- 90 GitHub stars, 150k+ people reached, featured on PCMag
+- 180+ GitHub stars, 200k+ people reached, featured on PCMag
 - Outside contributors send pull requests, and a volunteer test fleet runs it on real Macs
 
 #### Story
